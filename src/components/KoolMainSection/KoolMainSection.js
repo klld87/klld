@@ -22,13 +22,25 @@ const KoolMainSection = () => {
             </Text>
             <Flex flexWrap="wrap" flexDirection="column">
               <Box mb={15}>
-                <Button title="Buy $KOOL" />
+                <Button
+                  title="Buy $KOOL"
+                  borderColor="#BF36FF"
+                  hoverBackground="#BF36FF"
+                />
               </Box>
               <Box mb={15}>
-                <Button title="KOOL BAR NFTz" />
+                <Button
+                  title="KOOL BAR NFTz"
+                  borderColor="#00CB39"
+                  hoverBackground="#00CB39"
+                />
               </Box>
               <Box>
-                <Button title="Farm $AID" />
+                <Button
+                  title="Farm $AID"
+                  borderColor="#00CB39"
+                  hoverBackground="#00CB39"
+                />
               </Box>
             </Flex>
           </Box>
