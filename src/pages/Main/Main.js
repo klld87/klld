@@ -11,6 +11,7 @@ import {
 import Header from '../../components/Header'
 import Container from '../../components/Container'
 import TokenStats from '../../components/TokenStats'
+import HowItWorks from '../../components/HowItWorks'
 
 const MainPage = () => {
   return (
@@ -31,6 +32,7 @@ const MainPage = () => {
         </Box>
       </Flex>
       <TokenStats />
+      <HowItWorks />
     </Wrapper>
   )
 }
