@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Container from '../Container';
+import WalletModal from '../../modals/Wallet';
 
 import {
   Wrapper,
@@ -24,6 +25,11 @@ const Header = () => {
   const [isCollapsed, setCollapsed] = React.useState(false);
   const isWalletUnlocked = true; // Fix me
 
+  const [open, setOpen] = React.useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
   return (
     <Wrapper>
       <Top>
@@ -37,7 +43,7 @@ const Header = () => {
                 <StatsItemTitle>0.000 $AID</StatsItemTitle>
               </StatsItem>
             </StatsList>
-            <Button>
+            <Button onClick={onOpenModal}>
               <ButtonTitle>
                 {isWalletUnlocked ? 'my wallet' : 'unlock wallet'}
               </ButtonTitle>
@@ -68,6 +74,7 @@ const Header = () => {
           </Row>
         </Container>
       </Body>
+      <WalletModal open={open} onCloseModal={onCloseModal} />
     </Wrapper>
   );
 };
