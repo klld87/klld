@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Container from '../Container'
+
 import {
   Wrapper
 } from './styles'
@@ -7,9 +9,9 @@ import {
 const Header = () => {
   return (
     <Wrapper>
-      <p>
-        Header
-      </p>
+      <Container>
+        <span>Header</span>
+      </Container>
     </Wrapper>
   )
 }

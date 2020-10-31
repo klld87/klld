@@ -3,7 +3,8 @@ import { Flex, Box } from 'reflexbox'
 
 // styles
 import {
-  Wrapper
+  Wrapper,
+  Title
 } from './styles'
 
 // components
@@ -13,9 +14,11 @@ const IndexPage = () => {
   return (
     <Wrapper>
       <Header />
-      <p>
-        IndexPage
-      </p>
+      <Flex>
+        <Box>
+          Flex
+        </Box>
+      </Flex>
     </Wrapper>
   )
 }
