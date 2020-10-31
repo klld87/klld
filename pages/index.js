@@ -1,17 +1,3 @@
-import React from 'react'
-
-// components
-import Header from '../components/Header'
-
-const IndexPage = () => {
-  return (
-    <>
-      <Header />
-      <p>
-        IndexPage
-      </p>
-    </>
-  )
-}
+import IndexPage from './index/index'
 
 export default IndexPage
