@@ -7,7 +7,7 @@ import {
 } from './styles'
 
 // components
-import Header from '../components/Header'
+import Header from '../../components/Header'
 
 const IndexPage = () => {
   return (
