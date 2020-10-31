@@ -10,6 +10,7 @@ import Container from '../../components/Container';
 import TokenStats from '../../components/TokenStats';
 import HowItWorks from '../../components/HowItWorks';
 import News from '../../components/News';
+import Footer from '../../components/Footer';
 
 const MainPage = () => {
   return (
@@ -26,6 +27,7 @@ const MainPage = () => {
       <TokenStats />
       <HowItWorks />
       <News />
+      <Footer />
     </Wrapper>
   );
 };
