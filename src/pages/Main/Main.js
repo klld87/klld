@@ -1,12 +1,11 @@
 import React from 'react';
-import { Flex, Box } from 'reflexbox';
 
 // styles
-import { Wrapper, Title } from './styles';
+import { Wrapper } from './styles';
 
 // components
 import Header from '../../components/Header';
-import Container from '../../components/Container';
+import KoolMainSection from '../../components/KoolMainSection';
 import TokenStats from '../../components/TokenStats';
 import HowItWorks from '../../components/HowItWorks';
 import News from '../../components/News';
@@ -16,14 +15,7 @@ const MainPage = () => {
   return (
     <Wrapper>
       <Header />
-      <Flex width="100%">
-        <Box width={[1, 1, 2 / 5, 2 / 5]}>
-          <img src="/koolmarket.png" width="915" height="543" />
-        </Box>
-        <Box width={[1, 1, 3 / 5, 3 / 5]}>
-          <Title>First season collection available NOW!</Title>
-        </Box>
-      </Flex>
+      <KoolMainSection />
       <TokenStats />
       <HowItWorks />
       <News />

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+import logo from '../../images/logo.svg';
+
+export const Wrapper = styled.div``;
+
+export const Top = styled.div`
   background-color: #4f5a98;
 `;
-
-export const Top = styled.div``;
 
 export const Body = styled.div`
   background: linear-gradient(
@@ -18,3 +20,68 @@ export const Body = styled.div`
 export const Button = styled.button``;
 
 export const ButtonTitle = styled.span``;
+
+export const StatsList = styled.div`
+  flex-direction: row;
+  display: flex;
+  padding: 20px 0;
+`;
+
+export const StatsItem = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
+export const StatsItemTitle = styled.p`
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 25px;
+  color: #ffffff;
+  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+
+  @media (min-width: 400px) {
+    font-size: 25px;
+    line-height: 35px;
+  }
+`;
+
+export const Logo = styled.img`
+  background-image: url(${logo});
+  width: 66px;
+  height: 66px;
+`;
+
+export const LogoRow = styled.div``;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Nav = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+`;
+
+export const NavListItem = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
+export const NavListTitle = styled.a`
+  margin: 0;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+`;
+
+export const TopRow = styled.div``;

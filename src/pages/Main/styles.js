@@ -15,5 +15,3 @@ export const Wrapper = styled.div`
     rgba(61, 250, 69, 0.385)
   );
 `;
-
-export const Title = styled.h1``;

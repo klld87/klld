@@ -3,7 +3,7 @@ import { Flex, Box } from 'reflexbox';
 
 import Container from '../Container';
 
-import { StatsList, StatsValue, StatsName } from './styles';
+import { StatsList, StatsValue, StatsName, Strawberry, Apple } from './styles';
 
 const TokenStats = () => {
   const supply = 99999;
@@ -13,12 +13,13 @@ const TokenStats = () => {
   return (
     <Container>
       <StatsList>
+        <Strawberry />
         <Flex flexWrap="wrap">
-          <Box width={[1, 1, 1 / 3, 1 / 3]}>
+          <Box width={[1, 1, 1 / 3, 1 / 3]} mb={['50px', '50px', 0, 0]}>
             <StatsValue>{Number.parseFloat(supply).toFixed(2)}</StatsValue>
             <StatsName>KOOL supply</StatsName>
           </Box>
-          <Box width={[1, 1, 1 / 3, 1 / 3]}>
+          <Box width={[1, 1, 1 / 3, 1 / 3]} mb={['50px', '50px', 0, 0]}>
             <StatsValue>{`$ ${price}`}</StatsValue>
             <StatsName>KOOL Price</StatsName>
           </Box>
@@ -29,6 +30,7 @@ const TokenStats = () => {
             <StatsName>Market cap</StatsName>
           </Box>
         </Flex>
+        <Apple />
       </StatsList>
     </Container>
   );
