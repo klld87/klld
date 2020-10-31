@@ -4,18 +4,32 @@ import { Flex, Box } from 'reflexbox';
 import Container from '../Container';
 import Button from '../Button';
 
-import { Wrapper, Title, KoolMan, Text, TextLB } from './styles';
+import {
+  Wrapper,
+  TitleRow,
+  Title,
+  Sign,
+  KoolManRow,
+  KoolMan,
+  Text,
+  TextLB,
+} from './styles';
 
 const KoolMainSection = () => {
   return (
     <Wrapper>
       <Container>
-        <Flex>
+        <Flex flexWrap="wrap">
           <Box width={[1, 1, 3 / 5, 3 / 5]}>
-            <KoolMan />
+            <KoolManRow>
+              <KoolMan />
+            </KoolManRow>
           </Box>
           <Box width={[1, 1, 2 / 5, 2 / 5]}>
-            <Title>First season collection available NOW!</Title>
+            <TitleRow>
+              <Title>First season collection available NOW!</Title>
+              <Sign />
+            </TitleRow>
             <Text>
               Soon; Make your own rare mix-flavoured{' '}
               <TextLB>NFT cocktail</TextLB>
