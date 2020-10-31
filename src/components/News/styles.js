@@ -73,10 +73,11 @@ export const ItemLink = styled.a`
   }
 
   @media (min-width: 1200px) {
-    transition: transform 0.3s;
+    transition: all 0.3s;
 
     &:hover {
       transform: scale(1.05);
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.85);
     }
   }
 `;

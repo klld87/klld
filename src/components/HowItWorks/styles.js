@@ -54,7 +54,6 @@ export const List = styled.ol`
       background-image: url(${lemon});
       background-repeat: no-repeat;
       background-size: contain;
-      z-index: -1;
       animation: ${spin} 2s linear infinite;
     }
   }
