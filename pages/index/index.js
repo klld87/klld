@@ -9,16 +9,28 @@ import {
 
 // components
 import Header from '../../components/Header'
+import Container from '../../components/Container'
+import TokenStats from '../../components/TokenStats'
 
 const IndexPage = () => {
   return (
     <Wrapper>
       <Header />
-      <Flex>
-        <Box>
-          Flex
+      <Flex width="100%">
+        <Box width={[1, 1, 2/5, 2/5]}>
+          <img
+            src="/koolmarket.png"
+            width="915"
+            height="543"
+          />
+        </Box>
+        <Box width={[1, 1, 3/5, 3/5]}>
+          <Title>
+            First season collection available NOW!
+          </Title>
         </Box>
       </Flex>
+      <TokenStats />
     </Wrapper>
   )
 }

@@ -3,15 +3,28 @@ import React from 'react'
 import Container from '../Container'
 
 import {
-  Wrapper
+  Wrapper,
+  Top,
+  Body,
+  Button,
+  ButtonTitle
 } from './styles'
 
 const Header = () => {
   return (
     <Wrapper>
-      <Container>
-        <span>Header</span>
-      </Container>
+      <Top>
+        <Container>
+          <Button>
+            <ButtonTitle>
+              Unlock wallet
+            </ButtonTitle>
+          </Button>
+        </Container>
+      </Top>
+      <Body>
+        <p>menu..</p>
+      </Body>
     </Wrapper>
   )
 }
