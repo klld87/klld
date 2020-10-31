@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Container from '../../components/Container';
 import TokenStats from '../../components/TokenStats';
 import HowItWorks from '../../components/HowItWorks';
+import News from '../../components/News';
 
 const MainPage = () => {
   return (
@@ -24,6 +25,7 @@ const MainPage = () => {
       </Flex>
       <TokenStats />
       <HowItWorks />
+      <News />
     </Wrapper>
   );
 };

@@ -1,10 +1,19 @@
 import styled, { css } from 'styled-components';
 
 export const TextStroke = css`
-  -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth || '4'}px`}
+  -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth - 1 || '3'}px`}
     ${({ strokeColor }) => strokeColor || '#000'};
-  text-stroke: ${({ strokeWidth }) => `${strokeWidth || '4'}px`}
+
+  text-stroke: ${({ strokeWidth }) => `${strokeWidth - 1 || '3'}px`}
     ${({ strokeColor }) => strokeColor || '#000'};
+
+  @media (min-width: 1024px) {
+    -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth || '3'}px`}
+      ${({ strokeColor }) => strokeColor || '#000'};
+
+    text-stroke: ${({ strokeWidth }) => `${strokeWidth || '3'}px`}
+      ${({ strokeColor }) => strokeColor || '#000'};
+  }
 `;
 
 export const SectionHeading = styled.h2`
