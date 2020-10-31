@@ -23,19 +23,22 @@ export const List = styled.ol`
     content: '';
     position: absolute;
     left: 0;
+    right: 0;
     top: 0;
-    width: 100%;
+    bottom: 0;
+    width: calc(100% - 40px);
     height: 100%;
+    margin: auto;
     background-image: linear-gradient(
       89.69deg,
-      rgba(0, 255, 71, 0.5) 13.04%,
-      rgba(4, 225, 255, 0.5) 52.94%,
-      rgba(189, 0, 255, 0.5) 98.47%
+      rgba(0, 255, 71, 0.4) 13.04%,
+      rgba(4, 225, 255, 0.4) 52.94%,
+      rgba(189, 0, 255, 0.4) 98.47%
     );
     border: 8px solid #05a6b0;
     border-radius: 20px;
     filter: blur(40px);
-    z-index: -1;
+    z-index: 1;
   }
 
   @media (min-width: 1024px) {
@@ -55,6 +58,7 @@ export const List = styled.ol`
       background-repeat: no-repeat;
       background-size: contain;
       animation: ${spin} 2s linear infinite;
+      z-index: 0;
     }
   }
 `;
@@ -63,6 +67,7 @@ export const Item = styled.li`
   display: block;
   text-align: center;
   font-family: 'Kool Beans', 'Comic Sans MS';
+  z-index: 2;
 
   @media (max-width: 1023px) {
     margin-bottom: 70px;

@@ -12,9 +12,14 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  &:hover {
-    background-color: ${({ hoverBackground }) => hoverBackground || '#00cb39'};
-    cursor: pointer;
+  @media (min-width: 1200px) {
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: ${({ hoverBackground }) =>
+        hoverBackground || '#00cb39'};
+      cursor: pointer;
+    }
   }
 `;
 

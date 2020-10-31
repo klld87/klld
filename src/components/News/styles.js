@@ -89,8 +89,10 @@ export const Flavors = styled.p`
   font-size: 50px;
   line-height: 1.1;
   ${TextStroke}
+  overflow: hidden;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: '';
     position: absolute;
     background-repeat: no-repeat;
