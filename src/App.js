@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import logo from './logo.svg';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -44,13 +45,26 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-function MyApp({ Component, pageProps }) {
+function App() {
   return (
-    <>
-    <GlobalStyle />
-    <Component {...pageProps} />
-    </>
-  )
+    <div className="App">
+      <GlobalStyle />
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
-export default MyApp
+export default App;
