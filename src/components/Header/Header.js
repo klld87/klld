@@ -1,14 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import Container from '../Container'
+import Container from '../Container';
 
-import {
-  Wrapper,
-  Top,
-  Body,
-  Button,
-  ButtonTitle
-} from './styles'
+import { Wrapper, Top, Body, Button, ButtonTitle } from './styles';
 
 const Header = () => {
   return (
@@ -16,9 +10,7 @@ const Header = () => {
       <Top>
         <Container>
           <Button>
-            <ButtonTitle>
-              Unlock wallet
-            </ButtonTitle>
+            <ButtonTitle>Unlock wallet</ButtonTitle>
           </Button>
         </Container>
       </Top>
@@ -26,7 +18,7 @@ const Header = () => {
         <p>menu..</p>
       </Body>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

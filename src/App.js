@@ -1,20 +1,10 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
-import MainPage from './pages/Main'
+import MainPage from './pages/Main';
 
 const GlobalStyle = createGlobalStyle`
-  html {
-    @font-face {
-    font-family: 'Kool Beans';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Kool Beans'), url('KoolBean.woff') format('woff');
-    }
-  }
-
   html,
   body {
-    height: 100%;
     padding: 0;
     margin: 0;
     font-family: -apple-system, Roboto, BlinkMacSystemFont, Segoe UI, Oxygen,
@@ -33,6 +23,19 @@ const GlobalStyle = createGlobalStyle`
       rgba(250, 61, 73, 0.385),
       rgba(61, 250, 69, 0.385)
     );
+  }
+
+  html {
+    @font-face {
+    font-family: 'Kool Beans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Kool Beans'), url('KoolBean.woff') format('woff');
+    }
+  }
+
+  body {
+    height: 100%;
   }
 
   a {

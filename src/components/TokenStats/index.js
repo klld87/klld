@@ -1,3 +1,3 @@
-import TokenStats from './TokenStats'
+import TokenStats from './TokenStats';
 
-export default TokenStats
+export default TokenStats;

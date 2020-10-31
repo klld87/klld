@@ -1,17 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import {
-  Wrapper
-} from './styles'
+import { Wrapper } from './styles';
 
 const Container = (props) => {
-  const { children } = props
-  
-  return (
-    <Wrapper>
-      {children}
-    </Wrapper>
-  )
-}
+  const { children } = props;
 
-export default Container
+  return <Wrapper>{children}</Wrapper>;
+};
+
+export default Container;

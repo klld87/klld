@@ -8,13 +8,13 @@ export const SectionHeading = styled.h2`
   font-style: normal;
   font-weight: 400;
   line-height: 1.3;
-  color: #FF8484;
-  -webkit-text-stroke: 4px #000; 
+  color: #ff8484;
+  -webkit-text-stroke: 4px #000;
   text-stroke: 4px #000;
 
   text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
 
-  @media(min-width: 1024px) {
+  @media (min-width: 1024px) {
     font-size: 75px;
   }
-`
+`;
