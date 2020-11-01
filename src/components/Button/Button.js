@@ -12,11 +12,17 @@ const Button = (props) => {
     href,
     rel,
     target,
+    onClick,
   } = props;
 
   if (!title) {
     return null;
   }
+
+  const handleClick = () => {
+    if (!onClick) return;
+    onClick();
+  };
 
   return (
     <Wrapper
@@ -27,6 +33,7 @@ const Button = (props) => {
       href={href}
       rel={rel}
       target={target}
+      onClick={handleClick}
     >
       <Title>{title}</Title>
     </Wrapper>

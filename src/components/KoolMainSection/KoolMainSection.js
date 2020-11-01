@@ -1,64 +1,58 @@
 import * as React from 'react';
-import { Flex, Box } from 'reflexbox';
 
 import Container from '../Container';
 import Button from '../Button';
 
 import {
   Wrapper,
-  TitleRow,
+  Content,
   Title,
-  Sign,
-  KoolManRow,
+  TitleText,
   KoolMan,
   Text,
   TextLB,
+  StyledUnlockButton,
+  ButtonList,
 } from './styles';
 
-const KoolMainSection = () => {
+import koolman from '../../images/koolman.svg';
+
+const KoolMainSection = ({ isUnlocked }) => {
   return (
     <Wrapper>
       <Container>
-        <Flex flexWrap="wrap">
-          <Box width={[1, 1, 3 / 5, 3 / 5]}>
-            <KoolManRow>
-              <KoolMan />
-            </KoolManRow>
-          </Box>
-          <Box width={[1, 1, 2 / 5, 2 / 5]}>
-            <TitleRow>
-              <Title>First season collection available NOW!</Title>
-              <Sign />
-            </TitleRow>
-            <Text>
-              Soon; Make your own rare mix-flavoured{' '}
-              <TextLB>NFT cocktail</TextLB>
-            </Text>
-            <Flex flexWrap="wrap" flexDirection="column">
-              <Box mb={15}>
-                <Button
-                  title="Buy $KOOL"
-                  borderColor="#BF36FF"
-                  hoverBackground="#BF36FF"
-                />
-              </Box>
-              <Box mb={15}>
-                <Button
-                  title="KOOL BAR NFTz"
-                  borderColor="#00CB39"
-                  hoverBackground="#00CB39"
-                />
-              </Box>
-              <Box>
-                <Button
-                  title="Farm $AID"
-                  borderColor="#00CB39"
-                  hoverBackground="#00CB39"
-                />
-              </Box>
-            </Flex>
-          </Box>
-        </Flex>
+        <Content>
+          <Title textStroke={2}>
+            <TitleText>First season collection available&nbsp;NOW!</TitleText>
+          </Title>
+          {isUnlocked ? (
+            <StyledUnlockButton onClick={() => console.log('click')} />
+          ) : null}
+          <KoolMan>
+            <img src={koolman} alt="Kool" />
+          </KoolMan>
+          <Text textStroke={2}>
+            Soon; Make your own rare mix-flavoured{' '}
+            <TextLB data-text="NFT cocktail">NFT cocktail</TextLB>
+          </Text>
+          <ButtonList>
+            <Button
+              title="Buy $KOOL"
+              borderColor="#BF36FF"
+              hoverBackground="#BF36FF"
+            />
+            <Button
+              title="KOOL BAR NFTz"
+              borderColor="#00CB39"
+              hoverBackground="#00CB39"
+            />
+            <Button
+              title="Farm $AID"
+              borderColor="#00CB39"
+              hoverBackground="#00CB39"
+            />
+          </ButtonList>
+        </Content>
       </Container>
     </Wrapper>
   );

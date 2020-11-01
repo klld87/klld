@@ -73,7 +73,7 @@ const MainPage = () => {
         koolBalance={koolBalance}
         aidBalance={aidBalance}
       />
-      <KoolMainSection />
+      <KoolMainSection isUnlocked={isEthEnabled} />
       <TokenStats koolPrice={koolPrice} />
       <HowItWorks />
       <Trade />

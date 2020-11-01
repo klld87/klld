@@ -38,7 +38,7 @@ const Footer = () => {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  strokeWidth={2}
+                  textStroke={2}
                 >
                   {name}
                 </Link>

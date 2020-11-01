@@ -42,7 +42,7 @@ const HowItWorks = () => {
                 <Text
                   emojiLabel={label}
                   emoji={emoji}
-                  strokeWidth="2"
+                  textStroke="2"
                   dangerouslySetInnerHTML={{ __html: text }}
                 />
               </Item>

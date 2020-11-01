@@ -27,7 +27,7 @@ export const StatsList = styled.div`
 
   @media (min-width: 1024px) {
     background-image: url(${background});
-    margin: 44px 0 53px 0;
+    margin: 80px 0 53px 0;
   }
 `;
 

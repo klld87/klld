@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   width: 100%;
   height: 78px;
+  font-size: 30px;
+  line-height: 30px;
+  color: #000000;
   border: ${({ borderColor }) =>
     `6px solid ${borderColor ? `${borderColor}` : '#ffe8c5'}`};
   background-color: #ffe8c5;
@@ -25,7 +28,4 @@ export const Wrapper = styled.div`
 
 export const Title = styled.span`
   font-weight: bold;
-  font-size: 30px;
-  line-height: 30px;
-  color: #000000;
 `;
