@@ -1,4 +1,7 @@
 import ethers from 'ethers';
+import axios from 'axios';
+import { ChainId, Token, Fetcher, WETH, Route } from '@uniswap/sdk';
+
 import { ERC20_ABI, KOOL_TOKEN_ADDR, AID_TOKEN_ADDR } from './constants';
 
 export const getContract = (provider, tokenAddress) => {
@@ -20,3 +23,26 @@ export const getKoolBalance = async (provider, userAddress) =>
 
 export const getAidBalance = async (provider, userAddress) =>
   getBalance(provider, AID_TOKEN_ADDR, userAddress);
+
+export const getKoolPrice = async () => {
+  const chainId = ChainId.MAINNET;
+  let ethInfo;
+
+  try {
+    const tkn = new Token(chainId, KOOL_TOKEN_ADDR, 18);
+    const pair = await Fetcher.fetchPairData(tkn, WETH[tkn.chainId]);
+    const route = new Route([pair], WETH[tkn.chainId]);
+
+    ethInfo = await axios(
+      'https://api.coinpaprika.com/v1/tickers/eth-ethereum'
+    );
+
+    const ethPrice = ethInfo.data.quotes.USD.price;
+    const koolPriceInEth = route.midPrice.invert().toSignificant(6);
+
+    return Number(ethPrice) * Number(koolPriceInEth);
+  } catch (err) {
+    console.log(err);
+    return 0.38; // hardcode
+  }
+};

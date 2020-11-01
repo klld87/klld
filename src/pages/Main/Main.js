@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ethers from 'ethers';
-import { getKoolBalance, getAidBalance } from '../../api';
+import { getKoolPrice, getKoolBalance, getAidBalance } from '../../api';
 
 // styles
 import { Wrapper } from './styles';
@@ -21,10 +21,12 @@ const MainPage = () => {
 
   const [koolBalance, setKoolBalance] = useState('0');
   const [aidBalance, setAidBalance] = useState('0');
+  const [koolPrice, setKoolPrice] = useState(null);
 
   const enableEth = async () => {
     if (window.ethereum) {
       try {
+        await window.ethereum.enable();
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const address = await signer.getAddress();
@@ -39,8 +41,15 @@ const MainPage = () => {
     }
   };
 
+  const handleGetKoolPrice = async () => {
+    const price = await getKoolPrice();
+    const formattedPrice = (Math.round(price * 100) / 100).toString();
+    setKoolPrice(formattedPrice);
+  };
+
   useEffect(() => {
     enableEth();
+    handleGetKoolPrice();
   }, []);
 
   useEffect(() => {
@@ -65,7 +74,7 @@ const MainPage = () => {
         aidBalance={aidBalance}
       />
       <KoolMainSection />
-      <TokenStats />
+      <TokenStats koolPrice={koolPrice} />
       <HowItWorks />
       <Trade />
       <News />

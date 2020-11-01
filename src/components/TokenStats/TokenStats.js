@@ -5,9 +5,8 @@ import Container from '../Container';
 
 import { StatsList, StatsValue, StatsName, Strawberry, Apple } from './styles';
 
-const TokenStats = () => {
+const TokenStats = ({ koolPrice: price }) => {
   const supply = 99999;
-  const price = 0.38; // Fix me
   const marketCap = price * supply;
 
   return (
@@ -20,12 +19,12 @@ const TokenStats = () => {
             <StatsName>KOOL supply</StatsName>
           </Box>
           <Box width={[1, 1, 1 / 3, 1 / 3]} mb={['50px', '50px', 0, 0]}>
-            <StatsValue>{`$ ${price}`}</StatsValue>
+            <StatsValue>{`$ ${price || ''}`}</StatsValue>
             <StatsName>KOOL Price</StatsName>
           </Box>
           <Box width={[1, 1, 1 / 3, 1 / 3]}>
             <StatsValue>
-              {`$ ${Number.parseFloat(marketCap).toFixed(2)}`}
+              {`$ ${marketCap ? Number.parseFloat(marketCap).toFixed(2) : ''}`}
             </StatsValue>
             <StatsName>Market cap</StatsName>
           </Box>
