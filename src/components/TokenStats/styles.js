@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
+import Container from '../Container';
+
 import background from '../../images/statsBlockBG.svg';
 import backgroundMobile from '../../images/statsBlockMobileBG.svg';
 
 // Fruits
-import strawberryFruit from '../../images/fruits/strawberry.svg';
-import appleFruit from '../../images/fruits/apple.svg';
+import strawberryFruit from '../../images/fruits/strawberry.png';
+import appleFruit from '../../images/fruits/apple.png';
+
+export const StyledContainer = styled(Container)`
+  @media (max-width: 576px) {
+    overflow: hidden;
+  }
+`;
 
 export const StatsList = styled.div`
   margin: 44px 0 40px 0;
@@ -30,7 +38,14 @@ export const StatsValue = styled.h3`
   line-height: 30px;
   color: #ffffff;
   text-align: center;
-  text-shadow: -3px 0 #000000, 0 3px #000000, 3px 0 #000000, 0 -3px #000000;
+
+  @media (max-width: 831px) {
+    text-shadow: -3px 0 #000000, 0 3px #000000, 3px 0 #000000, 0 -3px #000000;
+  }
+
+  @media (min-width: 832px) {
+    color: #000;
+  }
 `;
 
 export const StatsName = styled.p`
@@ -40,27 +55,47 @@ export const StatsName = styled.p`
   line-height: 30px;
   color: #ffffff;
   text-align: center;
-  text-shadow: -3px 0 #000000, 0 3px #000000, 3px 0 #000000, 0 -3px #000000;
+
+  @media (max-width: 831px) {
+    text-shadow: -3px 0 #000000, 0 3px #000000, 3px 0 #000000, 0 -3px #000000;
+  }
+
+  @media (min-width: 832px) {
+    color: #000;
+  }
 `;
 
 export const Strawberry = styled.div`
   background-image: url(${strawberryFruit});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  width: 98px;
-  height: 104px;
+  width: 88px;
+  height: 94px;
   position: absolute;
   top: -30px;
-  left: -30px;
+  left: -15px;
+
+  @media (min-width: 1100px) {
+    width: 120px;
+    height: 120px;
+    top: -60px;
+    left: -40px;
+  }
 `;
 
 export const Apple = styled.div`
   background-image: url(${appleFruit});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  width: 89px;
-  height: 82px;
+  width: 79px;
+  height: 72px;
   bottom: -30px;
-  right: -35px;
+  right: -20px;
+
+  @media (min-width: 1100px) {
+    width: 110px;
+    height: 110px;
+    right: -60px;
+  }
 `;

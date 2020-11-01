@@ -18,11 +18,15 @@ export const getBalance = async (provider, tokenAddress, userAddress) => {
   }
 };
 
-export const getKoolBalance = async (provider, userAddress) =>
-  getBalance(provider, KOOL_TOKEN_ADDR, userAddress);
+export const getKoolBalance = async (provider, userAddress) => {
+  const balance = await getBalance(provider, KOOL_TOKEN_ADDR, userAddress);
+  return ethers.utils.formatEther(balance);
+};
 
-export const getAidBalance = async (provider, userAddress) =>
-  getBalance(provider, AID_TOKEN_ADDR, userAddress);
+export const getAidBalance = async (provider, userAddress) => {
+  const balance = await getBalance(provider, AID_TOKEN_ADDR, userAddress);
+  return ethers.utils.formatEther(balance);
+};
 
 export const getKoolPrice = async () => {
   const chainId = ChainId.MAINNET;

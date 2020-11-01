@@ -1,16 +1,21 @@
 import React from 'react';
 import { Flex, Box } from 'reflexbox';
 
-import Container from '../Container';
-
-import { StatsList, StatsValue, StatsName, Strawberry, Apple } from './styles';
+import {
+  StyledContainer,
+  StatsList,
+  StatsValue,
+  StatsName,
+  Strawberry,
+  Apple,
+} from './styles';
 
 const TokenStats = ({ koolPrice: price }) => {
   const supply = 99999;
   const marketCap = price * supply;
 
   return (
-    <Container>
+    <StyledContainer>
       <StatsList>
         <Strawberry />
         <Flex flexWrap="wrap">
@@ -31,7 +36,7 @@ const TokenStats = ({ koolPrice: price }) => {
         </Flex>
         <Apple />
       </StatsList>
-    </Container>
+    </StyledContainer>
   );
 };
 

@@ -1,18 +1,24 @@
 import styled, { css } from 'styled-components';
 
 export const TextStroke = css`
-  -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth - 1 || '3'}px`}
-    ${({ strokeColor }) => strokeColor || '#000'};
+  text-shadow: -3px 0 #000000, 0 3px #000000, 3px 0 #000000, 0 -3px #000000;
 
-  text-stroke: ${({ strokeWidth }) => `${strokeWidth - 1 || '3'}px`}
-    ${({ strokeColor }) => strokeColor || '#000'};
+  @supports (-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000) {
+    text-shadow: none;
 
-  @media (min-width: 1024px) {
-    -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth || '3'}px`}
+    -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth - 1 || '3'}px`}
       ${({ strokeColor }) => strokeColor || '#000'};
 
-    text-stroke: ${({ strokeWidth }) => `${strokeWidth || '3'}px`}
+    text-stroke: ${({ strokeWidth }) => `${strokeWidth - 1 || '3'}px`}
       ${({ strokeColor }) => strokeColor || '#000'};
+
+    @media (min-width: 1024px) {
+      -webkit-text-stroke: ${({ strokeWidth }) => `${strokeWidth || '3'}px`}
+        ${({ strokeColor }) => strokeColor || '#000'};
+
+      text-stroke: ${({ strokeWidth }) => `${strokeWidth || '3'}px`}
+        ${({ strokeColor }) => strokeColor || '#000'};
+    }
   }
 `;
 

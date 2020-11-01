@@ -19,8 +19,8 @@ const MainPage = () => {
   const [web3Provider, setWeb3Provider] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
 
-  const [koolBalance, setKoolBalance] = useState('0');
-  const [aidBalance, setAidBalance] = useState('0');
+  const [koolBalance, setKoolBalance] = useState(null);
+  const [aidBalance, setAidBalance] = useState(null);
   const [koolPrice, setKoolPrice] = useState(null);
 
   const enableEth = async () => {

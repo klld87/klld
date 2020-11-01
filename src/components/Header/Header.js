@@ -39,11 +39,11 @@ const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
               <StatsList>
                 <StatsItem>
                   <StatsItemTitle>
-                    {`${koolBalance.toString()} $KOOL`}
+                    {`${koolBalance || ''} $KOOL`}
                   </StatsItemTitle>
                 </StatsItem>
                 <StatsItem>
-                  <StatsItemTitle>{`${aidBalance.toString()} $AID`}</StatsItemTitle>
+                  <StatsItemTitle>{`${aidBalance || ''} $AID`}</StatsItemTitle>
                 </StatsItem>
               </StatsList>
             ) : null}
