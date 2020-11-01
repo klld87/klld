@@ -21,7 +21,7 @@ import {
   NavListTitle,
 } from './styles';
 
-const Header = () => {
+const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
   const [isCollapsed, setCollapsed] = React.useState(false);
   const isWalletUnlocked = true; // Fix me
 
@@ -35,14 +35,18 @@ const Header = () => {
       <Top>
         <Container>
           <TopRow>
-            <StatsList>
-              <StatsItem>
-                <StatsItemTitle>0.000 $KOOL</StatsItemTitle>
-              </StatsItem>
-              <StatsItem>
-                <StatsItemTitle>0.000 $AID</StatsItemTitle>
-              </StatsItem>
-            </StatsList>
+            {isUnlocked ? (
+              <StatsList>
+                <StatsItem>
+                  <StatsItemTitle>
+                    {`${koolBalance.toString()} $KOOL`}
+                  </StatsItemTitle>
+                </StatsItem>
+                <StatsItem>
+                  <StatsItemTitle>{`${aidBalance.toString()} $AID`}</StatsItemTitle>
+                </StatsItem>
+              </StatsList>
+            ) : null}
             <Button onClick={onOpenModal}>
               <ButtonTitle>
                 {isWalletUnlocked ? 'my wallet' : 'unlock wallet'}
