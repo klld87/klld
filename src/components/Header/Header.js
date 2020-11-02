@@ -21,7 +21,6 @@ import {
   NavListTitle,
   KoolName,
   Burger,
-  FixedBodyStyle,
 } from './styles';
 
 const Header = (props) => {

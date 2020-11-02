@@ -11,7 +11,7 @@ const WalletModal = (props) => {
   const openMetaMask = async () => {
     if (window.ethereum) {
       try {
-        await window.ethereum.enable();
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
       } catch {}
     }
   };
