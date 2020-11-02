@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Wrapper } from './styles';
+import { Wrapper, Text } from './styles';
 
 const Button = (props) => {
   const {
@@ -13,6 +13,7 @@ const Button = (props) => {
     rel,
     target,
     onClick,
+    rainbow,
   } = props;
 
   if (!children) {
@@ -34,8 +35,9 @@ const Button = (props) => {
       rel={rel}
       target={target}
       onClick={handleClick}
+      rainbow={rainbow}
     >
-      {children}
+      <Text>{children}</Text>
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Button from '../Button';
 import UnlockButton from '../UnlockButton';
@@ -6,6 +6,7 @@ import { TextStroke } from '../../styles/typography';
 import Icons from '../Icons';
 
 import season1 from './season1.png';
+import watermelon from './watermelon.png';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -124,9 +125,31 @@ export const TextLB = styled.span`
   }
 `;
 
-export const ButtonList = styled.section``;
+export const ButtonList = styled.section`
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 80px;
+    width: 100px;
+    height: 100px;
+    background-image: url(${watermelon});
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media (min-width: 1100px) {
+      top: 90px;
+      right: -60px;
+      width: 150px;
+      height: 150px;
+    }
+  }
+`;
 
 export const StyledButton = styled(Button)`
+  position: relative;
   margin-bottom: 25px;
 
   &:last-child {
@@ -136,6 +159,14 @@ export const StyledButton = styled(Button)`
   @media (max-width: 1023px) {
     background-color: #fbf7e2;
     border-color: #005055;
+
+    ${({ rainbow }) =>
+      rainbow &&
+      css`
+        & > span {
+          background-color: #fbf7e2 !important;
+        }
+      `}
   }
 `;
 

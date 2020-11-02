@@ -37,11 +37,19 @@ const KoolMainSection = ({ isUnlocked }) => {
             <TextLB data-text="NFT cocktail">NFT cocktail</TextLB>
           </Text>
           <ButtonList>
-            <StyledButton borderColor="#BF36FF" hoverBackground="#BF36FF">
+            <StyledButton
+              tagName="a"
+              href="https://info.uniswap.org/pair/0xda15087ec9a8460e2e52504d0757a154a158b913"
+              target="_blank"
+              rle="noopener noreferrer"
+              borderColor="#BF36FF"
+              hoverBackground="#BF36FF"
+              rainbow
+            >
               <UniIcon />
               <span>Buy $KOOL</span>
             </StyledButton>
-            <StyledButton borderColor="#00CB39" hoverBackground="#00CB39">
+            <StyledButton borderColor="#BF36FF" hoverBackground="#BF36FF">
               KOOL BAR NFTz
             </StyledButton>
             <StyledButton borderColor="#00CB39" hoverBackground="#00CB39">
