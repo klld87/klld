@@ -8,28 +8,22 @@ export const Top = styled.div`
 `;
 
 export const Body = styled.div`
+  position: sticky;
+  top: 0;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.67) 0%,
     rgba(0, 16, 156, 0.621146) 0.01%,
     rgba(89, 106, 255, 0.1608) 74.48%
   );
+  z-index: 4;
 
   @media (max-width: 1023px) {
     ${({ isCollapsed }) =>
       !isCollapsed &&
       css`
-        position: sticky;
-        top: 0;
-        z-index: 4;
         background: #4f5a98;
       `}
-  }
-
-  @media (min-width: 1024px) {
-    position: sticky;
-    top: 0;
-    z-index: 4;
   }
 `;
 
@@ -99,7 +93,7 @@ export const Nav = styled.div`
 
   @media (max-width: 1023px) {
     display: ${({ isCollapsed }) => (isCollapsed ? 'none' : 'block')};
-    padding: 15px;
+    padding: 0 15px 30px;
     text-align: center;
 
     position: absolute;

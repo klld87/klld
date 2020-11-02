@@ -24,7 +24,7 @@ const KoolMainSection = ({ isUnlocked }) => {
       <Container>
         <Content>
           <Title textStroke={2}>
-            <TitleText>First season collection available&nbsp;NOW!</TitleText>
+            <TitleText>First season collection available NOW!</TitleText>
           </Title>
           {isUnlocked ? (
             <StyledUnlockButton onClick={() => console.log('click')} />
