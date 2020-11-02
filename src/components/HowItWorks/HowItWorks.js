@@ -26,7 +26,7 @@ const items = [
 
 const HowItWorks = () => {
   return (
-    <section>
+    <section id="section-howitworks">
       <Container>
         <SectionHeading>
           <span>How It Works</span>

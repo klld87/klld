@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
+    scroll-behavior: smooth;
     @font-face {
       font-family: 'Kool Beans';
       font-style: normal;

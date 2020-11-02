@@ -66,10 +66,14 @@ const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
                 <NavListTitle>Main</NavListTitle>
               </NavListItem>
               <NavListItem>
-                <NavListTitle>How it works</NavListTitle>
+                <NavListTitle href="#section-howitworks">
+                  How it works
+                </NavListTitle>
               </NavListItem>
               <NavListItem>
-                <NavListTitle>Farm $AID</NavListTitle>
+                <NavListTitle href="https://kool.lol/farm/">
+                  Farm $AID
+                </NavListTitle>
               </NavListItem>
               <NavListItem>
                 <NavListTitle>KOOL bar</NavListTitle>

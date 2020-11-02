@@ -54,24 +54,27 @@ export const Logo = styled.img`
   height: 66px;
 `;
 
-export const LogoRow = styled.div``;
+export const LogoRow = styled.div`
+  flex: 1 0 auto;
+  margin-right: auto;
+`;
 
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: space-between;
 `;
 
 export const Nav = styled.div`
+  flex: 1 1 auto;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  width: 100%;
 `;
 
 export const NavListItem = styled.div`
   display: flex;
-  flex: 1;
 `;
 
 export const NavListTitle = styled.a`
