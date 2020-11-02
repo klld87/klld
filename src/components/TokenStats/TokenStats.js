@@ -8,6 +8,7 @@ import {
   StatsName,
   Strawberry,
   Apple,
+  Loader,
 } from './styles';
 
 const TokenStats = ({ koolPrice: price }) => {
@@ -24,13 +25,19 @@ const TokenStats = ({ koolPrice: price }) => {
             <StatsName>KOOL supply</StatsName>
           </Box>
           <Box width={[1, 1, 1 / 3, 1 / 3]} mb={['50px', '50px', 0, 0]}>
-            <StatsValue>{`$${price || ''}`}</StatsValue>
+            {price ? (
+              <StatsValue>{`$${price}`}</StatsValue>
+            ) : (
+              <Loader>loading</Loader>
+            )}
             <StatsName>KOOL Price</StatsName>
           </Box>
           <Box width={[1, 1, 1 / 3, 1 / 3]}>
-            <StatsValue>
-              {`$${marketCap ? Number.parseFloat(marketCap) : ''}`}
-            </StatsValue>
+            {marketCap ? (
+              <StatsValue>{`$${Number.parseFloat(marketCap)}`}</StatsValue>
+            ) : (
+              <Loader>loading</Loader>
+            )}
             <StatsName>Market cap</StatsName>
           </Box>
         </Flex>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import Container from '../Container';
 
@@ -8,6 +8,29 @@ import backgroundMobile from '../../images/statsBlockMobileBG.svg';
 // Fruits
 import strawberryFruit from '../../images/fruits/strawberry.png';
 import appleFruit from '../../images/fruits/apple.png';
+import orangeFruit from '../../images/fruits/tinyorange.png';
+
+const bouncing = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 export const StyledContainer = styled(Container)`
   @media (max-width: 576px) {
@@ -98,4 +121,16 @@ export const Apple = styled.div`
     height: 110px;
     right: -60px;
   }
+`;
+
+export const Loader = styled.span`
+  display: block;
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+  background-image: url(${orangeFruit});
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-indent: -999999px;
+  animation: ${bouncing} 1.5s ease-in-out infinite;
 `;
