@@ -149,7 +149,7 @@ export const Burger = styled.button.attrs(() => ({
   height: 41px;
 
   span {
-    width: 100%;
+    width: 41px;
     height: 5px;
     margin-bottom: 2px;
     background: #000;

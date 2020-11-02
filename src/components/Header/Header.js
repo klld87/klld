@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import useWindowSize from '../../hooks/useWindowSize';
+
 import Container from '../Container';
 import WalletModal from '../../modals/Wallet';
 import MyAccountModal from '../../modals/MyAccount';
@@ -31,6 +33,8 @@ const Header = (props) => {
   const [open, setOpen] = React.useState(false);
   const [isAccountModalOpened, setAccountModalOpened] = React.useState(false);
 
+  const [windowWidth] = useWindowSize();
+
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
@@ -44,6 +48,10 @@ const Header = (props) => {
   const handleCloseNav = () => {
     setCollapsed(true);
   };
+
+  React.useEffect(() => {
+    setCollapsed(true);
+  }, [windowWidth]);
 
   return (
     <>
