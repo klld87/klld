@@ -5,7 +5,6 @@ import WalletModal from '../../modals/Wallet';
 import MyAccountModal from '../../modals/MyAccount';
 
 import {
-  Wrapper,
   Body,
   Row,
   Top,
@@ -21,11 +20,13 @@ import {
   NavListItem,
   NavListTitle,
   KoolName,
+  Burger,
+  FixedBodyStyle,
 } from './styles';
 
 const Header = (props) => {
   const { isUnlocked = true, koolBalance = '0', aidBalance = '0' } = props;
-  const [isCollapsed, setCollapsed] = React.useState(false);
+  const [isCollapsed, setCollapsed] = React.useState(true);
   const isWalletUnlocked = true; // Fix me
 
   const [open, setOpen] = React.useState(false);
@@ -38,8 +39,15 @@ const Header = (props) => {
     setAccountModalOpened(!isAccountModalOpened);
   };
 
+  const toggleNavCollapsed = () =>
+    setCollapsed((prevCollapsed) => !prevCollapsed);
+
+  const handleCloseNav = () => {
+    setCollapsed(true);
+  };
+
   return (
-    <Wrapper>
+    <>
       <Top>
         <Container>
           <TopRow>
@@ -64,19 +72,35 @@ const Header = (props) => {
           </TopRow>
         </Container>
       </Top>
-      <Body>
+      <WalletModal open={open} onCloseModal={onCloseModal} />
+      <MyAccountModal
+        open={isAccountModalOpened}
+        onCloseModal={toggleAccountModal}
+        aidBalance={100}
+        koolBalance={100}
+      />
+      <Body isCollapsed={isCollapsed}>
         <Container>
           <Row>
             <LogoRow>
               <Logo />
               <KoolName textStroke={2}>KOOL</KoolName>
             </LogoRow>
-            <Nav>
+            <Burger isCollapsed={isCollapsed} onClick={toggleNavCollapsed}>
+              <span />
+              <span />
+              <span />
+              <span />
+            </Burger>
+            <Nav isCollapsed={isCollapsed}>
               <NavListItem>
-                <NavListTitle>Main</NavListTitle>
+                <NavListTitle onClick={handleCloseNav}>Main</NavListTitle>
               </NavListItem>
               <NavListItem>
-                <NavListTitle href="#section-howitworks">
+                <NavListTitle
+                  href="#section-howitworks"
+                  onClick={handleCloseNav}
+                >
                   How it works
                 </NavListTitle>
               </NavListItem>
@@ -86,20 +110,13 @@ const Header = (props) => {
                 </NavListTitle>
               </NavListItem>
               <NavListItem>
-                <NavListTitle>KOOL bar</NavListTitle>
+                <NavListTitle onClick={handleCloseNav}>KOOL bar</NavListTitle>
               </NavListItem>
             </Nav>
           </Row>
         </Container>
       </Body>
-      <WalletModal open={open} onCloseModal={onCloseModal} />
-      <MyAccountModal
-        open={isAccountModalOpened}
-        onCloseModal={toggleAccountModal}
-        aidBalance={100}
-        koolBalance={100}
-      />
-    </Wrapper>
+    </>
   );
 };
 

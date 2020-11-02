@@ -30,6 +30,14 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  button {
+    padding: 0;
+    font-family: inherit;
+    font-size: 100%;
+    background: none;
+    border: 0;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -39,8 +47,8 @@ const GlobalStyle = createGlobalStyle`
     /* background-color: #E7DCFA;
     padding: 21px 34px 38px 34px;
     width: 100%;
-    
-    
+
+
      */
     padding: 0;
     width: 100%;
