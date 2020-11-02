@@ -48,7 +48,7 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    enableEth();
+    // enableEth();
     handleGetKoolPrice();
   }, []);
 
@@ -56,6 +56,8 @@ const MainPage = () => {
     const getBalances = async () => {
       const kool = await getKoolBalance(web3Provider, userAddress);
       const aid = await getAidBalance(web3Provider, userAddress);
+
+      console.log({ kool, aid });
 
       setKoolBalance(kool);
       setAidBalance(aid);

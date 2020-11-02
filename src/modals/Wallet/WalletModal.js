@@ -8,12 +8,20 @@ import { Title, WalletItem, WalletIcon, Button, ButtonTitle } from './styles';
 const WalletModal = (props) => {
   const { open, onCloseModal } = props;
 
+  const openMetaMask = async () => {
+    if (window.ethereum) {
+      try {
+        await window.ethereum.enable();
+      } catch {}
+    }
+  };
+
   return (
     <Modal open={open} onClose={onCloseModal} center showCloseIcon={false}>
       <Title>Select a wallet provider</Title>
       <Flex mt={56} mb={51} flexWrap="wrap">
         <Box width={[1, 1, 1 / 2, 1 / 2]} mb={33}>
-          <WalletItem>
+          <WalletItem onClick={openMetaMask}>
             <WalletIcon />
             <Button>
               <ButtonTitle>Connect</ButtonTitle>

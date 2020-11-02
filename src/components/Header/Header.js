@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Container from '../Container';
 import WalletModal from '../../modals/Wallet';
+import MyAccountModal from '../../modals/MyAccount';
 
 import {
   Wrapper,
@@ -19,16 +20,23 @@ import {
   Nav,
   NavListItem,
   NavListTitle,
+  KoolName,
 } from './styles';
 
-const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
+const Header = (props) => {
+  const { isUnlocked = true, koolBalance = '0', aidBalance = '0' } = props;
   const [isCollapsed, setCollapsed] = React.useState(false);
   const isWalletUnlocked = true; // Fix me
 
   const [open, setOpen] = React.useState(false);
+  const [isAccountModalOpened, setAccountModalOpened] = React.useState(false);
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+
+  const toggleAccountModal = () => {
+    setAccountModalOpened(!isAccountModalOpened);
+  };
 
   return (
     <Wrapper>
@@ -48,9 +56,10 @@ const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
               </StatsList>
             ) : null}
             <Button onClick={onOpenModal}>
-              <ButtonTitle>
-                {isWalletUnlocked ? 'my wallet' : 'unlock wallet'}
-              </ButtonTitle>
+              <ButtonTitle>unlock wallet</ButtonTitle>
+            </Button>
+            <Button onClick={toggleAccountModal}>
+              <ButtonTitle>my wallet</ButtonTitle>
             </Button>
           </TopRow>
         </Container>
@@ -60,6 +69,7 @@ const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
           <Row>
             <LogoRow>
               <Logo />
+              <KoolName textStroke={2}>KOOL</KoolName>
             </LogoRow>
             <Nav>
               <NavListItem>
@@ -83,6 +93,12 @@ const Header = ({ isUnlocked, koolBalance = '0', aidBalance = '0' }) => {
         </Container>
       </Body>
       <WalletModal open={open} onCloseModal={onCloseModal} />
+      <MyAccountModal
+        open={isAccountModalOpened}
+        onCloseModal={toggleAccountModal}
+        aidBalance={100}
+        koolBalance={100}
+      />
     </Wrapper>
   );
 };

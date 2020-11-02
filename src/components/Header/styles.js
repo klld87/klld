@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import logo from '../../images/logo.svg';
+import { TextStroke } from '../../styles/typography';
 
 export const Wrapper = styled.div``;
 
@@ -48,7 +49,7 @@ export const StatsItemTitle = styled.p`
   }
 `;
 
-export const Logo = styled.img`
+export const Logo = styled.div`
   background-image: url(${logo});
   width: 66px;
   height: 66px;
@@ -57,6 +58,9 @@ export const Logo = styled.img`
 export const LogoRow = styled.div`
   flex: 1 0 auto;
   margin-right: auto;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
 `;
 
 export const Row = styled.div`
@@ -88,3 +92,13 @@ export const NavListTitle = styled.a`
 `;
 
 export const TopRow = styled.div``;
+
+export const KoolName = styled.p`
+  margin: 0;
+  font-size: 40px;
+  line-height: 46px;
+  color: #ffffff;
+  font-family: 'Kool Beans', 'Comic Sans MS';
+  margin: 0 0 0 10px;
+  ${TextStroke};
+`;

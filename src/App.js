@@ -36,12 +36,18 @@ const GlobalStyle = createGlobalStyle`
 
   // modal
   .react-responsive-modal-modal {
-    background-color: #E7DCFA;
+    /* background-color: #E7DCFA;
     padding: 21px 34px 38px 34px;
     width: 100%;
-    border: 4px solid #000000;
-    box-shadow: 0px 9px 4px rgba(0, 0, 0, 0.25);
+    
+    
+     */
+    padding: 0;
+    width: 100%;
+    background-color: transparent;
+    /* border: 4px solid #000000;
     border-radius: 35px;
+    box-shadow: 0px 9px 4px rgba(0, 0, 0, 0.25); */
   }
 
 `;
