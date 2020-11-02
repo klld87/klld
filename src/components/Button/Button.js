@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { Wrapper, Title } from './styles';
+import { Wrapper } from './styles';
 
 const Button = (props) => {
   const {
-    title,
+    children,
     borderColor,
     hoverBackground,
     className = '',
@@ -15,7 +15,7 @@ const Button = (props) => {
     onClick,
   } = props;
 
-  if (!title) {
+  if (!children) {
     return null;
   }
 
@@ -35,7 +35,7 @@ const Button = (props) => {
       target={target}
       onClick={handleClick}
     >
-      <Title>{title}</Title>
+      {children}
     </Wrapper>
   );
 };

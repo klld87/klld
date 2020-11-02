@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Container from '../Container';
-import Button from '../Button';
 
 import {
   Wrapper,
@@ -13,6 +12,8 @@ import {
   TextLB,
   StyledUnlockButton,
   ButtonList,
+  StyledButton,
+  UniIcon,
 } from './styles';
 
 import koolman from '../../images/koolman.svg';
@@ -36,21 +37,16 @@ const KoolMainSection = ({ isUnlocked }) => {
             <TextLB data-text="NFT cocktail">NFT cocktail</TextLB>
           </Text>
           <ButtonList>
-            <Button
-              title="Buy $KOOL"
-              borderColor="#BF36FF"
-              hoverBackground="#BF36FF"
-            />
-            <Button
-              title="KOOL BAR NFTz"
-              borderColor="#00CB39"
-              hoverBackground="#00CB39"
-            />
-            <Button
-              title="Farm $AID"
-              borderColor="#00CB39"
-              hoverBackground="#00CB39"
-            />
+            <StyledButton borderColor="#BF36FF" hoverBackground="#BF36FF">
+              <UniIcon />
+              <span>Buy $KOOL</span>
+            </StyledButton>
+            <StyledButton borderColor="#00CB39" hoverBackground="#00CB39">
+              KOOL BAR NFTz
+            </StyledButton>
+            <StyledButton borderColor="#00CB39" hoverBackground="#00CB39">
+              Farm $AID
+            </StyledButton>
           </ButtonList>
         </Content>
       </Container>

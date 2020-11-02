@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
+import Button from '../Button';
 import UnlockButton from '../UnlockButton';
 import { TextStroke } from '../../styles/typography';
+import Icons from '../Icons';
 
 import season1 from './season1.png';
 
 export const Wrapper = styled.div`
+  position: relative;
   @media (min-width: 1024px) {
     margin: 73px 0 0 0;
   }
@@ -60,7 +63,7 @@ export const KoolMan = styled.div`
   @media (min-width: 1024px) {
     img {
       position: absolute;
-      top: 250px;
+      top: 0;
       left: 0;
       width: 50%;
     }
@@ -68,9 +71,6 @@ export const KoolMan = styled.div`
 
   @media (min-width: 1100px) {
     img {
-      position: absolute;
-      top: 250px;
-      left: 0;
       width: 60%;
     }
   }
@@ -125,6 +125,32 @@ export const TextLB = styled.span`
 `;
 
 export const ButtonList = styled.section``;
+
+export const StyledButton = styled(Button)`
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 1023px) {
+    background-color: #fbf7e2;
+    border-color: #005055;
+  }
+`;
+
+export const UniIcon = styled(Icons.Uniswap)`
+  position: relative;
+  left: -40px;
+
+  & + span {
+    margin-left: -20px;
+  }
+
+  @media (min-width: 480px) {
+    left: -50px;
+  }
+`;
 
 export const Content = styled.div`
   @media (min-width: 1024px) {

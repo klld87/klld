@@ -26,10 +26,11 @@ const Trade = () => {
             href="https://opensea.io"
             target="_blank"
             rel="noopener noreferrer"
-            title="Buy/Sell  NFTz"
             hoverBackground="#05A6B0"
             borderColor="#05A6B0"
-          />
+          >
+            Buy/Sell NFTz
+          </Link>
         </Content>
       </Container>
     </section>
