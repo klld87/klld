@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { SectionHeading } from '../../styles/typography';
 import { TextStroke } from '../../styles/typography';
@@ -7,6 +7,54 @@ import cherry from './cherry.png';
 import pear from './pear.png';
 import watermelon from './watermelon.png';
 import fruits from '../../images/fruits-bg.jpg';
+
+const spin = keyframes`
+  0% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(0.2);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg)
+  }
+`;
+
+const appear = keyframes`
+  0% {
+    transform: scale(1) rotate(360deg);
+  }
+
+  25% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1) translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(20px);
+  }
+
+  70% {
+    transform: translateY(-25px);
+  }
+
+  80% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 export const Heading = styled(SectionHeading)`
   @media (min-width: 1024px) {
@@ -106,6 +154,10 @@ export const Flavors = styled.p`
     width: 250px;
     height: 250px;
     background-image: url(${pear});
+
+    @media (min-width: 1024px) {
+      animation: ${appear} 1.8s ease-in-out infinite;
+    }
   }
 
   &:after {
@@ -114,6 +166,10 @@ export const Flavors = styled.p`
     width: 200px;
     height: 200px;
     background-image: url(${watermelon});
+
+    @media (min-width: 1024px) {
+      animation: ${spin} 1.8s linear infinite;
+    }
   }
 
   @media (min-width: 1024px) {
