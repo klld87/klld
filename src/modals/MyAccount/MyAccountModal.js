@@ -3,8 +3,6 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { Flex, Box } from 'reflexbox';
 
-import Button from '../../components/Button';
-
 import {
   Wrapper,
   Title,
@@ -12,6 +10,7 @@ import {
   WalletBalance,
   WalletLabel,
   Actions,
+  Button,
   ButtonTitle,
 } from './styles';
 
@@ -23,34 +22,51 @@ const MyAccountModal = (props) => {
       <Wrapper>
         <Title>My account</Title>
         <Flex flexWrap="wrap">
-          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+          <Box width={[1, 1, 1 / 2, 1 / 2]} mb={10}>
             <Wallet>
-              <WalletBalance>{aidBalance}</WalletBalance>
+              <WalletBalance>{Number(aidBalance).toFixed(3)}</WalletBalance>
               <WalletLabel>$AID balance</WalletLabel>
             </Wallet>
           </Box>
           <Box width={[1, 1, 1 / 2, 1 / 2]}>
             <Wallet>
-              <WalletBalance>{koolBalance}</WalletBalance>
+              <WalletBalance>{Number(koolBalance).toFixed(3)}</WalletBalance>
               <WalletLabel>$KOOL balance</WalletLabel>
             </Wallet>
           </Box>
         </Flex>
         <Actions>
-          <Flex flexWrap="wrap">
-            <Box mb="8px" width={1}>
+          <Flex flexWrap="wrap" mb={42}>
+            <Box
+              mb={['8px', '8px', '14px', '14px']}
+              width={1}
+              display="flex"
+              justifyContent="center"
+            >
               <Button>
                 <ButtonTitle>View on Etherscan</ButtonTitle>
               </Button>
             </Box>
-            <Box mb="8px" width={1}>
+            <Box
+              mb={['8px', '8px', '14px', '14px']}
+              width={1}
+              display="flex"
+              justifyContent="center"
+            >
               <Button>
-                <ButtonTitle>View on Etherscan</ButtonTitle>
+                <ButtonTitle>View my NFTz</ButtonTitle>
               </Button>
             </Box>
-            <Box width={1}>
+            <Box width={1} display="flex" justifyContent="center">
               <Button>
-                <ButtonTitle>View on Etherscan</ButtonTitle>
+                <ButtonTitle>Sign out</ButtonTitle>
+              </Button>
+            </Box>
+          </Flex>
+          <Flex>
+            <Box width={1} display="flex" justifyContent="center">
+              <Button isCancel onClick={onCloseModal}>
+                <ButtonTitle>Cancel</ButtonTitle>
               </Button>
             </Box>
           </Flex>

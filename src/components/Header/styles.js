@@ -3,10 +3,6 @@ import styled, { css } from 'styled-components';
 import logo from '../../images/logo.svg';
 import { TextStroke } from '../../styles/typography';
 
-export const Top = styled.div`
-  background-color: #4f5a98;
-`;
-
 export const Body = styled.div`
   position: sticky;
   top: 0;
@@ -24,37 +20,6 @@ export const Body = styled.div`
       css`
         background: #4f5a98;
       `}
-  }
-`;
-
-export const Button = styled.button``;
-
-export const ButtonTitle = styled.span``;
-
-export const StatsList = styled.div`
-  flex-direction: row;
-  display: flex;
-  padding: 20px 0;
-`;
-
-export const StatsItem = styled.div`
-  display: flex;
-  flex: 1;
-`;
-
-export const StatsItemTitle = styled.p`
-  margin: 0;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 25px;
-  color: #ffffff;
-  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
-
-  @media (min-width: 400px) {
-    font-size: 25px;
-    line-height: 35px;
   }
 `;
 

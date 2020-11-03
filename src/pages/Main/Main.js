@@ -6,6 +6,7 @@ import { getKoolPrice, getKoolBalance, getAidBalance } from '../../api';
 import { Wrapper } from './styles';
 
 // components
+import WalletPanel from '../../components/WalletPanel';
 import Header from '../../components/Header';
 import KoolMainSection from '../../components/KoolMainSection';
 import TokenStats from '../../components/TokenStats';
@@ -23,10 +24,17 @@ const MainPage = () => {
   const [aidBalance, setAidBalance] = useState(null);
   const [koolPrice, setKoolPrice] = useState(null);
 
-  const enableEth = async () => {
-    if (window.ethereum) {
+  const handleGetKoolPrice = async () => {
+    const price = await getKoolPrice();
+    const formattedPrice = (Math.round(price * 100) / 100).toString();
+    setKoolPrice(formattedPrice);
+  };
+
+  const getWalletBalance = async () => {
+    if (typeof window.ethereum !== 'undefined') {
       try {
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        setUserAddress(window.ethereum.selectedAddress);
+
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const address = await signer.getAddress();
@@ -34,30 +42,31 @@ const MainPage = () => {
         setEthEnabled(true);
         setWeb3Provider(provider);
         setUserAddress(address);
-      } catch (err) {
-        console.log(err);
+      } catch {
         setEthEnabled(false);
       }
     }
   };
 
-  const handleGetKoolPrice = async () => {
-    const price = await getKoolPrice();
-    const formattedPrice = (Math.round(price * 100) / 100).toString();
-    setKoolPrice(formattedPrice);
-  };
-
   useEffect(() => {
-    // enableEth();
+    getWalletBalance();
     handleGetKoolPrice();
   }, []);
+
+  // useEffect(() => {
+  //   if (typeof window.ethereum !== 'undefined') {
+  //     window.ethereum.on('accountsChanged', (accounts) => {
+  //       if (accounts.length && !userAddress) {
+  //         setUserAddress(accounts[1]);
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   useEffect(() => {
     const getBalances = async () => {
       const kool = await getKoolBalance(web3Provider, userAddress);
       const aid = await getAidBalance(web3Provider, userAddress);
-
-      console.log({ kool, aid });
 
       setKoolBalance(kool);
       setAidBalance(aid);
@@ -70,11 +79,12 @@ const MainPage = () => {
 
   return (
     <Wrapper>
-      <Header
-        isUnlocked={isEthEnabled}
+      <WalletPanel
+        isWalletUnlocked={userAddress !== null}
         koolBalance={koolBalance}
         aidBalance={aidBalance}
       />
+      <Header />
       <KoolMainSection isUnlocked={isEthEnabled} />
       <TokenStats koolPrice={koolPrice} />
       <HowItWorks />
@@ -86,3 +96,15 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+/*
+
+
+
+// ethereum.selectedAddress - чек что юзер залогинен
+
+
+ethereum.on('accountsChanged', function (accounts) {
+  // Time to reload your interface with accounts[0]!
+});
+*/

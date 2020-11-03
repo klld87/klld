@@ -3,19 +3,10 @@ import * as React from 'react';
 import useWindowSize from '../../hooks/useWindowSize';
 
 import Container from '../Container';
-import WalletModal from '../../modals/Wallet';
-import MyAccountModal from '../../modals/MyAccount';
 
 import {
   Body,
   Row,
-  Top,
-  TopRow,
-  Button,
-  ButtonTitle,
-  StatsList,
-  StatsItem,
-  StatsItemTitle,
   LogoRow,
   Logo,
   Nav,
@@ -25,22 +16,10 @@ import {
   Burger,
 } from './styles';
 
-const Header = (props) => {
-  const { isUnlocked = true, koolBalance = '0', aidBalance = '0' } = props;
+const Header = () => {
   const [isCollapsed, setCollapsed] = React.useState(true);
-  const isWalletUnlocked = true; // Fix me
-
-  const [open, setOpen] = React.useState(false);
-  const [isAccountModalOpened, setAccountModalOpened] = React.useState(false);
 
   const [windowWidth] = useWindowSize();
-
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
-
-  const toggleAccountModal = () => {
-    setAccountModalOpened(!isAccountModalOpened);
-  };
 
   const toggleNavCollapsed = () =>
     setCollapsed((prevCollapsed) => !prevCollapsed);
@@ -55,37 +34,6 @@ const Header = (props) => {
 
   return (
     <>
-      <Top>
-        <Container>
-          <TopRow>
-            {isUnlocked ? (
-              <StatsList>
-                <StatsItem>
-                  <StatsItemTitle>
-                    {`${koolBalance || ''} $KOOL`}
-                  </StatsItemTitle>
-                </StatsItem>
-                <StatsItem>
-                  <StatsItemTitle>{`${aidBalance || ''} $AID`}</StatsItemTitle>
-                </StatsItem>
-              </StatsList>
-            ) : null}
-            <Button onClick={onOpenModal}>
-              <ButtonTitle>unlock wallet</ButtonTitle>
-            </Button>
-            <Button onClick={toggleAccountModal}>
-              <ButtonTitle>my wallet</ButtonTitle>
-            </Button>
-          </TopRow>
-        </Container>
-      </Top>
-      <WalletModal open={open} onCloseModal={onCloseModal} />
-      <MyAccountModal
-        open={isAccountModalOpened}
-        onCloseModal={toggleAccountModal}
-        aidBalance={100}
-        koolBalance={100}
-      />
       <Body isCollapsed={isCollapsed}>
         <Container>
           <Row>
