@@ -14,7 +14,12 @@ import {
 } from './styles';
 
 const WalletPanel = (props) => {
-  const { isWalletUnlocked = false, koolBalance = 0, aidBalance = 0 } = props;
+  const {
+    isWalletUnlocked = false,
+    koolBalance = 0,
+    aidBalance = 0,
+    onUnlock,
+  } = props;
 
   const [isWalletModalOpened, setWalletModalOpened] = React.useState(false);
   const [isAccountModalOpened, setAccountModalOpened] = React.useState(false);
@@ -69,6 +74,7 @@ const WalletPanel = (props) => {
         open={isWalletModalOpened}
         onCloseModal={toggleWalletModal}
         isWalletUnlocked={isWalletUnlocked}
+        onUnlock={onUnlock}
       />
       <MyAccountModal
         open={isAccountModalOpened}

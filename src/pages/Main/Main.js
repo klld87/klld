@@ -30,40 +30,31 @@ const MainPage = () => {
     setKoolPrice(formattedPrice);
   };
 
-  const getWalletBalance = async () => {
+  const connect = async () => {
+    try {
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      const address = accounts[0];
+      setUserAddress(address);
+    } catch {}
+  };
+
+  const setProvider = () => {
     if (typeof window.ethereum !== 'undefined') {
-      try {
-        setUserAddress(window.ethereum.selectedAddress);
-
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const address = await signer.getAddress();
-
-        setEthEnabled(true);
-        setWeb3Provider(provider);
-        setUserAddress(address);
-      } catch {
-        setEthEnabled(false);
-      }
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      setWeb3Provider(provider);
     }
   };
 
   useEffect(() => {
-    if (Boolean(localStorage.getItem('isConnected'))) {
-      getWalletBalance();
-    }
+    // if (typeof window.ethereum !== 'undefined') {
+    // if (Boolean(localStorage.getItem('isConnected'))) {
+    // }
+    // connect();
+    setProvider();
     handleGetKoolPrice();
   }, []);
-
-  // useEffect(() => {
-  //   if (typeof window.ethereum !== 'undefined') {
-  //     window.ethereum.on('accountsChanged', (accounts) => {
-  //       if (accounts.length && !userAddress) {
-  //         setUserAddress(accounts[1]);
-  //       }
-  //     });
-  //   }
-  // }, []);
 
   useEffect(() => {
     const getBalances = async () => {
@@ -75,9 +66,10 @@ const MainPage = () => {
     };
 
     if (userAddress && web3Provider) {
+      if (!isEthEnabled) setEthEnabled(true);
       getBalances();
     }
-  }, [userAddress, web3Provider]);
+  }, [userAddress]);
 
   return (
     <Wrapper>
@@ -85,6 +77,7 @@ const MainPage = () => {
         isWalletUnlocked={userAddress !== null}
         koolBalance={koolBalance}
         aidBalance={aidBalance}
+        onUnlock={connect}
       />
       <Header />
       <KoolMainSection isUnlocked={isEthEnabled} />
