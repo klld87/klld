@@ -65,6 +65,8 @@ const MainPage = () => {
         } else if (data.length && !userAddress) {
           localStorage.setItem('isConnected', true);
           setUserAddress(data[1]);
+        } else if (data[1] !== userAddress) {
+          setUserAddress(data[1]);
         }
       });
     };
@@ -107,15 +109,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-/*
-
-
-
-// ethereum.selectedAddress - чек что юзер залогинен
-
-
-ethereum.on('accountsChanged', function (accounts) {
-  // Time to reload your interface with accounts[0]!
-});
-*/
