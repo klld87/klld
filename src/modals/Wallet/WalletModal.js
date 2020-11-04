@@ -7,6 +7,7 @@ import {
   Wrapper,
   Title,
   WalletItem,
+  WalletName,
   WalletIcon,
   Button,
   ButtonTitle,
@@ -30,23 +31,25 @@ const WalletModal = (props) => {
         <Title>Select a wallet provider</Title>
         <Flex mt={56} mb={51} flexWrap="wrap">
           <Box width={[1, 1, 1 / 2, 1 / 2]} mb={33} pr={[0, 0, '20px', '20px']}>
-            <WalletItem onClick={onUnlock}>
-              <WalletIcon logo={metaMaskLogo} />
-              <Button>
+            <WalletItem>
+              <WalletIcon type="metaMask" logo={metaMaskLogo} />
+              <WalletName>Metamask</WalletName>
+              <Button onClick={onUnlock}>
                 <ButtonTitle>Connect</ButtonTitle>
               </Button>
             </WalletItem>
           </Box>
           <Box width={[1, 1, 1 / 2, 1 / 2]} pl={[0, 0, '20px', '20px']}>
             <WalletItem>
-              <WalletIcon logo={walletConnectLogo} />
+              <WalletIcon type="walletConnect" logo={walletConnectLogo} />
+              <WalletName>WalletConnect</WalletName>
               <Button>
                 <ButtonTitle>Soon</ButtonTitle>
               </Button>
             </WalletItem>
           </Box>
         </Flex>
-        <Button onClick={onCloseModal}>
+        <Button onClick={onCloseModal} isCancel>
           <ButtonTitle>Cancel</ButtonTitle>
         </Button>
       </Wrapper>

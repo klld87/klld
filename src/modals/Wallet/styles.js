@@ -34,20 +34,51 @@ export const WalletItem = styled.div`
   align-items: center;
 `;
 
+export const WalletName = styled.p`
+  margin: 0;
+  font-weight: bold;
+  color: #000000;
+  margin: 14px 0;
+  font-size: 30px;
+  line-height: 40px;
+
+  @media (min-width: 1024px) {
+    font-size: 40px;
+    line-height: 56px;
+  }
+`;
+
 export const WalletIcon = styled.div`
   width: 114px;
-  height: 107px;
+  height: ${({ type }) => (type === 'metaMask' ? '107px' : '82px')};
   background-image: ${({ logo }) => `url(${logo})`};
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 0 0 17px 0;
+
+  @media (min-width: 1024px) {
+    width: ${({ type }) => (type === 'metaMask' ? '147px' : '192px')};
+    height: 138px;
+  }
 `;
 
 export const Button = styled.div`
   width: 100%;
-  background: #b286ff;
+  background-color: ${({ isCancel }) => (isCancel ? '#FBF7E2' : '#b286ff')};
   border: 4px solid #000000;
   border-radius: 35px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    height: 86px;
+    border-radius: 30px;
+  }
 `;
 
 export const ButtonTitle = styled.p`
