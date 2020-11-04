@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ethers from 'ethers';
 import { getKoolPrice, getKoolBalance, getAidBalance } from '../../api';
 
@@ -16,6 +16,7 @@ import News from '../../components/News';
 import Footer from '../../components/Footer';
 
 const MainPage = () => {
+  const isFirstRender = useRef(true);
   const [isEthEnabled, setEthEnabled] = useState(false);
   const [web3Provider, setWeb3Provider] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
@@ -37,6 +38,8 @@ const MainPage = () => {
       });
       const address = accounts[0];
       setUserAddress(address);
+      setEthEnabled(true);
+      localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
     } catch {}
   };
 
@@ -47,30 +50,42 @@ const MainPage = () => {
     }
   };
 
+  const signOut = () => {
+    localStorage.removeItem('IS_KOOL_METAMASK_CONNECTED');
+    setUserAddress(null);
+  };
+
+  const handleAccountChange = (accounts) => {
+    // first render check to load/not load account info that depends on singed out or not
+    const isInitialAccountRender = isFirstRender.current;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    }
+
+    if (
+      isInitialAccountRender &&
+      !Boolean(localStorage.getItem('IS_KOOL_METAMASK_CONNECTED'))
+    ) {
+      return;
+    }
+
+    if (accounts.length === 0) {
+      setUserAddress(null);
+      localStorage.removeItem('IS_KOOL_METAMASK_CONNECTED');
+    } else {
+      localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
+      setUserAddress(accounts[0]);
+    }
+  };
+
   useEffect(() => {
-    // if (typeof window.ethereum !== 'undefined') {
-    // if (Boolean(localStorage.getItem('isConnected'))) {
-    // }
-    // connect();
     setProvider();
     handleGetKoolPrice();
+
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('accountsChanged', handleAccountChange);
+    }
   }, []);
-
-  useEffect(() => {
-    const listenAccountsChanged = async () => {
-      window.ethereum.on('accountsChanged', (data) => {
-        if (!data.length && userAddress) {
-          setUserAddress(null);
-          localStorage.removeItem('isConnected');
-        } else if (data.length && !userAddress) {
-          localStorage.setItem('isConnected', true);
-          setUserAddress(data[1]);
-        }
-      });
-    };
-
-    listenAccountsChanged();
-  }, [userAddress]);
 
   useEffect(() => {
     const getBalances = async () => {
@@ -84,6 +99,8 @@ const MainPage = () => {
     if (userAddress && web3Provider) {
       if (!isEthEnabled) setEthEnabled(true);
       getBalances();
+    } else {
+      setEthEnabled(false);
     }
   }, [userAddress, isEthEnabled, web3Provider]);
 
@@ -94,9 +111,11 @@ const MainPage = () => {
         koolBalance={koolBalance}
         aidBalance={aidBalance}
         onUnlock={connect}
+        onSignOut={signOut}
+        userAddress={userAddress}
       />
       <Header />
-      <KoolMainSection isUnlocked={isEthEnabled} />
+      <KoolMainSection isUnlocked={isEthEnabled} onUnlock={connect} />
       <TokenStats koolPrice={koolPrice} />
       <HowItWorks />
       <Trade />
@@ -107,15 +126,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-/*
-
-
-
-// ethereum.selectedAddress - чек что юзер залогинен
-
-
-ethereum.on('accountsChanged', function (accounts) {
-  // Time to reload your interface with accounts[0]!
-});
-*/

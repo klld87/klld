@@ -5,13 +5,7 @@ import WalletModal from '../../modals/Wallet';
 import MyAccountModal from '../../modals/MyAccount';
 import Container from '../Container';
 
-import {
-  Wrapper,
-  BalancesList,
-  WalletBalance,
-  Button,
-  ButtonTitle,
-} from './styles';
+import { Wrapper, BalancesList, WalletBalance, Button } from './styles';
 
 const WalletPanel = (props) => {
   const {
@@ -19,6 +13,8 @@ const WalletPanel = (props) => {
     koolBalance = 0,
     aidBalance = 0,
     onUnlock,
+    onSignOut,
+    userAddress,
   } = props;
 
   const [isWalletModalOpened, setWalletModalOpened] = React.useState(false);
@@ -32,6 +28,11 @@ const WalletPanel = (props) => {
     }
   };
 
+  const handleSignOut = async () => {
+    await onSignOut();
+    setAccountModalOpened(false);
+  };
+
   const toggleWalletModal = () => {
     setWalletModalOpened(!isWalletModalOpened);
   };
@@ -42,11 +43,14 @@ const WalletPanel = (props) => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper isWalletUnlocked={isWalletUnlocked}>
         <Container>
           <Flex
             flexWrap="wrap"
             justifyContent={isWalletUnlocked ? 'space-between' : 'flex-end'}
+            alignItems="center"
+            pt={18}
+            pb={18}
           >
             {isWalletUnlocked ? (
               <Box width={[1, 1, 'calc(100% - 250px)', 'calc(100% - 250px)']}>
@@ -60,11 +64,9 @@ const WalletPanel = (props) => {
                 </BalancesList>
               </Box>
             ) : null}
-            <Box width={[1, 1, '250px', '250px']}>
+            <Box width={[1, 1, '250px', '250px']} pl={10}>
               <Button onClick={onClickButton}>
-                <ButtonTitle>
-                  {isWalletUnlocked ? 'my wallet' : 'unlock wallet'}
-                </ButtonTitle>
+                {isWalletUnlocked ? 'my wallet' : 'unlock wallet'}
               </Button>
             </Box>
           </Flex>
@@ -81,6 +83,8 @@ const WalletPanel = (props) => {
         onCloseModal={toggleAccountModal}
         aidBalance={aidBalance}
         koolBalance={koolBalance}
+        onSignOut={handleSignOut}
+        userAddress={userAddress}
       />
     </>
   );

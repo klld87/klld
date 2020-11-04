@@ -18,7 +18,7 @@ import {
 
 import koolman from '../../images/koolman.svg';
 
-const KoolMainSection = ({ isUnlocked }) => {
+const KoolMainSection = ({ isUnlocked, onUnlock }) => {
   return (
     <Wrapper>
       <Container>
@@ -26,8 +26,10 @@ const KoolMainSection = ({ isUnlocked }) => {
           <Title textStroke={2}>
             <TitleText>First season collection available NOW!</TitleText>
           </Title>
-          {isUnlocked ? (
-            <StyledUnlockButton onClick={() => console.log('click')} />
+          {!isUnlocked ? (
+            <StyledUnlockButton onClick={onUnlock}>
+              unlock wallet
+            </StyledUnlockButton>
           ) : null}
           <KoolMan>
             <img src={koolman} alt="Kool" />

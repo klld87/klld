@@ -15,7 +15,14 @@ import {
 } from './styles';
 
 const MyAccountModal = (props) => {
-  const { open, onCloseModal, aidBalance, koolBalance } = props;
+  const {
+    open,
+    onCloseModal,
+    aidBalance,
+    koolBalance,
+    onSignOut,
+    userAddress,
+  } = props;
 
   return (
     <Modal open={open} onClose={onCloseModal} center showCloseIcon={false}>
@@ -43,7 +50,12 @@ const MyAccountModal = (props) => {
               display="flex"
               justifyContent="center"
             >
-              <Button>
+              <Button
+                as="a"
+                href={`https://etherscan.io/address/${userAddress}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <ButtonTitle>View on Etherscan</ButtonTitle>
               </Button>
             </Box>
@@ -57,7 +69,12 @@ const MyAccountModal = (props) => {
                 <ButtonTitle>View my NFTz</ButtonTitle>
               </Button>
             </Box>
-            <Box width={1} display="flex" justifyContent="center">
+            <Box
+              width={1}
+              display="flex"
+              justifyContent="center"
+              onClick={onSignOut}
+            >
               <Button>
                 <ButtonTitle>Sign out</ButtonTitle>
               </Button>

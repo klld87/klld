@@ -88,6 +88,7 @@ export const Button = styled.div`
 `;
 
 export const ButtonTitle = styled.p`
+  display: block;
   margin: 0;
   font-style: normal;
   font-weight: bold;

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { StyledButton } from './styles';
+import { StyledButton, Title } from './styles';
 
-const UnlockButton = ({ onClick, className = '' }) => {
+const UnlockButton = ({ onClick, className = '', children }) => {
   return (
     <StyledButton
       borderColor="#05A6B0"
@@ -10,8 +10,9 @@ const UnlockButton = ({ onClick, className = '' }) => {
       textStroke={2}
       onClick={onClick}
       className={className}
+      type="button"
     >
-      unlock wallet
+      <Title>{children}</Title>
     </StyledButton>
   );
 };
