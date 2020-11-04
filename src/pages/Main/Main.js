@@ -64,9 +64,9 @@ const MainPage = () => {
           localStorage.removeItem('isConnected');
         } else if (data.length && !userAddress) {
           localStorage.setItem('isConnected', true);
-          setUserAddress(data[1]);
-        } else if (data[1] !== userAddress) {
-          setUserAddress(data[1]);
+          setUserAddress(data[0]);
+        } else if (data[0] !== userAddress) {
+          setUserAddress(data[0]);
         }
       });
     };
