@@ -49,7 +49,9 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    getWalletBalance();
+    if (Boolean(localStorage.getItem('isConnected'))) {
+      getWalletBalance();
+    }
     handleGetKoolPrice();
   }, []);
 
