@@ -57,6 +57,22 @@ const MainPage = () => {
   }, []);
 
   useEffect(() => {
+    const listenAccountsChanged = async () => {
+      window.ethereum.on('accountsChanged', (data) => {
+        if (!data.length && userAddress) {
+          setUserAddress(null);
+          localStorage.removeItem('isConnected');
+        } else if (data.length && !userAddress) {
+          localStorage.setItem('isConnected', true);
+          setUserAddress(data[1]);
+        }
+      });
+    };
+
+    listenAccountsChanged();
+  }, [userAddress]);
+
+  useEffect(() => {
     const getBalances = async () => {
       const kool = await getKoolBalance(web3Provider, userAddress);
       const aid = await getAidBalance(web3Provider, userAddress);
@@ -69,7 +85,7 @@ const MainPage = () => {
       if (!isEthEnabled) setEthEnabled(true);
       getBalances();
     }
-  }, [userAddress]);
+  }, [userAddress, isEthEnabled, web3Provider]);
 
   return (
     <Wrapper>
