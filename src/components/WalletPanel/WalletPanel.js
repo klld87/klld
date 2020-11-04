@@ -19,16 +19,6 @@ const WalletPanel = (props) => {
   const [isWalletModalOpened, setWalletModalOpened] = React.useState(false);
   const [isAccountModalOpened, setAccountModalOpened] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   if (typeof window.ethereum !== 'undefined') {
-  //     window.ethereum.on('accountsChanged', function (accounts) {
-  //       console.log({
-  //         accounts,
-  //       });
-  //     });
-  //   }
-  // }, []);
-
   const onClickButton = () => {
     if (isWalletUnlocked) {
       toggleAccountModal();
@@ -49,7 +39,10 @@ const WalletPanel = (props) => {
     <>
       <Wrapper>
         <Container>
-          <Flex flexWrap="wrap" justifyContent="space-between">
+          <Flex
+            flexWrap="wrap"
+            justifyContent={isWalletUnlocked ? 'space-between' : 'flex-end'}
+          >
             {isWalletUnlocked ? (
               <Box width={[1, 1, 'calc(100% - 250px)', 'calc(100% - 250px)']}>
                 <BalancesList>
@@ -75,6 +68,7 @@ const WalletPanel = (props) => {
       <WalletModal
         open={isWalletModalOpened}
         onCloseModal={toggleWalletModal}
+        isWalletUnlocked={isWalletUnlocked}
       />
       <MyAccountModal
         open={isAccountModalOpened}

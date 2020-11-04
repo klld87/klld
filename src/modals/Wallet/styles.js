@@ -1,5 +1,19 @@
 import styled from 'styled-components';
 
+import backgroundImage from '../../images/modalBackground.svg';
+
+export const Wrapper = styled.div`
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 35px;
+  padding: 27px 15px;
+
+  @media (min-width: 1024px) {
+    padding: 80px 120px;
+  }
+`;
+
 export const Title = styled.h3`
   margin: 0;
   font-weight: 900;
@@ -23,11 +37,13 @@ export const WalletItem = styled.div`
 export const WalletIcon = styled.div`
   width: 114px;
   height: 107px;
-  background-color: red;
+  background-image: ${({ logo }) => `url(${logo})`};
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0 0 17px 0;
 `;
 
-export const Button = styled.button`
+export const Button = styled.div`
   width: 100%;
   background: #b286ff;
   border: 4px solid #000000;
