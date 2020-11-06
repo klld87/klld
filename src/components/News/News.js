@@ -7,7 +7,8 @@ const news = [
   {
     id: 'news1',
     title: 'Read about KOOL plans',
-    link: '#',
+    link:
+      'https://medium.com/@hello_41403/kool-plans-mixing-kool-aid-without-drinking-719978ee07d4',
   },
   {
     id: 'news2',

@@ -1,16 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import MainPage from './pages/Main';
 
 const GlobalStyle = createGlobalStyle`
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Comic Sans MS', -apple-system, Roboto, BlinkMacSystemFont, Segoe UI, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  }
-
   html {
     scroll-behavior: smooth;
     @font-face {
@@ -19,6 +12,20 @@ const GlobalStyle = createGlobalStyle`
       font-weight: normal;
       src: local('Kool Beans'), url('KoolBean.woff') format('woff');
     }
+    @font-face {
+      font-family: 'Comic Sans MS';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Comic Sans MS'), url('comic-sans.woff') format('woff');
+    }
+  }
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Comic Sans MS', -apple-system, Roboto, BlinkMacSystemFont, Segoe UI, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   body {
@@ -55,8 +62,10 @@ const GlobalStyle = createGlobalStyle`
 const App = () => {
   return (
     <div className="App">
-      <GlobalStyle />
-      <MainPage />
+      <Router>
+        <GlobalStyle />
+        <MainPage />
+      </Router>
     </div>
   );
 };

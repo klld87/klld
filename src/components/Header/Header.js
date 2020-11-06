@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 import useWindowSize from '../../hooks/useWindowSize';
 
@@ -11,7 +13,6 @@ import {
   Logo,
   Nav,
   NavListItem,
-  NavListTitle,
   KoolName,
   Burger,
 } from './styles';
@@ -49,23 +50,28 @@ const Header = () => {
             </Burger>
             <Nav isCollapsed={isCollapsed}>
               <NavListItem>
-                <NavListTitle onClick={handleCloseNav}>Main</NavListTitle>
+                <HashLink to="/#main" onClick={handleCloseNav}>
+                  Main
+                </HashLink>
               </NavListItem>
               <NavListItem>
-                <NavListTitle
-                  href="#section-howitworks"
-                  onClick={handleCloseNav}
-                >
+                <HashLink to="/#section-howitworks" onClick={handleCloseNav}>
                   How it works
-                </NavListTitle>
+                </HashLink>
               </NavListItem>
               <NavListItem>
-                <NavListTitle href="https://kool.lol/farm/">
+                <a
+                  href="https://kool.lol/farm/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Farm $AID
-                </NavListTitle>
+                </a>
               </NavListItem>
               <NavListItem>
-                <NavListTitle onClick={handleCloseNav}>KOOL bar</NavListTitle>
+                <a href="#" onClick={handleCloseNav}>
+                  KOOL bar
+                </a>
               </NavListItem>
             </Nav>
           </Row>

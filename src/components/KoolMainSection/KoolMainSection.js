@@ -54,7 +54,14 @@ const KoolMainSection = ({ isUnlocked, onUnlock }) => {
             <StyledButton borderColor="#BF36FF" hoverBackground="#BF36FF">
               KOOL BAR NFTz
             </StyledButton>
-            <StyledButton borderColor="#00CB39" hoverBackground="#00CB39">
+            <StyledButton
+              tagName="a"
+              href="https://kool.lol/farm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              borderColor="#00CB39"
+              hoverBackground="#00CB39"
+            >
               Farm $AID
             </StyledButton>
           </ButtonList>

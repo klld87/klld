@@ -78,16 +78,16 @@ export const NavListItem = styled.div`
   @media (max-width: 1023px) {
     margin: 5px;
   }
-`;
 
-export const NavListTitle = styled.a`
-  margin: 0;
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 35px;
-  text-align: center;
-  color: #ffffff;
-  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+  a {
+    margin: 0;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+  }
 `;
 
 export const TopRow = styled.div``;

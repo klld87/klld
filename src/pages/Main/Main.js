@@ -105,7 +105,7 @@ const MainPage = () => {
   }, [userAddress, isEthEnabled, web3Provider]);
 
   return (
-    <Wrapper>
+    <Wrapper id="main">
       <WalletPanel
         isWalletUnlocked={userAddress !== null}
         koolBalance={koolBalance}
