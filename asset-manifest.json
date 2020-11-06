@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/klld/static/js/main.5419d13a.chunk.js",
-    "main.js.map": "/klld/static/js/main.5419d13a.chunk.js.map",
-    "runtime-main.js": "/klld/static/js/runtime-main.b0d35e5c.js",
-    "runtime-main.js.map": "/klld/static/js/runtime-main.b0d35e5c.js.map",
-    "static/css/2.8331236f.chunk.css": "/klld/static/css/2.8331236f.chunk.css",
-    "static/js/2.bf0b89dd.chunk.js": "/klld/static/js/2.bf0b89dd.chunk.js",
-    "static/js/2.bf0b89dd.chunk.js.map": "/klld/static/js/2.bf0b89dd.chunk.js.map",
-    "static/js/3.c835ca53.chunk.js": "/klld/static/js/3.c835ca53.chunk.js",
-    "static/js/3.c835ca53.chunk.js.map": "/klld/static/js/3.c835ca53.chunk.js.map",
+    "main.js": "/klld/static/js/main.79e9335a.chunk.js",
+    "main.js.map": "/klld/static/js/main.79e9335a.chunk.js.map",
+    "runtime-main.js": "/klld/static/js/runtime-main.fc607843.js",
+    "runtime-main.js.map": "/klld/static/js/runtime-main.fc607843.js.map",
+    "static/css/2.b3adcdf3.chunk.css": "/klld/static/css/2.b3adcdf3.chunk.css",
+    "static/js/2.48c451b6.chunk.js": "/klld/static/js/2.48c451b6.chunk.js",
+    "static/js/2.48c451b6.chunk.js.map": "/klld/static/js/2.48c451b6.chunk.js.map",
+    "static/js/3.295ba49a.chunk.js": "/klld/static/js/3.295ba49a.chunk.js",
+    "static/js/3.295ba49a.chunk.js.map": "/klld/static/js/3.295ba49a.chunk.js.map",
     "index.html": "/klld/index.html",
-    "static/css/2.8331236f.chunk.css.map": "/klld/static/css/2.8331236f.chunk.css.map",
-    "static/js/2.bf0b89dd.chunk.js.LICENSE.txt": "/klld/static/js/2.bf0b89dd.chunk.js.LICENSE.txt",
+    "static/css/2.b3adcdf3.chunk.css.map": "/klld/static/css/2.b3adcdf3.chunk.css.map",
+    "static/js/2.48c451b6.chunk.js.LICENSE.txt": "/klld/static/js/2.48c451b6.chunk.js.LICENSE.txt",
     "static/media/apple.58e6cba2.png": "/klld/static/media/apple.58e6cba2.png",
     "static/media/banana.a33a333c.png": "/klld/static/media/banana.a33a333c.png",
     "static/media/cherry.3c73dd8d.png": "/klld/static/media/cherry.3c73dd8d.png",
@@ -36,9 +36,9 @@
     "static/media/watermelon.bf7ba217.png": "/klld/static/media/watermelon.bf7ba217.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b0d35e5c.js",
-    "static/css/2.8331236f.chunk.css",
-    "static/js/2.bf0b89dd.chunk.js",
-    "static/js/main.5419d13a.chunk.js"
+    "static/js/runtime-main.fc607843.js",
+    "static/css/2.b3adcdf3.chunk.css",
+    "static/js/2.48c451b6.chunk.js",
+    "static/js/main.79e9335a.chunk.js"
   ]
 }
