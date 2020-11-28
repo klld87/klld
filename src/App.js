@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
-import MainPage from './pages/Main';
+import routes from './routes';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -61,12 +61,16 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
   return (
-    <div className="App">
-      <Router>
-        <GlobalStyle />
-        <MainPage />
-      </Router>
-    </div>
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Switch>
+          {routes.map((route) => {
+            return <Route key={route.path} {...route} />;
+          })}
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 };
 
