@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import backgroundImage from '../../images/modalBackground.svg';
+import backgroundImage from '../../images/modalBackground.png';
 
 export const Wrapper = styled.div`
   background-image: url(${backgroundImage});
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   border-radius: 35px;
   padding: 27px 15px;
 

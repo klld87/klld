@@ -1,12 +1,23 @@
 import * as React from 'react';
 
 // Components
-import Header from '../../components/Header';
+import BarHeader from '../../components/BarHeader';
 import Container from '../../components/Container';
 import NFTCocktailsCover from '../../components/NFTCocktailsCover';
 import TokenStats from '../../components/TokenStats';
 import SeasonCard from '../../components/SeasonCard';
 import Footer from '../../components/Footer';
+
+// Modals
+import HowItWorksModal from '../../modals/HowItWorks';
+import NFTWalletModal from '../../modals/NFTWallet';
+import NFTBarModal from '../../modals/NFTBar';
+
+// Card covers
+import appleCardCover from '../../images/tokenCards/apple.png';
+
+// Card blurs
+import greenBlur from '../../images/cardBlurs/green.png';
 
 // Styles
 import { Wrapper } from './styles';
@@ -23,25 +34,52 @@ const seasonCards = [
     price: 200,
     totalClaimed: 45,
     limitClaimed: 250,
-    cover: null,
-    titleBlurImage: null,
+    cover: appleCardCover,
+    titleBlurImage: greenBlur,
   },
 ];
 
-const Bar = (props) => {
-  const {} = props;
+const Bar = () => {
+  const [isHowItWorksModalOpen, setHowItWorksModalOpen] = React.useState(false);
+  const [isNFTWalletModalOpen, setNFTWalletModalOpen] = React.useState(false);
+  const [isNFTBarModalOpen, setNFTBarModalOpen] = React.useState(false);
+
+  const toggleHowItWorksModal = () => {
+    setHowItWorksModalOpen(!isHowItWorksModalOpen);
+  };
+
+  const toggleNFTWalletModal = () => {
+    setNFTWalletModalOpen(!isNFTWalletModalOpen);
+  };
+
+  const toggleNFTBarModal = () => {
+    setNFTBarModalOpen(!isNFTBarModalOpen);
+  };
 
   return (
     <Wrapper>
-      <Header />
+      <BarHeader onOpenNFTWalletModal={toggleNFTWalletModal} />
       <Container>
-        <NFTCocktailsCover />
+        <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
         <TokenStats />
         {seasonCards.map((seaconCard) => (
           <SeasonCard key={seaconCard.title} {...seaconCard} />
         ))}
         <Footer />
       </Container>
+      <HowItWorksModal
+        open={isHowItWorksModalOpen}
+        onCloseModal={toggleHowItWorksModal}
+      />
+      <NFTWalletModal
+        open={isNFTWalletModalOpen}
+        onCloseModal={toggleNFTWalletModal}
+        openNFTBar={() => {
+          toggleNFTWalletModal();
+          toggleNFTBarModal();
+        }}
+      />
+      <NFTBarModal open={isNFTBarModalOpen} onCloseModal={toggleNFTBarModal} />
     </Wrapper>
   );
 };

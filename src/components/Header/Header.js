@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from 'react';
 import { HashLink } from 'react-router-hash-link';
+import { NavLink } from 'react-router-dom';
 
 import useWindowSize from '../../hooks/useWindowSize';
 
@@ -69,9 +70,7 @@ const Header = () => {
                 </a>
               </NavListItem>
               <NavListItem>
-                <a href="#" onClick={handleCloseNav}>
-                  KOOL bar
-                </a>
+                <NavLink to="/bar">KOOL bar</NavLink>
               </NavListItem>
             </Nav>
           </Row>

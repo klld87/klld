@@ -22,6 +22,8 @@ import {
 // ]
 
 const NFTCocktailsCover = (props) => {
+  const { onOpenHowItWorksModal } = props;
+
   return (
     <Wrapper>
       <Flex>
@@ -34,7 +36,7 @@ const NFTCocktailsCover = (props) => {
             <Button>
               <ButtonTitle>Tokenomics</ButtonTitle>
             </Button>
-            <Button>
+            <Button onClick={onOpenHowItWorksModal}>
               <ButtonTitle>How it works?</ButtonTitle>
             </Button>
           </Actions>
