@@ -57,6 +57,90 @@ const GlobalStyle = createGlobalStyle`
     max-width: 1150px;
   }
 
+  /* carousel */
+  .slick-slider  {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    outline: none;
+    align-items: center;
+    
+    .slick-list {
+      outline: none;
+      height: auto !important;
+      width: 100%;
+      overflow: hidden;
+      padding-bottom: 20px;
+
+      .slick-track {
+        display: flex;
+        outline: none;
+        flex-direction: row;
+        transform: none;
+      }
+    }
+
+    .slick-dots {
+      position: absolute;
+      display: flex!important;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+      height: 10px;
+      padding-left: 0;
+      top: 178px;
+
+      li {
+        margin-right:10px;
+        width: 10px;
+        height: 10px;
+        list-style: none;
+
+          &.slick-active button {
+            background-color: #1589D4; 
+        }
+
+        button {
+          width: 10px !important;
+          height: 10px !important;
+          font-size: 0px;
+          border: none;
+          outline: none;
+          line-height: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-indent: -9999px;
+          padding: 0;
+          background-color: #E1EFF8;
+          border-radius: 10px;
+        }
+      }
+
+      @media (min-width: 400px) {
+          top: 262px;
+      }
+
+      @media (min-width: 425px) {
+          top: 295px;
+      }
+
+      @media (min-width: 768px) {
+          top: 315px;
+      }
+
+      @media (min-width: 900px) {
+          top: 400px;
+      }
+
+      @media (min-width: 1200px) {
+          top: 420px;
+      }
+    }
+  }
+    
+  /* carousel */
+
 `;
 
 const App = () => {
