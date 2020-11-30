@@ -7,18 +7,18 @@ import SeasonItem from '../SeasonItem';
 // Styles
 import {
   Wrapper,
-  Top,
   Cover,
   Row,
+  Top,
   TitleBlur,
   Title,
-  Content,
-  Actions,
-  Button,
-  ButtonTitle,
+  Body,
   ContentItem,
   ContentTitle,
   ContentText,
+  Footer,
+  Button,
+  ButtonTitle,
 } from './styles';
 
 const SeasonCard = (props) => {
@@ -37,20 +37,20 @@ const SeasonCard = (props) => {
   } = props;
 
   return (
-    <Wrapper position={position}>
-      <Flex width="100%" flexWrap="wrap">
-        <Box width={[1, 1, 1 / 3, 1 / 3]} style={{ zIndex: 2 }}>
-          <Top>
-            <Cover background={cover} />
-            <SeasonItem season={season} />
-          </Top>
+    <Wrapper>
+      <Flex flexWrap="wrap" width="100%">
+        <Box width={[1, 1, 1 / 5, 1 / 5]} style={{ zIndex: 2 }}>
+          <Cover background={cover} />
         </Box>
-        <Box width={[1, 1, 2 / 3, 2 / 3]}>
+        <Box width={[1, 1, 4 / 5, 4 / 5]} display="flex" alignItems="center">
           <Row>
-            <TitleBlur background={titleBlurImage}>
-              <Title>{title}</Title>
-            </TitleBlur>
-            <Content>
+            <Top>
+              <TitleBlur background={titleBlurImage}>
+                <Title>{title}</Title>
+              </TitleBlur>
+              <SeasonItem season={season} />
+            </Top>
+            <Body>
               <ContentItem>
                 <ContentTitle>Description:</ContentTitle>
                 <ContentText>{description}</ContentText>
@@ -71,17 +71,12 @@ const SeasonCard = (props) => {
                 <ContentTitle>Price:</ContentTitle>
                 <ContentText>{price}</ContentText>
               </ContentItem>
-            </Content>
-            <Actions>
+            </Body>
+            <Footer>
               <Button>
-                <ButtonTitle>Need 200 AID</ButtonTitle>
+                <ButtonTitle>APPROVE AID</ButtonTitle>
               </Button>
-              <Button>
-                <ButtonTitle>
-                  {`${totalClaimed}/${limitClaimed}`} claimed
-                </ButtonTitle>
-              </Button>
-            </Actions>
+            </Footer>
           </Row>
         </Box>
       </Flex>

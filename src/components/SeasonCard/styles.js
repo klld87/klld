@@ -1,37 +1,44 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin: 0 0 30px 0;
-`;
-
-export const Top = styled.div`
-  margin-bottom: -105px;
-  position: relative;
+  margin: 0 0 100px 0;
 `;
 
 export const Cover = styled.div`
-  width: 271px;
-  height: 282px;
+  width: 374px;
+  height: 390px;
   background-image: ${({ background }) => `url(${background})`};
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
 export const Row = styled.div`
+  height: 226px;
   background-color: #f6ea50;
-  border: 4px solid #263f26;
+  border: 4px solid rgba(38, 63, 38, 0.36);
   border-radius: 15px;
-  padding: 90px 0 30px 0;
+  width: 100%;
+`;
+
+export const Top = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 
 export const TitleBlur = styled.div`
-  width: 360px;
-  height: 61px;
+  width: 100%;
+  height: 102px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 80%;
+  margin: -60px 0 0 0;
   background-image: ${({ background }) => `url(${background})`};
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 `;
 
 export const Title = styled.h3`
@@ -39,21 +46,37 @@ export const Title = styled.h3`
   font-size: 35px;
   line-height: 70px;
   color: #ffffff;
-  text-align: center;
+  margin: 0 0 0 30%;
+  display: inline-block;
+  font-family: 'Kool Beans';
 `;
 
-export const Content = styled.div`
-  padding: 0 20px;
+export const Body = styled.div`
+  padding-left: 170px;
 `;
 
-export const Actions = styled.div``;
+export const ContentItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 15px 0;
+`;
+
+export const ContentTitle = styled.p`
+  margin: 0;
+  font-weight: bold;
+  font-size: 15px;
+  color: #263f26;
+`;
+
+export const ContentText = styled.p`
+  margin: 0 0 0 5px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #263f26;
+`;
+
+export const Footer = styled.div``;
 
 export const Button = styled.div``;
 
-export const ButtonTitle = styled.p``;
-
-export const ContentItem = styled.div``;
-
-export const ContentTitle = styled.p``;
-
-export const ContentText = styled.p``;
+export const ButtonTitle = styled.div``;
