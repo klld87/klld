@@ -11,13 +11,13 @@ import {
   Loader,
 } from './styles';
 
-const TokenStats = ({ koolPrice: price }) => {
+const TokenStats = ({ koolPrice: price, pageFrom }) => {
   const supply = 99.999;
   const marketCap = Math.floor(price * supply * 1000) / 1000;
 
   return (
     <StyledContainer>
-      <StatsList>
+      <StatsList pageFrom={pageFrom}>
         <Strawberry />
         <Flex flexWrap="wrap">
           <Box width={[1, 1, 1 / 3, 1 / 3]} mb={['50px', '50px', 0, 0]}>

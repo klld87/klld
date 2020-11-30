@@ -6,6 +6,8 @@ import Container from '../../components/Container';
 import NFTCocktailsCover from '../../components/NFTCocktailsCover';
 import TokenStats from '../../components/TokenStats';
 import SeasonCard from '../../components/SeasonCard';
+import SpecialEditionBanner from '../../components/SpecialEditionBanner';
+import SpecialCard from '../../components/SpecialCard';
 import Footer from '../../components/Footer';
 
 // Modals
@@ -61,10 +63,12 @@ const Bar = () => {
       <BarHeader onOpenNFTWalletModal={toggleNFTWalletModal} />
       <Container>
         <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
-        <TokenStats />
+        <TokenStats pageFrom="bar" />
         {seasonCards.map((seaconCard) => (
           <SeasonCard key={seaconCard.title} {...seaconCard} />
         ))}
+        <SpecialEditionBanner />
+        <SpecialCard />
         <Footer />
       </Container>
       <HowItWorksModal

@@ -15,3 +15,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1``;
+
+export const CloseIcon = styled.div``;
+
+export const Body = styled.div``;

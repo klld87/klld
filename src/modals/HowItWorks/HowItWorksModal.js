@@ -26,13 +26,13 @@ const HowItWorksModal = (props) => {
     <Modal open={open} onClose={onCloseModal} center showCloseIcon={false}>
       <Wrapper>
         <Title>How it works?</Title>
-        <CloseIcon />
+        <CloseIcon onClick={onCloseModal} />
         <Flex flexWrap="wrap" width="100%">
           <Box width={[1, 1, 1 / 3, 1 / 3]} pr={[0, 0, '25px', '25px']}>
             <Item>
               <ItemEmoji>🧑‍🌾</ItemEmoji>
               <DescriptionRow>
-                <Description>
+                <Description textStroke={2}>
                   Stake $KOOL and KOOL/ETH LP tokens to farm $AID
                 </Description>
               </DescriptionRow>
@@ -49,8 +49,8 @@ const HowItWorksModal = (props) => {
             <Item>
               <ItemEmoji>📦</ItemEmoji>
               <DescriptionRow>
-                <Description>
-                  Burn $AID for  unique Kool-Aid Flavor NFTz
+                <Description textStroke={2}>
+                  Burn $AID for unique Kool-Aid Flavor NFTz
                 </Description>
               </DescriptionRow>
               <Button>
@@ -62,7 +62,7 @@ const HowItWorksModal = (props) => {
             <Item>
               <ItemEmoji>🍹</ItemEmoji>
               <DescriptionRow>
-                <Description>
+                <Description textStroke={2}>
                   Mix NFTz to get rare ERC-1155 cocktails
                 </Description>
               </DescriptionRow>

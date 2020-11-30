@@ -55,6 +55,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     background-color: transparent;
     max-width: 1150px;
+    border-radius: 15px;
   }
 
   /* carousel */

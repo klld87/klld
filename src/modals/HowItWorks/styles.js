@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { TextStroke } from '../../styles/typography';
+
+import backgroundImage from '../../images/modalBackground.png';
 
 export const Wrapper = styled.div`
-  background-color: #ffffff;
-  padding: 17px 60px 85px 60px;
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-repeat: repeat;
+  padding: 17px 60px 20px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +23,18 @@ export const Title = styled.h1`
   margin: 0;
 `;
 
-export const CloseIcon = styled.div``;
+export const CloseIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  position: absolute;
+  right: 60px;
+  top: 60px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 export const Item = styled.div`
   display: flex;
@@ -45,7 +61,9 @@ export const Description = styled.p`
   line-height: 44px;
   text-align: center;
   color: #fbf7e2;
-  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+  ${TextStroke};
+  font-family: 'Kool Beans';
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.55);
 `;
 
 export const Button = styled.div`
@@ -65,11 +83,21 @@ export const ButtonTitle = styled.p`
   font-size: 25px;
   line-height: 44px;
   color: #fbf7e2;
-  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+  ${TextStroke};
+  font-family: 'Kool Beans';
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.55);
 `;
 
-export const Footer = styled.div``;
+export const Footer = styled.div`
+  margin: 10px 0 0 0;
+`;
 
-export const FooterText = styled.p``;
+export const FooterText = styled.p`
+  margin: 0;
+  font-size: 25px;
+  line-height: 65px;
+`;
 
-export const FooterLink = styled.a``;
+export const FooterLink = styled.a`
+  text-decoration: underline;
+`;
