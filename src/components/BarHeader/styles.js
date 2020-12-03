@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import logo from '../../images/logo.svg';
+import { TextStroke } from '../../styles/typography';
+
 export const Wrapper = styled.div`
   width: 100%;
   height: 106px;
@@ -18,19 +21,36 @@ export const Row = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 150px;
-  height: 80px;
-  background-color: red;
+  background-image: url(${logo});
+  width: 66px;
+  height: 66px;
+`;
+
+export const LogoRow = styled.div`
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+`;
+
+export const KoolName = styled.p`
+  margin: 0;
+  font-size: 40px;
+  line-height: 46px;
+  color: #ffffff;
+  font-family: 'Kool Beans', 'Comic Sans MS';
+  margin: 0 0 0 10px;
+  ${TextStroke};
 `;
 
 export const Nav = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
+  margin: 0 0 0 50px;
 `;
 
 export const NavLink = styled.a`
-  flex: 1;
+  margin: 0 25px;
   font-weight: bold;
   font-size: 25px;
   line-height: 35px;

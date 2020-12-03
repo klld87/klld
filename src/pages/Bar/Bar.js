@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Preload } from 'react-preload';
 
 // Components
 import BarHeader from '../../components/BarHeader';
@@ -8,7 +9,10 @@ import TokenStats from '../../components/TokenStats';
 import SeasonCard from '../../components/SeasonCard';
 import SpecialEditionBanner from '../../components/SpecialEditionBanner';
 import SpecialCard from '../../components/SpecialCard';
+import KoolMixingBanner from '../../components/KoolMixingBanner';
+import MixingCard from '../../components/MixingCard';
 import Footer from '../../components/Footer';
+import ScrollToTopButton from '../../components/ScrollToTopButton';
 
 // Modals
 import HowItWorksModal from '../../modals/HowItWorks';
@@ -24,9 +28,7 @@ import bananaCardCover from '../../images/tokenCards/banana.png';
 
 // Card blurs
 import greenBlur from '../../images/cardBlurs/green.png';
-import redBlur from '../../images/cardBlurs/red.png';
-import orangeBlur from '../../images/cardBlurs/orange.png';
-import violetBlur from '../../images/cardBlurs/violet.png';
+import greenBlurMobile from '../../images/cardBlurs/greenMobile.png';
 
 // Season cards
 import season1 from '../../images/seasons/1.png';
@@ -47,6 +49,7 @@ const seasonCards = [
     limitClaimed: 250,
     cover: appleCardCover,
     titleBlurImage: greenBlur,
+    titleBlurMobileImage: greenBlurMobile,
     seasonImage: season1,
   },
   {
@@ -60,7 +63,8 @@ const seasonCards = [
     totalClaimed: 45,
     limitClaimed: 250,
     cover: cheeryCardCover,
-    titleBlurImage: redBlur,
+    titleBlurImage: greenBlur,
+    titleBlurMobileImage: greenBlurMobile,
     seasonImage: season1,
   },
   {
@@ -74,7 +78,8 @@ const seasonCards = [
     totalClaimed: 45,
     limitClaimed: 250,
     cover: orangeCardCover,
-    titleBlurImage: orangeBlur,
+    titleBlurImage: greenBlur,
+    titleBlurMobileImage: greenBlurMobile,
     seasonImage: season1,
   },
   {
@@ -88,7 +93,8 @@ const seasonCards = [
     totalClaimed: 123,
     limitClaimed: 300,
     cover: grapesCardCover,
-    titleBlurImage: violetBlur,
+    titleBlurImage: greenBlur,
+    titleBlurMobileImage: greenBlurMobile,
     seasonImage: season1,
   },
   {
@@ -102,7 +108,8 @@ const seasonCards = [
     totalClaimed: 250,
     limitClaimed: 250,
     cover: bananaCardCover,
-    titleBlurImage: redBlur,
+    titleBlurImage: greenBlur,
+    titleBlurMobileImage: greenBlurMobile,
     seasonImage: season1,
   },
 ];
@@ -124,33 +131,52 @@ const Bar = () => {
     setNFTBarModalOpen(!isNFTBarModalOpen);
   };
 
+  const loadingIndicator = (
+    <div style={{ flex: 1, backgroundColor: 'red' }}>
+      <p>loadingIndicator</p>
+    </div>
+  );
+
   return (
-    <Wrapper>
-      <BarHeader onOpenNFTWalletModal={toggleNFTWalletModal} />
-      <Container>
-        <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
-        <TokenStats pageFrom="bar" />
-        {seasonCards.map((seaconCard) => (
-          <SeasonCard key={seaconCard.title} {...seaconCard} />
-        ))}
-        <SpecialEditionBanner />
-        <SpecialCard />
-        <Footer />
-      </Container>
-      <HowItWorksModal
-        open={isHowItWorksModalOpen}
-        onCloseModal={toggleHowItWorksModal}
-      />
-      <NFTWalletModal
-        open={isNFTWalletModalOpen}
-        onCloseModal={toggleNFTWalletModal}
-        openNFTBar={() => {
-          toggleNFTWalletModal();
-          toggleNFTBarModal();
-        }}
-      />
-      <NFTBarModal open={isNFTBarModalOpen} onCloseModal={toggleNFTBarModal} />
-    </Wrapper>
+    <Preload
+      loadingIndicator={loadingIndicator}
+      autoResolveDelay={2000}
+      resolveOnError={true}
+      mountChildren={true}
+    >
+      <Wrapper>
+        <BarHeader onOpenNFTWalletModal={toggleNFTWalletModal} />
+        <Container>
+          <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
+          <TokenStats pageFrom="bar" />
+          {seasonCards.map((seaconCard) => (
+            <SeasonCard key={seaconCard.title} {...seaconCard} />
+          ))}
+          <SpecialEditionBanner />
+          <SpecialCard />
+          <KoolMixingBanner />
+          <MixingCard />
+          <Footer />
+        </Container>
+        <HowItWorksModal
+          open={isHowItWorksModalOpen}
+          onCloseModal={toggleHowItWorksModal}
+        />
+        <NFTWalletModal
+          open={isNFTWalletModalOpen}
+          onCloseModal={toggleNFTWalletModal}
+          openNFTBar={() => {
+            toggleNFTWalletModal();
+            toggleNFTBarModal();
+          }}
+        />
+        <NFTBarModal
+          open={isNFTBarModalOpen}
+          onCloseModal={toggleNFTBarModal}
+        />
+        <ScrollToTopButton />
+      </Wrapper>
+    </Preload>
   );
 };
 

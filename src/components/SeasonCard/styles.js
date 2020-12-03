@@ -1,80 +1,91 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin: 0 0 30px 0;
+  margin: 190px 0 250px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 
   @media (min-width: 1024px) {
-    margin: 0 0 50px 0;
+    justify-content: center;
+    margin: 130px 0 140px 0;
+    align-items: flex-end;
   }
 `;
 
 export const Cover = styled.div`
-  width: 271px;
-  height: 282px;
   background-image: ${({ background }) => `url(${background})`};
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
+  width: 271px;
+  height: 282px;
+  top: -160px;
 
   @media (min-width: 1024px) {
-    width: 400px;
-    height: 430px;
-    position: relative;
-    display: table;
+    width: 374px;
+    height: 390px;
+    top: -40px;
+    left: 0;
   }
 `;
 
 export const Body = styled.div`
-  background-color: #f6ea50;
+  background: #f6ea50;
+  width: 100%;
   border: 4px solid #263f26;
   border-radius: 15px;
   padding: 100px 0 0 0;
-  margin: 160px 0 0 0;
-  position: relative;
 
   @media (min-width: 1024px) {
     padding: 0;
     margin: 0;
+    width: 80%;
   }
 `;
 
 export const TitleBlur = styled.div`
-  background-repeat: no-repeat;
+  background-image: ${({ mobileBackground }) => `url(${mobileBackground})`};
+  width: 100%;
   height: 61px;
-  background-size: contain;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-position: 100% 100%;
-  background-image: ${({ background }) => `url(${background})`};
+  background-repeat: no-repeat;
+  background-size: contain;
 
   @media (min-width: 1024px) {
-    position: absolute;
-    background-size: cover;
-    width: 100%;
-    background-position: 50% 50%;
+    background-image: ${({ background }) => `url(${background})`};
+    width: 575px;
+    background-size: contain;
+    background-position: 0 50%;
     height: 102px;
-    top: -50px;
+    position: absolute;
+    top: -60px;
+    right: 200px;
   }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.p`
   margin: 0;
-  font-size: 30px;
-  color: #ffffff;
   font-family: 'Kool Beans';
-  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+  font-size: 30px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
 
   @media (min-width: 1024px) {
     font-size: 35px;
     line-height: 70px;
-    margin: 0 0 0 100px;
+    margin: 0 0 0 60px;
   }
 `;
 
 export const SeasonCardImage = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 76px;
+  height: 71px;
   background-image: ${({ image }) => `url(${image})`};
   background-repeat: no-repeat;
   background-size: contain;
@@ -95,8 +106,8 @@ export const Row = styled.div`
   padding: 20px 30px;
 
   @media (min-width: 1024px) {
-    padding: 20px 30px 20px 120px;
-    margin: 50px 0 0 0;
+    padding: 0 40px 0 120px;
+    margin: 20px 0 0 0;
   }
 `;
 
@@ -127,6 +138,7 @@ export const Actions = styled.div`
     bottom: -20px;
     justify-content: flex-end;
     padding: 0;
+    right: 0;
   }
 `;
 

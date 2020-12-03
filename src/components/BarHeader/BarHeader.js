@@ -7,6 +7,8 @@ import Container from '../Container';
 import {
   Wrapper,
   Row,
+  LogoRow,
+  KoolName,
   Logo,
   Nav,
   NavLink,
@@ -21,7 +23,10 @@ const BarHeader = (props) => {
     <Wrapper>
       <Container>
         <Row>
-          <Logo />
+          <LogoRow>
+            <Logo />
+            <KoolName textStroke={2}>KOOL</KoolName>
+          </LogoRow>
           <Nav>
             <NavLink>Main page</NavLink>
             <NavLink>Special</NavLink>
