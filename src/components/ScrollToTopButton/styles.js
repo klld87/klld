@@ -11,4 +11,8 @@ export const Button = styled.div`
   bottom: 45px;
   right: 90px;
   z-index: 5;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
