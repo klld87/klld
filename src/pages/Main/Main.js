@@ -31,15 +31,19 @@ const MainPage = () => {
     setKoolPrice(formattedPrice);
   };
 
-  const connect = async () => {
+  const connect = async (walletType) => {
     try {
-      const accounts = await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-      const address = accounts[0];
-      setUserAddress(address);
-      setEthEnabled(true);
-      localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
+      if (walletType === 'metaMask') {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        const address = accounts[0];
+        setUserAddress(address);
+        setEthEnabled(true);
+        localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
+      } else {
+        // Fix me
+      }
     } catch {}
   };
 

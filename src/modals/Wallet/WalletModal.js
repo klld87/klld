@@ -34,7 +34,7 @@ const WalletModal = (props) => {
             <WalletItem>
               <WalletIcon type="metaMask" logo={metaMaskLogo} />
               <WalletName>Metamask</WalletName>
-              <Button onClick={onUnlock}>
+              <Button onClick={() => onUnlock('metaMask')}>
                 <ButtonTitle>Connect</ButtonTitle>
               </Button>
             </WalletItem>
@@ -43,8 +43,8 @@ const WalletModal = (props) => {
             <WalletItem>
               <WalletIcon type="walletConnect" logo={walletConnectLogo} />
               <WalletName>WalletConnect</WalletName>
-              <Button>
-                <ButtonTitle>Soon</ButtonTitle>
+              <Button onClick={() => onUnlock('walletConnect')}>
+                <ButtonTitle>Connect</ButtonTitle>
               </Button>
             </WalletItem>
           </Box>

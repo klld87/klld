@@ -18,6 +18,8 @@ import ScrollToTopButton from '../../components/ScrollToTopButton';
 import HowItWorksModal from '../../modals/HowItWorks';
 import NFTWalletModal from '../../modals/NFTWallet';
 import NFTBarModal from '../../modals/NFTBar';
+import WalletModal from '../../modals/Wallet';
+import WalletConnectModal from '../../modals/WalletConnect';
 
 // Card covers
 import appleCardCover from '../../images/tokenCards/apple.png';
@@ -118,6 +120,10 @@ const Bar = () => {
   const [isHowItWorksModalOpen, setHowItWorksModalOpen] = React.useState(false);
   const [isNFTWalletModalOpen, setNFTWalletModalOpen] = React.useState(false);
   const [isNFTBarModalOpen, setNFTBarModalOpen] = React.useState(false);
+  const [isWalletModalOpen, setWalletModalOpen] = React.useState(false);
+  const [isWalletConnectModalOpen, setWalletConnectModalOpen] = React.useState(
+    false
+  );
 
   const toggleHowItWorksModal = () => {
     setHowItWorksModalOpen(!isHowItWorksModalOpen);
@@ -129,6 +135,23 @@ const Bar = () => {
 
   const toggleNFTBarModal = () => {
     setNFTBarModalOpen(!isNFTBarModalOpen);
+  };
+
+  const toggleWalletModal = () => {
+    setWalletModalOpen(!isWalletModalOpen);
+  };
+
+  const toggleWalletConnectModal = () => {
+    setWalletConnectModalOpen(!isWalletConnectModalOpen);
+  };
+
+  const onUnlockWallet = (walletType) => {
+    if (walletType === 'metaMask') {
+      // Do somethind fix me
+    } else {
+      setWalletModalOpen(false);
+      setWalletConnectModalOpen(true);
+    }
   };
 
   const loadingIndicator = (
@@ -145,7 +168,13 @@ const Bar = () => {
       mountChildren={true}
     >
       <Wrapper>
-        <BarHeader onOpenNFTWalletModal={toggleNFTWalletModal} />
+        <BarHeader
+          onOpenNFTWalletModal={toggleNFTWalletModal}
+          unlockWallet={toggleWalletModal}
+          isWalletUnlocked={false} // Fix me
+          koolBalance={0} // Fix me
+          aidBalance={0} // Fix me
+        />
         <Container>
           <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
           <TokenStats pageFrom="bar" />
@@ -173,6 +202,16 @@ const Bar = () => {
         <NFTBarModal
           open={isNFTBarModalOpen}
           onCloseModal={toggleNFTBarModal}
+        />
+        <WalletModal
+          open={isWalletModalOpen}
+          onCloseModal={toggleWalletModal}
+          isWalletUnlocked={false} // Fix me
+          onUnlock={onUnlockWallet}
+        />
+        <WalletConnectModal
+          open={isWalletConnectModalOpen}
+          onCloseModal={toggleWalletConnectModal}
         />
         <ScrollToTopButton />
       </Wrapper>
