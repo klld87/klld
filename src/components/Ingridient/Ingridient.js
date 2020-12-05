@@ -7,6 +7,8 @@ import {
   IsAvailableBlock,
   AmountBlock,
   Amount,
+  SuccessIcon,
+  ErrorIcon,
 } from './styles';
 
 const Ingridient = (props) => {
@@ -15,7 +17,9 @@ const Ingridient = (props) => {
   return (
     <Wrapper>
       <Cover background={cover} />
-      <IsAvailableBlock />
+      <IsAvailableBlock>
+        {isAvailable ? <SuccessIcon /> : <ErrorIcon />}
+      </IsAvailableBlock>
       <AmountBlock>
         <Amount>{amount}</Amount>
       </AmountBlock>

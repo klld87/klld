@@ -28,10 +28,11 @@ import {
 
 // Components
 import Ingridient from '../Ingridient';
+import LinearButton from '../LinearButton';
 
 // Musor
 import cover from '../../images/mixingCard/punch.png';
-import pinkBlur from '../../images/cardBlurs/pinkMobile.png';
+import pinkBlur from '../../images/cardBlurs/navyBlue.png';
 import mixingCover from '../../images/mixingCovers/1.png';
 
 const MixingCard = (props) => {
@@ -69,9 +70,7 @@ const MixingCard = (props) => {
               </ContentText>
             </ContentTitle>
             <Actions>
-              <Button>
-                <ButtonTitle>MIX</ButtonTitle>
-              </Button>
+              <LinearButton title="MIX" />
               <Button>
                 <ButtonTitle>45 mixed</ButtonTitle>
               </Button>

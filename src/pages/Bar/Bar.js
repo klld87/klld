@@ -186,6 +186,11 @@ const Bar = () => {
           <SpecialCard />
           <KoolMixingBanner />
           <MixingCard />
+          <MixingCard />
+          <MixingCard />
+          <MixingCard />
+          <MixingCard />
+          <MixingCard />
           <Footer />
         </Container>
         <HowItWorksModal

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+// Iconsv
+import successIcon from '../../images/success.png';
+import errorIcon from '../../images/error.png';
+
 export const Wrapper = styled.div`
   width: 75px;
   height: 101px;
@@ -34,6 +38,9 @@ const Block = styled.div`
 export const IsAvailableBlock = styled(Block)`
   top: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const AmountBlock = styled(Block)`
@@ -48,4 +55,20 @@ export const Amount = styled.p`
   text-align: center;
   color: #ffffff;
   line-height: 30px;
+`;
+
+export const SuccessIcon = styled.div`
+  width: 13px;
+  height: 13px;
+  background-image: url(${successIcon});
+  background-repeat: no-repeat;
+  background-size: contain;
+`;
+
+export const ErrorIcon = styled.div`
+  width: 16px;
+  height: 14px;
+  background-image: url(${errorIcon});
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
