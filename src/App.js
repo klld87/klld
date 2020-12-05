@@ -56,6 +56,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     max-width: 1150px;
     border-radius: 15px;
+
+    &.parityModal {
+      max-width: 374px;
+    }
   }
 
   /* carousel */

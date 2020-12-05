@@ -19,7 +19,14 @@ import {
 } from './styles';
 
 const NFTWalletModal = (props) => {
-  const { open, onCloseModal, openNFTBar } = props;
+  const {
+    open,
+    onCloseModal,
+    openNFTBar,
+    koolBalance,
+    aidBalance,
+    aidHarvest,
+  } = props;
 
   return (
     <Modal open={open} onClose={onCloseModal} center showCloseIcon={false}>
@@ -30,19 +37,19 @@ const NFTWalletModal = (props) => {
           <Flex flexWrap="wrap" width="100%">
             <Box width={[1, 1, 1 / 2, 1 / 2]}>
               <BalanceBlock>
-                <BalanceValue>0.0000</BalanceValue>
+                <BalanceValue>{Number(aidBalance).toFixed(2)}</BalanceValue>
                 <BalanceType>$AID balance</BalanceType>
               </BalanceBlock>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]}>
               <BalanceBlock>
-                <BalanceValue>0.0000</BalanceValue>
+                <BalanceValue>{Number(koolBalance).toFixed(2)}</BalanceValue>
                 <BalanceType>$KOOL balance</BalanceType>
               </BalanceBlock>
             </Box>
           </Flex>
           <HarvestBlock>
-            <BalanceValue>0.0000</BalanceValue>
+            <BalanceValue>{Number(aidHarvest).toFixed(2)}</BalanceValue>
             <BalanceType>$AID available for harvest </BalanceType>
           </HarvestBlock>
           <Flex flexWrap="wrap" width="100%">
@@ -71,7 +78,7 @@ const NFTWalletModal = (props) => {
           </Flex>
           <Footer>
             <Button onClick={onCloseModal} isCancel>
-              <ButtonTitle>Cancel</ButtonTitle>
+              <ButtonTitle isCancel>Cancel</ButtonTitle>
             </Button>
           </Footer>
         </Body>

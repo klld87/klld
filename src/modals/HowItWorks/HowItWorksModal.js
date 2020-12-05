@@ -28,11 +28,15 @@ const HowItWorksModal = (props) => {
         <Title>How it works?</Title>
         <CloseIcon onClick={onCloseModal} />
         <Flex flexWrap="wrap" width="100%">
-          <Box width={[1, 1, 1 / 3, 1 / 3]} pr={[0, 0, '25px', '25px']}>
+          <Box
+            width={[1, 1, 1 / 3, 1 / 3]}
+            pr={[0, 0, '25px', '25px']}
+            pb={['40px', '40px', 0, 0]}
+          >
             <Item>
               <ItemEmoji>🧑‍🌾</ItemEmoji>
               <DescriptionRow>
-                <Description textStroke={2}>
+                <Description>
                   Stake $KOOL and KOOL/ETH LP tokens to farm $AID
                 </Description>
               </DescriptionRow>
@@ -45,11 +49,12 @@ const HowItWorksModal = (props) => {
             width={[1, 1, 1 / 3, 1 / 3]}
             pl={[0, 0, '25px', '25px']}
             pr={[0, 0, '25px', '25px']}
+            pb={['40px', '40px', 0, 0]}
           >
             <Item>
               <ItemEmoji>📦</ItemEmoji>
               <DescriptionRow>
-                <Description textStroke={2}>
+                <Description>
                   Burn $AID for unique Kool-Aid Flavor NFTz
                 </Description>
               </DescriptionRow>
@@ -62,7 +67,7 @@ const HowItWorksModal = (props) => {
             <Item>
               <ItemEmoji>🍹</ItemEmoji>
               <DescriptionRow>
-                <Description textStroke={2}>
+                <Description>
                   Mix NFTz to get rare ERC-1155 cocktails
                 </Description>
               </DescriptionRow>
@@ -74,7 +79,7 @@ const HowItWorksModal = (props) => {
         </Flex>
         <Footer>
           <FooterText>
-            don’t get it? read our <FooterLink>blog post</FooterLink>
+            don’t get it? read our <FooterLink href="#">blog post</FooterLink>
           </FooterText>
         </Footer>
       </Wrapper>

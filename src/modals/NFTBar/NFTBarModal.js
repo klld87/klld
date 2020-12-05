@@ -13,13 +13,15 @@ import { Wrapper, Title, CloseIcon } from './styles';
 const NFTBarModal = (props) => {
   const { open, onCloseModal } = props;
 
+  const isLoading = true; // Fix me;
+
   const settings = {
     dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    nextArrow: <SliderArrow direction="right" />,
-    prevArrow: <SliderArrow direction="left" />,
+    nextArrow: isLoading ? null : <SliderArrow direction="right" />,
+    prevArrow: isLoading ? null : <SliderArrow direction="left" />,
     responsive: [
       {
         breakpoint: 1024,
@@ -43,14 +45,13 @@ const NFTBarModal = (props) => {
       <Wrapper>
         <Title>My NFT bar</Title>
         <CloseIcon onClick={onCloseModal} />
-        <div>
+        {isLoading ? (
           <Slider {...settings}>
-            <NFTSliderItem />
-            <NFTSliderItem />
-            <NFTSliderItem />
-            <NFTSliderItem />
+            <NFTSliderItem isLoading />
+            <NFTSliderItem isLoading />
+            <NFTSliderItem isLoading />
           </Slider>
-        </div>
+        ) : null}
       </Wrapper>
     </Modal>
   );

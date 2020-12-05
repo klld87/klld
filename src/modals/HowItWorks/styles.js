@@ -1,38 +1,53 @@
 import styled from 'styled-components';
-import { TextStroke } from '../../styles/typography';
 
 import backgroundImage from '../../images/modalBackground.png';
+import closeModalIcon from '../../images/closeModalIcon.png';
 
 export const Wrapper = styled.div`
   background-image: url(${backgroundImage});
   background-size: cover;
   background-repeat: repeat;
-  padding: 17px 60px 20px 60px;
+  padding: 20px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 4px solid #263f26;
   border-radius: 15px;
+
+  @media (min-width: 1024px) {
+    padding: 17px 60px 20px 60px;
+  }
 `;
 
 export const Title = styled.h1`
   font-weight: bold;
-  font-size: 40px;
-  line-height: 65px;
   color: #263f26;
   margin: 0;
+  font-size: 20px;
+  line-height: 65px;
+
+  @media (min-width: 1024px) {
+    font-size: 40px;
+  }
 `;
 
 export const CloseIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background-color: red;
+  background-image: url(${closeModalIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
-  right: 60px;
-  top: 60px;
+  right: 30px;
+  top: 30px;
+  width: 20px;
+  height: 28px;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    width: 34px;
+    height: 38px;
   }
 `;
 
@@ -40,6 +55,10 @@ export const Item = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    height: 100%;
+  }
 `;
 
 export const ItemEmoji = styled.p`
@@ -48,22 +67,32 @@ export const ItemEmoji = styled.p`
 `;
 
 export const DescriptionRow = styled.div`
-  margin: 25px 0 32px 0;
+  margin: 23px 0 12px 0;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid #000000;
   border-radius: 15px;
-  padding: 7px 15px;
+  padding: 15px;
+
+  @media (min-width: 1024px) {
+    padding: 7px 15px;
+    margin: 25px 0 32px 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const Description = styled.p`
   margin: 0;
-  font-size: 25px;
-  line-height: 44px;
+  font-size: 15px;
+  line-height: 20px;
   text-align: center;
-  color: #fbf7e2;
-  ${TextStroke};
-  font-family: 'Kool Beans';
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.55);
+  color: #000000;
+
+  @media (min-width: 1024px) {
+    font-size: 25px;
+    line-height: 35px;
+  }
 `;
 
 export const Button = styled.div`
@@ -75,27 +104,42 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 58px;
+  height: 34px;
+
+  @media (min-width: 1024px) {
+    height: 58px;
+  }
 `;
 
 export const ButtonTitle = styled.p`
   margin: 0;
-  font-size: 25px;
   line-height: 44px;
+  font-size: 20px;
   color: #fbf7e2;
-  ${TextStroke};
-  font-family: 'Kool Beans';
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.55);
+  text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
+
+  @media (min-width: 1024px) {
+    font-size: 25px;
+  }
 `;
 
 export const Footer = styled.div`
-  margin: 10px 0 0 0;
+  margin: 35px 0 0 0;
+
+  @media (min-width: 1024px) {
+    margin: 10px 25px 0 25px;
+  }
 `;
 
 export const FooterText = styled.p`
   margin: 0;
-  font-size: 25px;
-  line-height: 65px;
+  font-size: 15px;
+  line-height: 20px;
+
+  @media (min-width: 1024px) {
+    font-size: 25px;
+    line-height: 65px;
+  }
 `;
 
 export const FooterLink = styled.a`

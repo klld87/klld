@@ -4,6 +4,8 @@ import * as React from 'react';
 import { Wrapper, Cover, Actions, Button, ButtonTitle } from './styles';
 
 const NFTSliderItem = (props) => {
+  const { isLoading } = props;
+
   return (
     <Wrapper>
       <Cover />

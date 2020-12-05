@@ -20,6 +20,7 @@ import NFTWalletModal from '../../modals/NFTWallet';
 import NFTBarModal from '../../modals/NFTBar';
 import WalletModal from '../../modals/Wallet';
 import WalletConnectModal from '../../modals/WalletConnect';
+import ParityModal from '../../modals/Parity';
 
 // Card covers
 import appleCardCover from '../../images/tokenCards/apple.png';
@@ -171,8 +172,8 @@ const Bar = () => {
         <BarHeader
           onOpenNFTWalletModal={toggleNFTWalletModal}
           unlockWallet={toggleWalletModal}
-          isWalletUnlocked={false} // Fix me
-          koolBalance={0} // Fix me
+          isWalletUnlocked={true} // Fix me
+          koolBalance={560} // Fix me
           aidBalance={0} // Fix me
         />
         <Container>
@@ -198,6 +199,9 @@ const Bar = () => {
             toggleNFTWalletModal();
             toggleNFTBarModal();
           }}
+          koolBalance={560} // Fix me
+          aidBalance={0} // Fix me
+          aidHarvest={0} // Fix me
         />
         <NFTBarModal
           open={isNFTBarModalOpen}
@@ -213,6 +217,7 @@ const Bar = () => {
           open={isWalletConnectModalOpen}
           onCloseModal={toggleWalletConnectModal}
         />
+        {/* <ParityModal open onCloseModal={() => null} /> */}
         <ScrollToTopButton />
       </Wrapper>
     </Preload>
