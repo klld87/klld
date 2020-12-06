@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Wrapper, Button } from './styles';
+import { Wrapper, Button, Label } from './styles';
 
 const ScrollToTopButton = () => {
   const [showScroll, setShowScroll] = React.useState(false);
@@ -28,6 +28,7 @@ const ScrollToTopButton = () => {
     return (
       <Wrapper>
         <Button onClick={scrollTop} />
+        <Label>Top</Label>
       </Wrapper>
     );
   }
