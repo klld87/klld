@@ -11,6 +11,11 @@ export const Image = styled.div`
   background-image: url(${koolBarLogo});
   background-size: contain;
   background-repeat: no-repeat;
+
+  @media (min-width: 1024px) {
+    width: 381px;
+    height: 332px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -23,6 +28,7 @@ export const Title = styled.h1`
   text-shadow: 5px 5px 2px #4f5a98;
   ${TextStroke};
   margin: 30px 0 0 0;
+  letter-spacing: 5px;
 
   @media (min-width: 1024px) {
     font-size: 75px;
@@ -72,6 +78,7 @@ export const Button = styled.div`
 export const ButtonTitle = styled.p`
   margin: 0;
   font-size: 23px;
+  text-transform: uppercase;
 `;
 
 export const SeasonItem = styled.div`

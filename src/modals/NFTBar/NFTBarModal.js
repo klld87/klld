@@ -8,7 +8,14 @@ import NFTSliderItem from '../../components/NFTSliderItem';
 import SliderArrow from '../../components/SliderArrow';
 
 // Styles
-import { Wrapper, Title, CloseIcon } from './styles';
+import {
+  Wrapper,
+  Title,
+  CloseIcon,
+  Carousel,
+  CancelButton,
+  CancelButtonTitle,
+} from './styles';
 
 const NFTBarModal = (props) => {
   const { open, onCloseModal } = props;
@@ -46,13 +53,18 @@ const NFTBarModal = (props) => {
       <Wrapper>
         <Title>My NFT bar</Title>
         <CloseIcon onClick={onCloseModal} />
-        {isLoading ? (
-          <Slider {...settings}>
-            <NFTSliderItem isLoading />
-            <NFTSliderItem isLoading />
-            <NFTSliderItem isLoading />
-          </Slider>
-        ) : null}
+        <Carousel>
+          {isLoading ? (
+            <Slider {...settings}>
+              <NFTSliderItem isLoading />
+              <NFTSliderItem isLoading />
+              <NFTSliderItem isLoading />
+            </Slider>
+          ) : null}
+        </Carousel>
+        <CancelButton onClick={onCloseModal}>
+          <CancelButtonTitle>Cancel</CancelButtonTitle>
+        </CancelButton>
       </Wrapper>
     </Modal>
   );

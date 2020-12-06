@@ -55,8 +55,8 @@ export const Body = styled.div`
     width: 80%;
     padding: ${({ position, desktopSizes }) =>
       position === 'left'
-        ? `20px 50px 0 ${desktopSizes.width / 2}px`
-        : '20px 105px 0 100px'};
+        ? `40px 50px 0 ${desktopSizes.width / 2}px`
+        : '40px 105px 0 100px'};
   }
 `;
 
@@ -100,7 +100,7 @@ export const TitleBlur = styled.div`
   @media (min-width: 1024px) {
     width: 542px;
     height: 116px;
-    top: -110px;
+    top: -70px;
     background-size: contain;
     left: ${({ position }) => (position === 'left' ? 'inherit' : '200px')};
     right: ${({ position }) => (position === 'left' ? '260px' : 'inherit')};

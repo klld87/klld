@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { TextStroke } from '../../styles/typography';
 
 import koolMixingMan from '../../images/koolMixingMan.png';
-import specialKoolMan from '../../images/specialKoolMan.png';
+import koolMixingMan2 from '../../images/koolMixingMan2.png';
 
 export const Wrapper = styled.div`
   margin: 55px 0 45px 0;
@@ -86,7 +86,7 @@ export const KoolMan = styled.div`
     width: 275px;
     height: 267px;
     position: absolute;
-    background-image: url(${specialKoolMan});
+    background-image: url(${koolMixingMan2});
     background-size: cover;
     background-repeat: no-repeat;
     right: 0;

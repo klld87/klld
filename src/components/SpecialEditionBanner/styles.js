@@ -3,6 +3,7 @@ import { TextStroke } from '../../styles/typography';
 
 import specialKoolMan from '../../images/specialKoolMan.png';
 import koolFamily from '../../images/koolFamily.png';
+import specialCard from '../../images/seasons/special.png';
 
 export const Wrapper = styled.div`
   height: auto;
@@ -12,6 +13,7 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  background-color: #ffe100;
 
   @media (min-width: 1024px) {
     height: 148px;
@@ -27,9 +29,10 @@ export const KoolMan = styled.div`
     height: 240px;
     position: absolute;
     background-image: url(${specialKoolMan});
-    background-size: cover;
     background-repeat: no-repeat;
     left: 0;
+    background-size: contain;
+    top: -30px;
   }
 `;
 
@@ -44,7 +47,7 @@ export const Row = styled.div`
 
 export const Title = styled.h3`
   margin: 0;
-  font-family: Kool Beans;
+  font-family: 'Kool Beans';
   font-style: normal;
   font-weight: normal;
   text-align: center;
@@ -56,11 +59,12 @@ export const Title = styled.h3`
   @media (min-width: 1024px) {
     font-size: 65px;
     line-height: 70px;
+    margin: 0 0 0 -100px;
   }
 `;
 
 export const Text = styled.p`
-  font-family: Kool Beans;
+  font-family: 'Kool Beans';
   font-style: normal;
   font-weight: normal;
   text-align: center;
@@ -71,17 +75,23 @@ export const Text = styled.p`
   ${TextStroke};
 
   @media (min-width: 1024px) {
-    margin: 0;
+    margin: 0 0 0 -100px;
     font-size: 50px;
     line-height: 70px;
   }
 `;
 
 export const SeasonCard = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: green;
-  position: absolute;
+  @media (min-width: 1024px) {
+    position: absolute;
+    top: 0;
+    right: -130px;
+    width: 101px;
+    height: 97px;
+    background-image: url(${specialCard});
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 `;
 
 export const KoolFamilyImage = styled.div`

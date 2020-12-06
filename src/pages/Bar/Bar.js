@@ -101,7 +101,7 @@ const Bar = () => {
         <BarHeader
           onOpenNFTWalletModal={toggleNFTWalletModal}
           unlockWallet={toggleWalletModal}
-          isWalletUnlocked={true} // Fix me
+          isWalletUnlocked={false} // Fix me
           koolBalance={560} // Fix me
           aidBalance={0} // Fix me
         />

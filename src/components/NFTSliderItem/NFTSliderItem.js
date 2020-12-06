@@ -1,14 +1,25 @@
 import * as React from 'react';
 
 // Styles
-import { Wrapper, Cover, Actions, Button, ButtonTitle } from './styles';
+import {
+  Wrapper,
+  Cover,
+  Actions,
+  Button,
+  ButtonTitle,
+  LoadingImage,
+  LoadingText,
+} from './styles';
 
 const NFTSliderItem = (props) => {
   const { isLoading } = props;
 
   return (
     <Wrapper>
-      <Cover />
+      <Cover>
+        <LoadingImage />
+        <LoadingText>Loading...</LoadingText>
+      </Cover>
       <Actions>
         <Button>
           <ButtonTitle>Buy more</ButtonTitle>

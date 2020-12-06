@@ -35,10 +35,10 @@ const NFTCocktailsCover = (props) => {
   return (
     <Wrapper>
       <Flex flexWrap="wrap" width="100%">
-        <Box width={[1, 1, 1 / 4, 1 / 4]} pr={[0, 0, '27px', '27px']}>
+        <Box width={[1, 1, 1 / 4, 1 / 4]}>
           <Image />
         </Box>
-        <Box width={[1, 1, 3 / 4, 3 / 4]} pl={[0, 0, '27px', '27px']}>
+        <Box width={[1, 1, 3 / 4, 3 / 4]} pl={[0, 0, '100px', '100px']}>
           <Title>MINT NFT flavors for KOOL COCKTAILS!</Title>
           <Actions>
             <Button>

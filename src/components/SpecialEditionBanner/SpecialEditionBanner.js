@@ -17,7 +17,7 @@ const SpecialEditionBanner = (props) => {
       <Row>
         <Title>Special Edition</Title>
         <Text>Get kool NFT merch</Text>
-        {/* <SeasonCard /> */}
+        <SeasonCard />
       </Row>
       <KoolFamilyImage />
     </Wrapper>

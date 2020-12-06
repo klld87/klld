@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import loadingFruit from '../../images/fruits/loading.png';
+
 export const Wrapper = styled.div``;
 
 export const Cover = styled.div`
@@ -7,6 +9,10 @@ export const Cover = styled.div`
   height: 324px;
   border: 1px solid #000000;
   border-radius: 15px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Actions = styled.div``;
@@ -28,5 +34,25 @@ export const ButtonTitle = styled.p`
   font-size: 30px;
   line-height: 42px;
   text-align: center;
+  color: #a9a9a9;
+`;
+
+export const LoadingImage = styled.div`
+  width: 144px;
+  height: 121px;
+  background-image: url(${loadingFruit});
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 40px 0 50px 0;
+`;
+
+export const LoadingText = styled.h3`
+  margin: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 42px;
+  text-align: center;
   color: #000000;
+  text-transform: uppercase;
 `;
