@@ -42,10 +42,11 @@ const SpecialCard = (props) => {
     season,
     openParityModal,
     onClickButton,
+    isLast,
   } = props;
 
   return (
-    <Wrapper position={position}>
+    <Wrapper position={position} isLast={isLast}>
       <Cover
         background={cover}
         desktopSizes={coverSizes.desktop}

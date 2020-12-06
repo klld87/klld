@@ -12,9 +12,14 @@ export const Wrapper = styled.div`
   border-radius: 24px;
   height: 58px;
   padding: 9px;
+  width: 100%;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    width: auto;
   }
 `;
 

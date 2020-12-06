@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 // Components
 import Container from '../Container';
@@ -41,6 +42,10 @@ const BarHeader = (props) => {
     setIsCollapsed((prevCollapsed) => !prevCollapsed);
   };
 
+  const handleCloseNav = () => {
+    setIsCollapsed(true);
+  };
+
   React.useEffect(() => {
     setIsCollapsed(true);
   }, [windowWidth]);
@@ -62,8 +67,12 @@ const BarHeader = (props) => {
           <Collapsed isCollapsed={isCollapsed}>
             <Nav>
               <NavLinkRouter to="/">Main page</NavLinkRouter>
-              <NavLink>Special</NavLink>
-              <NavLink>KOOL Mixing</NavLink>
+              <HashLink to="/bar#special" onClick={handleCloseNav}>
+                <NavLink>Special</NavLink>
+              </HashLink>
+              <HashLink to="/bar#mixing" onClick={handleCloseNav}>
+                <NavLink>KOOL Mixing</NavLink>
+              </HashLink>
               {isWalletUnlocked ? (
                 <Balances>
                   <BalanceItem>

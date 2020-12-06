@@ -12,7 +12,7 @@ import {
 
 const SpecialEditionBanner = (props) => {
   return (
-    <Wrapper>
+    <Wrapper id="special">
       <KoolMan />
       <Row>
         <Title>Special Edition</Title>

@@ -36,7 +36,7 @@ export const PearFruit = styled.div`
     position: absolute;
     transform: rotate(0);
     filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.5));
-    top: 3600px;
+    top: 3800px;
   }
 `;
 
@@ -50,6 +50,6 @@ export const GrapesFruit = styled.div`
     position: absolute;
     transform: rotate(0);
     filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.5));
-    top: 4000px;
+    top: 4400px;
   }
 `;

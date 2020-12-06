@@ -51,6 +51,10 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (min-width: 1024px) {
     margin: 0;
     width: 250px;

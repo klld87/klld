@@ -5,7 +5,7 @@ import { Wrapper, KoolMixingMan, Row, Title, Text, KoolMan } from './styles';
 
 const KoolMixingBanner = () => {
   return (
-    <Wrapper>
+    <Wrapper id="mixing">
       <KoolMixingMan />
       <Row>
         <Title textStroke={3}>Kool mixing</Title>

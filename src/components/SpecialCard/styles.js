@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   position: relative;
   padding: 0;
-  margin: 136px 0;
+  margin: ${({ isLast }) => (isLast ? '136px 0 0 0' : '136px 0')};
   justify-content: center;
 
   @media (min-width: 1024px) {

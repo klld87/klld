@@ -49,10 +49,11 @@ const MixingCard = (props) => {
     bgColor,
     background,
     onClickButton,
+    isLast,
   } = props;
 
   return (
-    <Wrapper>
+    <Wrapper isLast={isLast}>
       <Cover background={cover} />
       <Body bgColor={bgColor} background={background}>
         <TitleBlur background={titleBlur}>

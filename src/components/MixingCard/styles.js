@@ -8,12 +8,12 @@ export const Wrapper = styled.div`
   align-items: center;
   position: relative;
   padding: 0;
-  margin: 136px 0;
+  margin: ${({ isLast }) => (isLast ? '136px 0 0 0' : '136px 0')};
   justify-content: center;
 
   @media (min-width: 1024px) {
     padding: 0 50px;
-    margin: 180px 0 230px 0;
+    margin: ${({ isLast }) => (isLast ? '180px 0 100px 0' : '180px 0 230px 0')};
     justify-content: inherit;
   }
 `;

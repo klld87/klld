@@ -108,32 +108,47 @@ const Bar = () => {
         <Container>
           <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
           <TokenStats pageFrom="bar" />
-          {seasonCards.map((seaconCard) => (
-            <SeasonCard
-              key={seaconCard.title}
-              openParityModal={toggleParityModal}
-              onClickButton={toggleEnterAmountModal}
-              {...seaconCard}
-            />
-          ))}
+          {seasonCards.map((seaconCard, seaconCardIndex) => {
+            const isLast = seaconCardIndex === seasonCards.length - 1;
+
+            return (
+              <SeasonCard
+                key={seaconCard.title}
+                openParityModal={toggleParityModal}
+                onClickButton={toggleEnterAmountModal}
+                isLast={isLast}
+                {...seaconCard}
+              />
+            );
+          })}
           <SpecialEditionBanner />
-          {specialCards.map((specialCard) => (
-            <SpecialCard
-              key={specialCard.title}
-              openParityModal={toggleParityModal}
-              onClickButton={toggleEnterAmountModal}
-              {...specialCard}
-            />
-          ))}
+          {specialCards.map((specialCard, specialCardIndex) => {
+            const isLast = specialCardIndex === specialCards.length - 1;
+
+            return (
+              <SpecialCard
+                key={specialCard.title}
+                openParityModal={toggleParityModal}
+                onClickButton={toggleEnterAmountModal}
+                isLast={isLast}
+                {...specialCard}
+              />
+            );
+          })}
           <KoolMixingBanner />
-          {mixingCards.map((mixingCard) => (
-            <MixingCard
-              key={mixingCard.title}
-              openParityModal={toggleParityModal}
-              onClickButton={toggleEnterAmountModal}
-              {...mixingCard}
-            />
-          ))}
+          {mixingCards.map((mixingCard, mixingCardIndex) => {
+            const isLast = mixingCardIndex === mixingCards.length - 1;
+
+            return (
+              <MixingCard
+                key={mixingCard.title}
+                openParityModal={toggleParityModal}
+                onClickButton={toggleEnterAmountModal}
+                isLast={isLast}
+                {...mixingCard}
+              />
+            );
+          })}
           <Footer />
         </Container>
         <HowItWorksModal
