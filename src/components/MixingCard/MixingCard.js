@@ -23,82 +23,81 @@ import {
   Button,
   ButtonTitle,
   ParityBlock,
-  Parity,
+  ParityRow,
 } from './styles';
 
 // Components
 import Ingridient from '../Ingridient';
 import LinearButton from '../LinearButton';
-
-// Musor
-import cover from '../../images/mixingCard/punch.png';
-import pinkBlur from '../../images/cardBlurs/navyBlue.png';
-import mixingCover from '../../images/mixingCovers/1.png';
+import Parity from '../Parity';
 
 const MixingCard = (props) => {
+  const {
+    title,
+    cover,
+    titleBlur,
+    description,
+    contents,
+    parity,
+    recipe,
+    mixedCount,
+    sugar,
+    acidity,
+    toxicity,
+    ingridients,
+    openParityModal,
+  } = props;
+
   return (
     <Wrapper>
       <Cover background={cover} />
       <Body>
-        <TitleBlur background={pinkBlur}>
-          <Title>Moonshine Punch</Title>
+        <TitleBlur background={titleBlur}>
+          <Title>{title}</Title>
         </TitleBlur>
         <Jug />
         <Row>
           <Content>
             <ContentTitle>
-              Description:{' '}
-              <ContentText>How many punches before the moon?</ContentText>
+              Description: <ContentText>{description}</ContentText>
             </ContentTitle>
             <ContentTitle>
-              CONTENTS:{' '}
-              <ContentText>
-                Fructose, Lysergic acid, Synthetic Blueberry Flavor, Moondust,
-                Blue 1, Yellow 5
-              </ContentText>
+              CONTENTS: <ContentText>{contents}</ContentText>
             </ContentTitle>
             <ParityBlock>
               <ContentTitle>
-                RARITY: <ContentText>UNCOMMON</ContentText>
+                RARITY: <ContentText>{parity}</ContentText>
               </ContentTitle>
-              <Parity />
+              <ParityRow>
+                <Parity type={parity} openModal={openParityModal} />
+              </ParityRow>
             </ParityBlock>
             <ContentTitle>
-              RECIPE:{' '}
-              <ContentText>
-                Banana FOMO x1 + Green Apple Pump x1 + Bitcoin Orange x2
-              </ContentText>
+              RECIPE: <ContentText>{recipe}</ContentText>
             </ContentTitle>
             <Actions>
-              <LinearButton title="MIX" />
+              <LinearButton title="MIX" type="mix" />
               <Button>
-                <ButtonTitle>45 mixed</ButtonTitle>
+                <ButtonTitle>{mixedCount} mixed</ButtonTitle>
               </Button>
             </Actions>
           </Content>
           <Right>
-            <IngridientsBlock>
-              <IngridientsLabel>Ingridients:</IngridientsLabel>
-              <IngridientsList>
-                <IngridientsPlus>+</IngridientsPlus>
-                <Ingridient amount={1} cover={mixingCover} isAvailable />
-                <Ingridient
-                  amount={2}
-                  cover={mixingCover}
-                  isAvailable={false}
-                />
-                <Ingridient amount={1} cover={mixingCover} isAvailable />
-                <Ingridient
-                  amount={2}
-                  cover={mixingCover}
-                  isAvailable={false}
-                />
-              </IngridientsList>
-            </IngridientsBlock>
+            {ingridients?.length ? (
+              <IngridientsBlock>
+                <IngridientsLabel>Ingridients:</IngridientsLabel>
+                <IngridientsList>
+                  <IngridientsPlus>+</IngridientsPlus>
+                  {ingridients.map((item, index) => (
+                    <Ingridient {...item} key={index} />
+                  ))}
+                </IngridientsList>
+              </IngridientsBlock>
+            ) : null}
             <StatsList>
-              <StatsItem>sugar: 17</StatsItem>
-              <StatsItem>acidity: 17</StatsItem>
-              <StatsItem>toxicity: 17</StatsItem>
+              <StatsItem>sugar: {sugar}</StatsItem>
+              <StatsItem>acidity: {acidity}</StatsItem>
+              <StatsItem>toxicity: {toxicity}</StatsItem>
             </StatsList>
           </Right>
         </Row>

@@ -10,9 +10,11 @@ export const Wrapper = styled.div`
   justify-content: center;
 
   @media (min-width: 1024px) {
-    padding: 0 50px;
     margin: 180px 0 230px 0;
     justify-content: inherit;
+    padding: 0 100px;
+    align-items: ${({ position }) =>
+      position === 'left' ? 'flex-end' : 'flex-start'};
   }
 `;
 
@@ -24,7 +26,8 @@ export const Cover = styled.div`
   width: ${({ mobileSizes }) => `${mobileSizes.width}px`};
   height: ${({ mobileSizes }) => `${mobileSizes.height}px`};
   top: -100px;
-  right: 0;
+  left: ${({ position }) => (position === 'left' ? '110px' : 'inherit')};
+  right: ${({ position }) => (position === 'left' ? 'inherit' : '0px')};
   margin: 0 auto;
 
   @media (min-width: 1024px) {
@@ -38,13 +41,38 @@ export const Cover = styled.div`
 `;
 
 export const Body = styled.div`
-  background-color: #ffd639;
+  background-color: ${({ bgColor }) => bgColor};
   border: 2px solid #263f26;
+  background-image: ${({ background }) => `url(${background})`};
+  background-repeat: repeat;
+  background-size: cover;
   border-radius: 15px;
   width: 100%;
 
   @media (min-width: 1024px) {
-    padding: 15px 15px 20px 410px;
+    width: 80%;
+    padding: ${({ position }) =>
+      position === 'left' ? '20px 50px 0 80px' : '20px 105px 0 50px'};
+  }
+`;
+
+export const SeasonCard = styled.div`
+  width: 76px;
+  height: 71px;
+  background-image: ${({ image }) => `url(${image})`};
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  border-radius: 35px;
+
+  @media (min-width: 1024px) {
+    width: 104px;
+    height: 104px;
+    z-index: 2;
+    left: 50px;
+    top: -50px;
+    left: ${({ position }) => (position === 'left' ? 'inherit' : '50px')};
+    right: ${({ position }) => (position === 'left' ? '50px' : 'inherit')};
   }
 `;
 
@@ -64,11 +92,13 @@ export const TitleBlur = styled.div`
   background-size: cover;
 
   @media (min-width: 1024px) {
-    width: 484px;
-    height: 131px;
-    top: -130px;
-    right: 240px;
+    width: 542px;
+    height: 116px;
+    left: 110px;
+    top: -110px;
     background-size: contain;
+    left: ${({ position }) => (position === 'left' ? 'inherit' : '110px')};
+    right: ${({ position }) => (position === 'left' ? '260px' : 'inherit')};
   }
 `;
 
@@ -79,6 +109,7 @@ export const Title = styled.p`
   line-height: 20px;
   text-align: center;
   color: #ffffff;
+  text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
 
   @media (min-width: 1024px) {
     font-size: 40px;
@@ -88,10 +119,6 @@ export const Title = styled.p`
 export const Row = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (min-width: 1024px) {
-    flex-direction: row;
-  }
 `;
 
 export const Content = styled.div`
@@ -107,24 +134,22 @@ export const ContentTitle = styled.p`
   color: #263f26;
   text-transform: uppercase;
   margin: 0 0 20px 0;
-  font-size: 18px;
-
-  @media (min-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: 15px;
+  line-height: 20px;
 `;
 
 export const ContentText = styled.span`
   font-weight: normal;
   text-transform: lowercase;
   font-size: 15px;
-
-  @media (min-width: 1024px) {
-    font-size: 17px;
-  }
 `;
 
-export const Actions = styled.div``;
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 -30px -52px;
+`;
 
 export const Button = styled.div`
   width: 100%;
@@ -135,7 +160,7 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 15px 0 0 0;
+  margin: 0 28px 0 0;
 `;
 
 export const ButtonTitle = styled.p`
@@ -146,24 +171,11 @@ export const ButtonTitle = styled.p`
 `;
 
 export const ParityBlock = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
-export const Parity = styled.div`
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(
-    0deg,
-    rgba(113, 135, 255, 0.65),
-    rgba(113, 135, 255, 0.65)
-  );
-  border-radius: 100%;
-  position: absolute;
-  top: -10px;
-  right: 50px;
-  border: 2px solid #263f26;
-
-  &:hover {
-    cursor: pointer;
-  }
+export const ParityRow = styled.div`
+  margin: -22px 0 0 20px;
 `;

@@ -29,9 +29,9 @@ export const PearFruit = styled.div`
   @media (min-width: 1024px) {
     background-image: url(${pear});
     background-repeat: no-repeat;
-    width: 212px;
+    width: 155px;
     height: 361px;
-    right: -53px;
+    right: 0;
     background-size: contain;
     position: absolute;
     transform: rotate(0);

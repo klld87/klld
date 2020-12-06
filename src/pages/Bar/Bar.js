@@ -25,9 +25,10 @@ import ParityModal from '../../modals/Parity';
 // Styles
 import { Wrapper, WatermelonFruit, PearFruit, GrapesFruit } from './styles';
 
-// Special cards
+// Data
 import specialCards from './data/special.js';
 import seasonCards from './data/season.js';
+import mixingCards from './data/mixing';
 
 const Bar = () => {
   const [isHowItWorksModalOpen, setHowItWorksModalOpen] = React.useState(false);
@@ -37,6 +38,7 @@ const Bar = () => {
   const [isWalletConnectModalOpen, setWalletConnectModalOpen] = React.useState(
     false
   );
+  const [isParityModalOpen, setParityModalOpen] = React.useState(false);
 
   const toggleHowItWorksModal = () => {
     setHowItWorksModalOpen(!isHowItWorksModalOpen);
@@ -56,6 +58,10 @@ const Bar = () => {
 
   const toggleWalletConnectModal = () => {
     setWalletConnectModalOpen(!isWalletConnectModalOpen);
+  };
+
+  const toggleParityModal = () => {
+    setParityModalOpen(!isParityModalOpen);
   };
 
   const onUnlockWallet = (walletType) => {
@@ -95,19 +101,28 @@ const Bar = () => {
           <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
           <TokenStats pageFrom="bar" />
           {seasonCards.map((seaconCard) => (
-            <SeasonCard key={seaconCard.title} {...seaconCard} />
+            <SeasonCard
+              key={seaconCard.title}
+              openParityModal={toggleParityModal}
+              {...seaconCard}
+            />
           ))}
           <SpecialEditionBanner />
           {specialCards.map((specialCard) => (
-            <SpecialCard key={specialCard.title} {...specialCard} />
+            <SpecialCard
+              key={specialCard.title}
+              openParityModal={toggleParityModal}
+              {...specialCard}
+            />
           ))}
           <KoolMixingBanner />
-          <MixingCard />
-          <MixingCard />
-          <MixingCard />
-          <MixingCard />
-          <MixingCard />
-          <MixingCard />
+          {mixingCards.map((mixingCard) => (
+            <MixingCard
+              key={mixingCard.title}
+              openParityModal={toggleParityModal}
+              {...mixingCard}
+            />
+          ))}
           <Footer />
         </Container>
         <HowItWorksModal
@@ -139,7 +154,10 @@ const Bar = () => {
           open={isWalletConnectModalOpen}
           onCloseModal={toggleWalletConnectModal}
         />
-        {/* <ParityModal open onCloseModal={() => null} /> */}
+        <ParityModal
+          open={isParityModalOpen}
+          onCloseModal={toggleParityModal}
+        />
         <ScrollToTopButton />
       </Wrapper>
     </Preload>

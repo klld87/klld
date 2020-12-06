@@ -59,6 +59,7 @@ const GlobalStyle = createGlobalStyle`
 
     &.parityModal {
       max-width: 374px;
+      background-color: #FBF7E2;
     }
   }
 

@@ -82,6 +82,7 @@ export const Title = styled.p`
   line-height: 20px;
   text-align: center;
   color: #ffffff;
+  text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
 
   @media (min-width: 1024px) {
     font-size: 40px;
@@ -129,21 +130,15 @@ export const ContentTitle = styled.p`
   color: #263f26;
   text-transform: uppercase;
   margin: 0 0 20px 0;
-  font-size: 18px;
-
-  @media (min-width: 1024px) {
-    font-size: 20px;
-  }
+  font-size: 15px;
+  line-height: 20px;
 `;
 
 export const ContentText = styled.span`
   font-weight: normal;
   text-transform: lowercase;
   font-size: 15px;
-
-  @media (min-width: 1024px) {
-    font-size: 17px;
-  }
+  line-height: 20px;
 `;
 
 export const IngridientsBlock = styled.div`
@@ -242,24 +237,11 @@ export const ButtonTitle = styled.p`
 `;
 
 export const ParityBlock = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
-export const Parity = styled.div`
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(
-    0deg,
-    rgba(113, 135, 255, 0.65),
-    rgba(113, 135, 255, 0.65)
-  );
-  border-radius: 100%;
-  position: absolute;
-  top: -10px;
-  right: 50px;
-  border: 2px solid #263f26;
-
-  &:hover {
-    cursor: pointer;
-  }
+export const ParityRow = styled.div`
+  margin: -22px 0 0 20px;
 `;
