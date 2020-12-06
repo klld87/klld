@@ -41,6 +41,7 @@ const SeasonCard = (props) => {
     openParityModal,
     price,
     howToUse,
+    onClickButton,
   } = props;
 
   return (
@@ -84,11 +85,15 @@ const SeasonCard = (props) => {
               Price: <ContentText>{price} AID</ContentText>
             </ContentTitle>
           </Content>
-          <Actions>
+          <Actions position={position}>
             <Button>
               <ButtonTitle>{`${totalClaimed}/${claimed} claimed`}</ButtonTitle>
             </Button>
-            <LinearButton title="GET ON OPENSEA" type="openSea" />
+            <LinearButton
+              onClickButton={onClickButton}
+              title="GET ON OPENSEA"
+              type="openSea"
+            />
           </Actions>
         </Row>
       </Body>

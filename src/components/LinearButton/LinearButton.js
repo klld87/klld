@@ -4,11 +4,11 @@ import * as React from 'react';
 import { Wrapper, Button, ButtonTitle } from './styles';
 
 const LinearButton = (props) => {
-  const { title, type } = props;
+  const { title, type, onClickButton } = props;
 
   return (
-    <Wrapper type={type}>
-      <Button>
+    <Wrapper type={type} onClick={onClickButton}>
+      <Button type={type}>
         <ButtonTitle>{title}</ButtonTitle>
       </Button>
     </Wrapper>

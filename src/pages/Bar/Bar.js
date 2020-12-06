@@ -21,6 +21,7 @@ import NFTBarModal from '../../modals/NFTBar';
 import WalletModal from '../../modals/Wallet';
 import WalletConnectModal from '../../modals/WalletConnect';
 import ParityModal from '../../modals/Parity';
+import EnterAmountModal from '../../modals/EnterAmount';
 
 // Styles
 import { Wrapper, WatermelonFruit, PearFruit, GrapesFruit } from './styles';
@@ -39,6 +40,9 @@ const Bar = () => {
     false
   );
   const [isParityModalOpen, setParityModalOpen] = React.useState(false);
+  const [isEnterAmountModalOpen, setEnterAmountModalOpen] = React.useState(
+    false
+  );
 
   const toggleHowItWorksModal = () => {
     setHowItWorksModalOpen(!isHowItWorksModalOpen);
@@ -62,6 +66,10 @@ const Bar = () => {
 
   const toggleParityModal = () => {
     setParityModalOpen(!isParityModalOpen);
+  };
+
+  const toggleEnterAmountModal = () => {
+    setEnterAmountModalOpen(!isEnterAmountModalOpen);
   };
 
   const onUnlockWallet = (walletType) => {
@@ -104,6 +112,7 @@ const Bar = () => {
             <SeasonCard
               key={seaconCard.title}
               openParityModal={toggleParityModal}
+              onClickButton={toggleEnterAmountModal}
               {...seaconCard}
             />
           ))}
@@ -112,6 +121,7 @@ const Bar = () => {
             <SpecialCard
               key={specialCard.title}
               openParityModal={toggleParityModal}
+              onClickButton={toggleEnterAmountModal}
               {...specialCard}
             />
           ))}
@@ -120,6 +130,7 @@ const Bar = () => {
             <MixingCard
               key={mixingCard.title}
               openParityModal={toggleParityModal}
+              onClickButton={toggleEnterAmountModal}
               {...mixingCard}
             />
           ))}
@@ -157,6 +168,10 @@ const Bar = () => {
         <ParityModal
           open={isParityModalOpen}
           onCloseModal={toggleParityModal}
+        />
+        <EnterAmountModal
+          open={isEnterAmountModalOpen}
+          onCloseModal={toggleEnterAmountModal}
         />
         <ScrollToTopButton />
       </Wrapper>

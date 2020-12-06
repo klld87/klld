@@ -96,10 +96,9 @@ export const TitleBlur = styled.div`
   @media (min-width: 1024px) {
     width: 542px;
     height: 116px;
-    left: 110px;
     top: -110px;
     background-size: contain;
-    left: ${({ position }) => (position === 'left' ? 'inherit' : '110px')};
+    left: ${({ position }) => (position === 'left' ? 'inherit' : '200px')};
     right: ${({ position }) => (position === 'left' ? '260px' : 'inherit')};
   }
 `;
@@ -150,7 +149,10 @@ export const Actions = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 0 -30px -52px;
+  justify-content: ${({ position }) =>
+    position === 'left' ? 'flex-end' : 'flex-start'};
+  margin: ${({ position }) =>
+    position === 'right' ? '0 0 -25px -52px' : '0 -60px -30px 0;'};
 `;
 
 export const Button = styled.div`
@@ -165,7 +167,7 @@ export const Button = styled.div`
   margin: 0 28px 0 0;
 
   @media (min-width: 1024px) {
-    width: 250px;
+    width: 215px;
   }
 `;
 

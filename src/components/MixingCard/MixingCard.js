@@ -48,6 +48,7 @@ const MixingCard = (props) => {
     openParityModal,
     bgColor,
     background,
+    onClickButton,
   } = props;
 
   return (
@@ -78,7 +79,11 @@ const MixingCard = (props) => {
               RECIPE: <ContentText>{recipe}</ContentText>
             </ContentTitle>
             <Actions>
-              <LinearButton title="MIX" type="mix" />
+              <LinearButton
+                onClickButton={onClickButton}
+                title="MIX"
+                type="mix"
+              />
               <Button>
                 <ButtonTitle>{mixedCount} mixed</ButtonTitle>
               </Button>

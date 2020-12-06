@@ -25,6 +25,10 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   height: 40px;
+
+  @media (min-width: 1024px) {
+    width: ${({ type }) => (type === 'mix' ? '100%' : '215px')};
+  }
 `;
 
 export const ButtonTitle = styled.p`

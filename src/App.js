@@ -61,6 +61,11 @@ const GlobalStyle = createGlobalStyle`
       max-width: 374px;
       background-color: #FBF7E2;
     }
+
+    &.enterAmountModal {
+      max-width: 758px;
+      background-color: #FBF7E2;
+    }
   }
 
   /* carousel */

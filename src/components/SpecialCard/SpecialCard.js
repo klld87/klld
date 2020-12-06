@@ -41,6 +41,7 @@ const SpecialCard = (props) => {
     totalClaimed,
     season,
     openParityModal,
+    onClickButton,
   } = props;
 
   return (
@@ -84,11 +85,15 @@ const SpecialCard = (props) => {
               INITIAL PRICE: <ContentText>{initialPrice}</ContentText>
             </ContentTitle>
           </Content>
-          <Actions>
+          <Actions position={position}>
             <Button>
               <ButtonTitle>{`${totalClaimed}/${claimed} claimed`}</ButtonTitle>
             </Button>
-            <LinearButton title="GET ON OPENSEA" type="openSea" />
+            <LinearButton
+              onClickButton={onClickButton}
+              title="GET NFT"
+              type="openSea"
+            />
           </Actions>
         </Row>
       </Body>
