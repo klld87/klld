@@ -20,6 +20,7 @@ const NFTBarModal = (props) => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    swipe: !isLoading,
     nextArrow: isLoading ? null : <SliderArrow direction="right" />,
     prevArrow: isLoading ? null : <SliderArrow direction="left" />,
     responsive: [

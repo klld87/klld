@@ -9,9 +9,16 @@ import sergeyCardCover from '../../../images/specialCardCovers/sergey.png';
 
 // Blurs
 import chadCradBlur from '../../../images/cardBlurs/chad.png';
+import manCradBlur from '../../../images/cardBlurs/man.png';
+import bagCradBlur from '../../../images/cardBlurs/bag.png';
+import keychainCradBlur from '../../../images/cardBlurs/keychain.png';
+import gemkitCradBlur from '../../../images/cardBlurs/gemkit.png';
+import zeroCradBlur from '../../../images/cardBlurs/zero.png';
 
 // Backgrounds
 import paperBG1 from '../../../images/bgPaper/1.png';
+import paperBG2 from '../../../images/bgPaper/2.png';
+import paperBG3 from '../../../images/bgPaper/3.png';
 
 // Seasons
 import specialSeason from '../../../images/seasons/special.png';
@@ -47,8 +54,8 @@ const specialCards = [
   {
     title: 'KOOL MAN',
     cover: koolManCardCover,
-    titleBlur: chadCradBlur,
-    background: paperBG1,
+    titleBlur: manCradBlur,
+    background: paperBG2,
     bgColor: '#3BDCFF',
     position: 'left',
     coverSizes: {
@@ -73,8 +80,8 @@ const specialCards = [
   {
     title: 'KOOL BAG',
     cover: koolBagCardCover,
-    titleBlur: chadCradBlur,
-    background: paperBG1,
+    titleBlur: bagCradBlur,
+    background: paperBG3,
     bgColor: '#E87D9D',
     position: 'right',
     coverSizes: {
@@ -100,8 +107,8 @@ const specialCards = [
   {
     title: 'KOOL KEY CHAIN',
     cover: keychainCardCover,
-    titleBlur: chadCradBlur,
-    background: paperBG1,
+    titleBlur: keychainCradBlur,
+    background: paperBG2,
     bgColor: '#3BDCFF',
     position: 'left',
     coverSizes: {
@@ -126,7 +133,7 @@ const specialCards = [
   {
     title: 'KOOL GEM kit',
     cover: gemkitCardCover,
-    titleBlur: chadCradBlur,
+    titleBlur: gemkitCradBlur,
     background: paperBG1,
     bgColor: '#DC894E',
     position: 'right',
@@ -152,8 +159,8 @@ const specialCards = [
   {
     title: 'KOOL ZERO ',
     cover: zeroCardCover,
-    titleBlur: chadCradBlur,
-    background: paperBG1,
+    titleBlur: zeroCradBlur,
+    background: paperBG3,
     bgColor: '#3BDCFF',
     position: 'left',
     coverSizes: {
@@ -178,8 +185,8 @@ const specialCards = [
   {
     title: 'Non-drinker Sergey',
     cover: sergeyCardCover,
-    titleBlur: chadCradBlur,
-    background: paperBG1,
+    titleBlur: gemkitCradBlur,
+    background: paperBG2,
     bgColor: '#DC894E',
     position: 'right',
     coverSizes: {

@@ -7,69 +7,90 @@ import {
   Body,
   TitleBlur,
   Title,
-  SeasonCardImage,
   Row,
+  Content,
   ContentTitle,
   ContentText,
   Actions,
   Button,
   ButtonTitle,
+  ParityBlock,
+  ParityRow,
+  SeasonCardImage,
 } from './styles';
+
+// Components
+import LinearButton from '../LinearButton';
+import Parity from '../Parity';
 
 const SeasonCard = (props) => {
   const {
-    position,
     title,
+    cover,
     description,
     contents,
+    position,
+    coverSizes,
+    titleBlur,
+    background,
+    bgColor,
     parity,
-    price,
+    claimed,
     totalClaimed,
-    limitClaimed,
-    cover,
-    titleBlurImage,
-    titleBlurMobileImage,
-    seasonImage,
+    season,
+    openParityModal,
+    price,
+    howToUse,
   } = props;
 
   return (
     <Wrapper position={position}>
-      <Cover background={cover} />
-      <Body>
-        <SeasonCardImage image={seasonImage} />
-        <TitleBlur
-          mobileBackground={titleBlurMobileImage}
-          background={titleBlurImage}
-        >
+      <Cover
+        background={cover}
+        desktopSizes={coverSizes.desktop}
+        mobileSizes={coverSizes.mobile}
+        position={position}
+      />
+      <Body
+        background={background}
+        bgColor={bgColor}
+        position={position}
+        desktopSizes={coverSizes.desktop}
+      >
+        <SeasonCardImage image={season} position={position} />
+        <TitleBlur background={titleBlur} position={position}>
           <Title>{title}</Title>
         </TitleBlur>
         <Row>
-          <ContentTitle>
-            Description: <ContentText>{description}</ContentText>
-          </ContentTitle>
-          <ContentTitle>
-            Contents: <ContentText>{contents}</ContentText>
-          </ContentTitle>
-          <ContentTitle>
-            How to use: <ContentText>soon</ContentText>
-          </ContentTitle>
-          <ContentTitle>
-            Parity: <ContentText>{parity}</ContentText>
-          </ContentTitle>
-          <ContentTitle>
-            Price: <ContentText>{price} AID</ContentText>
-          </ContentTitle>
+          <Content>
+            <ContentTitle>
+              Description: <ContentText>{description}</ContentText>
+            </ContentTitle>
+            <ContentTitle>
+              Contents: <ContentText>{contents}</ContentText>
+            </ContentTitle>
+            <ContentTitle>
+              How to use: <ContentText>{howToUse}</ContentText>
+            </ContentTitle>
+            <ParityBlock>
+              <ContentTitle>
+                RARITY: <ContentText>{parity}</ContentText>
+              </ContentTitle>
+              <ParityRow>
+                <Parity type={parity} openModal={openParityModal} />
+              </ParityRow>
+            </ParityBlock>
+            <ContentTitle>
+              Price: <ContentText>{price} AID</ContentText>
+            </ContentTitle>
+          </Content>
+          <Actions>
+            <Button>
+              <ButtonTitle>{`${totalClaimed}/${claimed} claimed`}</ButtonTitle>
+            </Button>
+            <LinearButton title="GET ON OPENSEA" type="openSea" />
+          </Actions>
         </Row>
-        <Actions>
-          <Button>
-            <ButtonTitle>Need 200 AID</ButtonTitle>
-          </Button>
-          <Button>
-            <ButtonTitle>
-              {`${totalClaimed}/${limitClaimed}`} claimed
-            </ButtonTitle>
-          </Button>
-        </Actions>
       </Body>
     </Wrapper>
   );

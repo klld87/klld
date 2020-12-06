@@ -7,86 +7,154 @@ import bananaCardCover from '../../../images/tokenCards/banana.png';
 
 // Blurs
 import greenBlur from '../../../images/cardBlurs/green.png';
-import greenBlurMobile from '../../../images/cardBlurs/greenMobile.png';
+import redBlur from '../../../images/cardBlurs/red.png';
+import orangeBlur from '../../../images/cardBlurs/orange.png';
+import grapesBlur from '../../../images/cardBlurs/grapes.png';
+import bananaBlur from '../../../images/cardBlurs/banana.png';
+
+// Backgrounds
+import paperBG1 from '../../../images/bgPaper/1.png';
+import paperBG2 from '../../../images/bgPaper/2.png';
+import paperBG3 from '../../../images/bgPaper/3.png';
 
 // Seasons
 import season1 from '../../../images/seasons/1.png';
 
 const seasonCards = [
   {
-    position: 'left',
     title: 'Green Apple Pump',
+    cover: appleCardCover,
+    titleBlur: greenBlur,
+    background: paperBG1,
+    bgColor: '#F6EA50',
+    position: 'left',
+    coverSizes: {
+      desktop: {
+        width: 374,
+        height: 389,
+      },
+      mobile: {
+        width: 271,
+        height: 282,
+      },
+    },
     description: "You'll get some gains, if you drink plenty of it",
     contents:
       'Sugar, Fructose, Lysergic acid,Synthetic Apple  Flavor, Pump Powder, Yellow 5, Blue 1',
-    parity: 'COMMON FLAVOR',
+    howToUse: 'soon',
+    parity: 'common flavor',
     price: 200,
+    claimed: 250,
     totalClaimed: 45,
-    limitClaimed: 250,
-    cover: appleCardCover,
-    titleBlurImage: greenBlur,
-    titleBlurMobileImage: greenBlurMobile,
-    seasonImage: season1,
+    season: season1,
   },
   {
-    position: 'right',
     title: 'Red Cherry Dump',
-    description: 'The cherry on the cake with red candles',
-    contents:
-      'Sugar, Fructose, Lysergic acid, Synthetic Cherry Flavor, Dump Powder, Red 40',
-    parity: 'COMMON FLAVOR',
-    price: 200,
-    totalClaimed: 45,
-    limitClaimed: 250,
     cover: cheeryCardCover,
-    titleBlurImage: greenBlur,
-    titleBlurMobileImage: greenBlurMobile,
-    seasonImage: season1,
-  },
-  {
-    position: 'left',
-    title: 'Bitcoin Orange',
+    titleBlur: redBlur,
+    background: paperBG2,
+    bgColor: '#E87D9D',
+    position: 'right',
+    coverSizes: {
+      desktop: {
+        width: 422,
+        height: 487,
+      },
+      mobile: {
+        width: 306,
+        height: 353,
+      },
+    },
     description: 'The cherry on the cake with red candles',
     contents:
       'Sugar, Fructose, Lysergic acid, Synthetic Cherry Flavor, Dump Powder, Red 40',
-    parity: 'COMMON FLAVOR',
+    howToUse: 'soon',
+    parity: 'common flavor',
     price: 150,
-    totalClaimed: 45,
-    limitClaimed: 250,
-    cover: orangeCardCover,
-    titleBlurImage: greenBlur,
-    titleBlurMobileImage: greenBlurMobile,
-    seasonImage: season1,
+    claimed: 15,
+    totalClaimed: 0,
+    season: season1,
   },
   {
-    position: 'right',
+    title: 'Bitcoin Orange',
+    cover: orangeCardCover,
+    titleBlur: orangeBlur,
+    background: paperBG3,
+    bgColor: '#FFD63B',
+    position: 'left',
+    coverSizes: {
+      desktop: {
+        width: 401,
+        height: 438,
+      },
+      mobile: {
+        width: 290,
+        height: 317,
+      },
+    },
+    description: 'Now you can taste the orange coin!',
+    contents:
+      'Sugar, Fructose, Lysergic acid, Synthetic Orange Flavor, Satoshi DNA Powder, Yellow 6, Yellow 6 Lake, Red 40 Lake',
+    howToUse: 'soon',
+    parity: 'common flavor',
+    price: 150,
+    claimed: 20,
+    totalClaimed: 0,
+    season: season1,
+  },
+  {
     title: 'Grapes of ETH',
+    cover: grapesCardCover,
+    titleBlur: grapesBlur,
+    background: paperBG1,
+    bgColor: '#E87D9D',
+    position: 'right',
+    coverSizes: {
+      desktop: {
+        width: 358,
+        height: 358,
+      },
+      mobile: {
+        width: 280,
+        height: 280,
+      },
+    },
     description: "Please, don't rip the G letter off",
     contents:
       'Sugar, Fructose, Lysergic acid, Synthetic Grape Flavor, Crystal ETH, Red 40, Blue 1',
-    parity: 'COMMON FLAVOR',
+    howToUse: 'soon',
+    parity: 'common flavor',
     price: 150,
-    totalClaimed: 123,
-    limitClaimed: 300,
-    cover: grapesCardCover,
-    titleBlurImage: greenBlur,
-    titleBlurMobileImage: greenBlurMobile,
-    seasonImage: season1,
+    claimed: 123,
+    totalClaimed: 300,
+    season: season1,
   },
   {
-    position: 'left',
     title: 'Banana Fomo',
+    cover: bananaCardCover,
+    titleBlur: bananaBlur,
+    background: paperBG2,
+    bgColor: '#FFD63B',
+    position: 'left',
+    coverSizes: {
+      desktop: {
+        width: 378,
+        height: 378,
+      },
+      mobile: {
+        width: 303,
+        height: 303,
+      },
+    },
     description: 'Drives you bananas and makes you panic buy',
     contents:
       'Sugar, Fructose, Lysergic acid, Synthetic Banana Flavor, Epinephrine Powder, Cortisol Powder, Yellow 5',
-    parity: 'COMMON FLAVOR',
+    howToUse: 'soon',
+    parity: 'common flavor',
     price: 150,
+    claimed: 250,
     totalClaimed: 250,
-    limitClaimed: 250,
-    cover: bananaCardCover,
-    titleBlurImage: greenBlur,
-    titleBlurMobileImage: greenBlurMobile,
-    seasonImage: season1,
+    season: season1,
   },
 ];
 

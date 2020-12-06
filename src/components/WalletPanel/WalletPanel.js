@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Flex, Box } from 'reflexbox';
 
+import Container from '../Container';
+
+// Modals
+import WalletConnectModal from '../../modals/WalletConnect';
 import WalletModal from '../../modals/Wallet';
 import MyAccountModal from '../../modals/MyAccount';
-import Container from '../Container';
 
 import { Wrapper, BalancesList, WalletBalance, Button } from './styles';
 
@@ -19,6 +22,13 @@ const WalletPanel = (props) => {
 
   const [isWalletModalOpened, setWalletModalOpened] = React.useState(false);
   const [isAccountModalOpened, setAccountModalOpened] = React.useState(false);
+  const [isWalletConnectModalOpen, setWalletConnectModalOpen] = React.useState(
+    false
+  );
+
+  const toggleWalletConnectModal = () => {
+    setWalletConnectModalOpen(!isWalletConnectModalOpen);
+  };
 
   const onClickButton = () => {
     if (isWalletUnlocked) {
@@ -39,6 +49,15 @@ const WalletPanel = (props) => {
 
   const toggleAccountModal = () => {
     setAccountModalOpened(!isAccountModalOpened);
+  };
+
+  const unlockWallet = (type) => {
+    if (type === 'metaMask') {
+      onUnlock();
+    } else {
+      toggleWalletModal();
+      toggleWalletConnectModal();
+    }
   };
 
   return (
@@ -76,7 +95,7 @@ const WalletPanel = (props) => {
         open={isWalletModalOpened}
         onCloseModal={toggleWalletModal}
         isWalletUnlocked={isWalletUnlocked}
-        onUnlock={onUnlock}
+        onUnlock={unlockWallet}
       />
       <MyAccountModal
         open={isAccountModalOpened}
@@ -85,6 +104,10 @@ const WalletPanel = (props) => {
         koolBalance={koolBalance}
         onSignOut={handleSignOut}
         userAddress={userAddress}
+      />
+      <WalletConnectModal
+        open={isWalletConnectModalOpen}
+        onCloseModal={toggleWalletConnectModal}
       />
     </>
   );

@@ -12,11 +12,18 @@ import dragonfruitBlur from '../../../images/cardBlurs/dragonfruit.png';
 // Ingridients covers
 import mixingCover from '../../../images/mixingCovers/1.png';
 
+// Backgrounds
+import paperBG1 from '../../../images/bgPaper/1.png';
+import paperBG2 from '../../../images/bgPaper/2.png';
+import paperBG3 from '../../../images/bgPaper/3.png';
+
 const mixingCards = [
   {
     title: 'Moonshine punch',
     cover: punchCover,
     titleBlur: navyBlueBlur,
+    bgColor: '#E5BB9D',
+    background: paperBG1,
     description: 'How many punches before the moon?',
     contents:
       'fructose, lysergic acid, synthetic blueberry flavor, moondust, blue 1, yellow 5',
@@ -53,6 +60,8 @@ const mixingCards = [
     title: 'Rugberry',
     cover: ohCover,
     titleBlur: blueBlur,
+    bgColor: '#3BDCFF',
+    background: paperBG2,
     description: 'The most popular DeFi flavor!',
     contents:
       'Sugar, Fructose, Lysergic acid, Synthetic Blueberry Flavor, Persion Rug Dust, Blue 1',
@@ -79,6 +88,8 @@ const mixingCards = [
     title: 'Vitalik Butter',
     cover: ohCover,
     titleBlur: butterBlur,
+    bgColor: '#3BDCFF',
+    background: paperBG3,
     description: "Don't ask where the milk for this butter came from",
     contents:
       'Sugar, Fructose, Lysergic acid, Butter Flavor, Vitalik Extract, Blue 1, Yellow 5',
@@ -105,6 +116,8 @@ const mixingCards = [
     title: 'DOGE food',
     cover: ohCover,
     titleBlur: dogeBlur,
+    bgColor: '#3BDCFF',
+    background: paperBG1,
     description: 'Very taste. Much kool. So doge food. Wow',
     contents:
       'Many Sugar, Much Fructose, Very Lysergic acid, Little Synthetic Beef Flavor, Such Dry Doge Food,',
@@ -142,6 +155,8 @@ const mixingCards = [
     title: 'Rekt Dragonfruit',
     cover: ohCover,
     titleBlur: dragonfruitBlur,
+    bgColor: '#3BDCFF',
+    background: paperBG3,
     description: 'One sip and you are rekt',
     contents:
       'Sugar, Fructose, Lysergic acid, Synthetic Pitaya Flavor, Rekt Cinder, Red 3',
@@ -173,6 +188,8 @@ const mixingCards = [
     title: 'CHAD LEMONADE',
     cover: ohCover,
     titleBlur: dogeBlur,
+    bgColor: '#3BDCFF',
+    background: paperBG2,
     description: 'One sip and you are rekt',
     contents:
       'Sugar, Fructose, Amino Acid Mix, Citric Acid, Chad Juice Flavor, Lemon Flavor, Testosterone Powder, Red 40, Yellow 5',

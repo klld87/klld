@@ -46,12 +46,14 @@ const MixingCard = (props) => {
     toxicity,
     ingridients,
     openParityModal,
+    bgColor,
+    background,
   } = props;
 
   return (
     <Wrapper>
       <Cover background={cover} />
-      <Body>
+      <Body bgColor={bgColor} background={background}>
         <TitleBlur background={titleBlur}>
           <Title>{title}</Title>
         </TitleBlur>
@@ -84,7 +86,7 @@ const MixingCard = (props) => {
           </Content>
           <Right>
             {ingridients?.length ? (
-              <IngridientsBlock>
+              <IngridientsBlock background={background}>
                 <IngridientsLabel>Ingridients:</IngridientsLabel>
                 <IngridientsList>
                   <IngridientsPlus>+</IngridientsPlus>

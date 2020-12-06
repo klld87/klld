@@ -41,8 +41,11 @@ export const Cover = styled.div`
 `;
 
 export const Body = styled.div`
-  background-color: #e5bb9d;
+  background-color: ${({ bgColor }) => bgColor};
   border: 2px solid #000000;
+  background-image: ${({ background }) => `url(${background})`};
+  background-repeat: repeat;
+  background-size: cover;
   border-radius: 15px;
   width: 100%;
 
@@ -143,6 +146,9 @@ export const ContentText = styled.span`
 
 export const IngridientsBlock = styled.div`
   background-color: #3bdcff;
+  background-image: ${({ background }) => `url(${background})`};
+  background-repeat: repeat;
+  background-size: cover;
   z-index: 2;
   padding: 20px 45px 20px 45px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

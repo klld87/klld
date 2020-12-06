@@ -51,7 +51,12 @@ const SpecialCard = (props) => {
         mobileSizes={coverSizes.mobile}
         position={position}
       />
-      <Body background={background} bgColor={bgColor} position={position}>
+      <Body
+        background={background}
+        bgColor={bgColor}
+        position={position}
+        desktopSizes={coverSizes.desktop}
+      >
         <SeasonCard image={season} position={position} />
         <TitleBlur background={titleBlur} position={position}>
           <Title>{title}</Title>

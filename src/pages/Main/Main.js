@@ -42,7 +42,6 @@ const MainPage = () => {
         setEthEnabled(true);
         localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
       } else {
-        // Fix me
       }
     } catch {}
   };

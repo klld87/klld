@@ -50,9 +50,11 @@ export const Body = styled.div`
   width: 100%;
 
   @media (min-width: 1024px) {
-    width: 80%;
-    padding: ${({ position }) =>
-      position === 'left' ? '20px 50px 0 80px' : '20px 105px 0 50px'};
+    width: ${({ position }) => (position === 'left' ? '80%' : '90%')};
+    padding: ${({ position, desktopSizes }) =>
+      position === 'left'
+        ? `20px 50px 0 ${desktopSizes.width / 2}px`
+        : '20px 105px 0 50px'};
   }
 `;
 
@@ -161,6 +163,10 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 28px 0 0;
+
+  @media (min-width: 1024px) {
+    width: 250px;
+  }
 `;
 
 export const ButtonTitle = styled.p`
