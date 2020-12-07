@@ -18,6 +18,7 @@ import {
   Button,
   ButtonTitle,
   SeasonItem,
+  Link,
 } from './styles';
 
 const seasonsList = [
@@ -41,9 +42,15 @@ const NFTCocktailsCover = (props) => {
         <Box width={[1, 1, 3 / 4, 3 / 4]} pl={[0, 0, '100px', '100px']}>
           <Title>MINT NFT flavors for KOOL COCKTAILS!</Title>
           <Actions>
-            <Button>
-              <ButtonTitle>Tokenomics</ButtonTitle>
-            </Button>
+            <Link
+              href="https://medium.com/@hello_41403/kool-tokenomics-and-nfts-9719900a33ff"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button>
+                <ButtonTitle>Tokenomics</ButtonTitle>
+              </Button>
+            </Link>
             <Button onClick={onOpenHowItWorksModal}>
               <ButtonTitle>How it works?</ButtonTitle>
             </Button>

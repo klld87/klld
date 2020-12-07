@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Countdown from 'react-countdown';
 
 // Styles
 import {
@@ -24,6 +25,7 @@ import {
   ButtonTitle,
   ParityBlock,
   ParityRow,
+  CountDownRow,
 } from './styles';
 
 // Components
@@ -50,66 +52,73 @@ const MixingCard = (props) => {
     background,
     onClickButton,
     isLast,
+    withCountDown,
   } = props;
 
   return (
     <Wrapper isLast={isLast}>
       <Cover background={cover} />
-      <Body bgColor={bgColor} background={background}>
-        <TitleBlur background={titleBlur}>
-          <Title>{title}</Title>
-        </TitleBlur>
-        <Jug />
-        <Row>
-          <Content>
-            <ContentTitle>
-              Description: <ContentText>{description}</ContentText>
-            </ContentTitle>
-            <ContentTitle>
-              CONTENTS: <ContentText>{contents}</ContentText>
-            </ContentTitle>
-            <ParityBlock>
+      {withCountDown ? (
+        <CountDownRow bgColor={bgColor} background={background}>
+          <Countdown date={new Date('Dec 11 2020')} />
+        </CountDownRow>
+      ) : (
+        <Body bgColor={bgColor} background={background}>
+          <TitleBlur background={titleBlur}>
+            <Title>{title}</Title>
+          </TitleBlur>
+          <Jug />
+          <Row>
+            <Content>
               <ContentTitle>
-                RARITY: <ContentText>{parity}</ContentText>
+                Description: <ContentText>{description}</ContentText>
               </ContentTitle>
-              <ParityRow>
-                <Parity type={parity} openModal={openParityModal} />
-              </ParityRow>
-            </ParityBlock>
-            <ContentTitle>
-              RECIPE: <ContentText>{recipe}</ContentText>
-            </ContentTitle>
-            <Actions>
-              <LinearButton
-                onClickButton={onClickButton}
-                title="MIX"
-                type="mix"
-              />
-              <Button>
-                <ButtonTitle>{mixedCount} mixed</ButtonTitle>
-              </Button>
-            </Actions>
-          </Content>
-          <Right>
-            {ingridients?.length ? (
-              <IngridientsBlock background={background}>
-                <IngridientsLabel>Ingridients:</IngridientsLabel>
-                <IngridientsList>
-                  <IngridientsPlus>+</IngridientsPlus>
-                  {ingridients.map((item, index) => (
-                    <Ingridient {...item} key={index} />
-                  ))}
-                </IngridientsList>
-              </IngridientsBlock>
-            ) : null}
-            <StatsList>
-              <StatsItem>sugar: {sugar}</StatsItem>
-              <StatsItem>acidity: {acidity}</StatsItem>
-              <StatsItem>toxicity: {toxicity}</StatsItem>
-            </StatsList>
-          </Right>
-        </Row>
-      </Body>
+              <ContentTitle>
+                CONTENTS: <ContentText>{contents}</ContentText>
+              </ContentTitle>
+              <ParityBlock>
+                <ContentTitle>
+                  RARITY: <ContentText>{parity}</ContentText>
+                </ContentTitle>
+                <ParityRow>
+                  <Parity type={parity} openModal={openParityModal} />
+                </ParityRow>
+              </ParityBlock>
+              <ContentTitle>
+                RECIPE: <ContentText>{recipe}</ContentText>
+              </ContentTitle>
+              <Actions>
+                <LinearButton
+                  onClickButton={onClickButton}
+                  title="MIX"
+                  type="mix"
+                />
+                <Button>
+                  <ButtonTitle>{mixedCount} mixed</ButtonTitle>
+                </Button>
+              </Actions>
+            </Content>
+            <Right>
+              {ingridients?.length ? (
+                <IngridientsBlock background={background}>
+                  <IngridientsLabel>Ingridients:</IngridientsLabel>
+                  <IngridientsList>
+                    <IngridientsPlus>+</IngridientsPlus>
+                    {ingridients.map((item, index) => (
+                      <Ingridient {...item} key={index} />
+                    ))}
+                  </IngridientsList>
+                </IngridientsBlock>
+              ) : null}
+              <StatsList>
+                <StatsItem>sugar: {sugar}</StatsItem>
+                <StatsItem>acidity: {acidity}</StatsItem>
+                <StatsItem>toxicity: {toxicity}</StatsItem>
+              </StatsList>
+            </Right>
+          </Row>
+        </Body>
+      )}
     </Wrapper>
   );
 };

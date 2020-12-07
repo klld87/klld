@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 import Button from '../Button';
 import UnlockButton from '../UnlockButton';
@@ -213,4 +214,9 @@ export const Content = styled.div`
   @media (min-width: 1100px) {
     grid-template-columns: 60% 40%;
   }
+`;
+
+export const NavButton = styled(NavLink)`
+  margin-bottom: 25px;
+  display: block;
 `;

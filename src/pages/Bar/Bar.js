@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Preload } from 'react-preload';
 
 // Components
 import BarHeader from '../../components/BarHeader';
@@ -81,116 +80,97 @@ const Bar = () => {
     }
   };
 
-  const loadingIndicator = (
-    <div style={{ flex: 1, backgroundColor: 'red' }}>
-      <p>loadingIndicator</p>
-    </div>
-  );
-
   return (
-    <Preload
-      loadingIndicator={loadingIndicator}
-      autoResolveDelay={2000}
-      resolveOnError={true}
-      mountChildren={true}
-    >
-      <Wrapper>
-        <WatermelonFruit />
-        <PearFruit />
-        <GrapesFruit />
-        <BarHeader
-          onOpenNFTWalletModal={toggleNFTWalletModal}
-          unlockWallet={toggleWalletModal}
-          isWalletUnlocked={false} // Fix me
-          koolBalance={560} // Fix me
-          aidBalance={0} // Fix me
-        />
-        <Container>
-          <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
-          <TokenStats pageFrom="bar" />
-          {seasonCards.map((seaconCard, seaconCardIndex) => {
-            const isLast = seaconCardIndex === seasonCards.length - 1;
+    <Wrapper>
+      <WatermelonFruit />
+      <PearFruit />
+      <GrapesFruit />
+      <BarHeader
+        onOpenNFTWalletModal={toggleNFTWalletModal}
+        unlockWallet={toggleWalletModal}
+        isWalletUnlocked={false} // Fix me
+        koolBalance={560} // Fix me
+        aidBalance={0} // Fix me
+      />
+      <Container>
+        <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
+        <TokenStats pageFrom="bar" />
+        {seasonCards.map((seaconCard, seaconCardIndex) => {
+          const isLast = seaconCardIndex === seasonCards.length - 1;
 
-            return (
-              <SeasonCard
-                key={seaconCard.title}
-                openParityModal={toggleParityModal}
-                onClickButton={toggleEnterAmountModal}
-                isLast={isLast}
-                {...seaconCard}
-              />
-            );
-          })}
-          <SpecialEditionBanner />
-          {specialCards.map((specialCard, specialCardIndex) => {
-            const isLast = specialCardIndex === specialCards.length - 1;
+          return (
+            <SeasonCard
+              key={seaconCard.title}
+              openParityModal={toggleParityModal}
+              onClickButton={toggleEnterAmountModal}
+              isLast={isLast}
+              {...seaconCard}
+            />
+          );
+        })}
+        <SpecialEditionBanner />
+        {specialCards.map((specialCard, specialCardIndex) => {
+          const isLast = specialCardIndex === specialCards.length - 1;
 
-            return (
-              <SpecialCard
-                key={specialCard.title}
-                openParityModal={toggleParityModal}
-                onClickButton={toggleEnterAmountModal}
-                isLast={isLast}
-                {...specialCard}
-              />
-            );
-          })}
-          <KoolMixingBanner />
-          {mixingCards.map((mixingCard, mixingCardIndex) => {
-            const isLast = mixingCardIndex === mixingCards.length - 1;
+          return (
+            <SpecialCard
+              key={specialCard.title}
+              openParityModal={toggleParityModal}
+              onClickButton={toggleEnterAmountModal}
+              isLast={isLast}
+              {...specialCard}
+            />
+          );
+        })}
+        <KoolMixingBanner />
+        {mixingCards.map((mixingCard, mixingCardIndex) => {
+          const isLast = mixingCardIndex === mixingCards.length - 1;
 
-            return (
-              <MixingCard
-                key={mixingCard.title}
-                openParityModal={toggleParityModal}
-                onClickButton={toggleEnterAmountModal}
-                isLast={isLast}
-                {...mixingCard}
-              />
-            );
-          })}
-          <Footer />
-        </Container>
-        <HowItWorksModal
-          open={isHowItWorksModalOpen}
-          onCloseModal={toggleHowItWorksModal}
-        />
-        <NFTWalletModal
-          open={isNFTWalletModalOpen}
-          onCloseModal={toggleNFTWalletModal}
-          openNFTBar={() => {
-            toggleNFTWalletModal();
-            toggleNFTBarModal();
-          }}
-          koolBalance={560} // Fix me
-          aidBalance={0} // Fix me
-          aidHarvest={0} // Fix me
-        />
-        <NFTBarModal
-          open={isNFTBarModalOpen}
-          onCloseModal={toggleNFTBarModal}
-        />
-        <WalletModal
-          open={isWalletModalOpen}
-          onCloseModal={toggleWalletModal}
-          isWalletUnlocked={false} // Fix me
-          onUnlock={onUnlockWallet}
-        />
-        <WalletConnectModal
-          open={isWalletConnectModalOpen}
-          onCloseModal={toggleWalletConnectModal}
-        />
-        <ParityModal
-          open={isParityModalOpen}
-          onCloseModal={toggleParityModal}
-        />
-        <EnterAmountModal
-          open={isEnterAmountModalOpen}
-          onCloseModal={toggleEnterAmountModal}
-        />
-        <ScrollToTopButton />
-      </Wrapper>
-    </Preload>
+          return (
+            <MixingCard
+              key={mixingCard.title}
+              openParityModal={toggleParityModal}
+              onClickButton={toggleEnterAmountModal}
+              isLast={isLast}
+              {...mixingCard}
+            />
+          );
+        })}
+        <Footer />
+      </Container>
+      <HowItWorksModal
+        open={isHowItWorksModalOpen}
+        onCloseModal={toggleHowItWorksModal}
+      />
+      <NFTWalletModal
+        open={isNFTWalletModalOpen}
+        onCloseModal={toggleNFTWalletModal}
+        openNFTBar={() => {
+          toggleNFTWalletModal();
+          toggleNFTBarModal();
+        }}
+        koolBalance={560} // Fix me
+        aidBalance={0} // Fix me
+        aidHarvest={0} // Fix me
+      />
+      <NFTBarModal open={isNFTBarModalOpen} onCloseModal={toggleNFTBarModal} />
+      <WalletModal
+        open={isWalletModalOpen}
+        onCloseModal={toggleWalletModal}
+        isWalletUnlocked={false} // Fix me
+        onUnlock={onUnlockWallet}
+      />
+      <WalletConnectModal
+        open={isWalletConnectModalOpen}
+        onCloseModal={toggleWalletConnectModal}
+      />
+      <ParityModal open={isParityModalOpen} onCloseModal={toggleParityModal} />
+      <EnterAmountModal
+        open={isEnterAmountModalOpen}
+        onCloseModal={toggleEnterAmountModal}
+      />
+      <ScrollToTopButton />
+    </Wrapper>
   );
 };
 

@@ -93,3 +93,5 @@ export const SeasonItem = styled.div`
     height: 110px;
   }
 `;
+
+export const Link = styled.a``;

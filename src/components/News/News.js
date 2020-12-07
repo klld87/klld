@@ -13,7 +13,8 @@ const news = [
   {
     id: 'news2',
     title: 'NFTz tokenomics',
-    link: '#',
+    link:
+      'https://medium.com/@hello_41403/kool-tokenomics-and-nfts-9719900a33ff',
   },
 ];
 
@@ -45,7 +46,6 @@ const News = () => {
             <br />
             cocktails
           </FlavorText>
-          <FlavorText color="#FFC5C5">very very soon...</FlavorText>
         </Flavors>
       </Container>
     </section>

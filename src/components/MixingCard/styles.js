@@ -251,3 +251,30 @@ export const ParityBlock = styled.div`
 export const ParityRow = styled.div`
   margin: -22px 0 0 20px;
 `;
+
+export const CountDownRow = styled(Body)`
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0 0 0;
+
+  span {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+  }
+
+  @media (min-width: 1024px) {
+    height: 372px;
+    padding: 15px 15px 20px 410px;
+
+    span {
+      font-weight: bold;
+      font-size: 50px;
+      line-height: 20px;
+    }
+  }
+`;

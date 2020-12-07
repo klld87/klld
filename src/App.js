@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, HashRouter } from 'react-router-dom';
 
 import routes from './routes';
+
+import Preload from './components/Preload';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -158,13 +160,15 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter>
-        <Switch>
-          {routes.map((route) => {
-            return <Route key={route.path} {...route} />;
-          })}
-        </Switch>
-      </BrowserRouter>
+      <Preload>
+        <HashRouter basename="/">
+          <Switch>
+            {routes.map((route) => {
+              return <Route key={route.path} {...route} />;
+            })}
+          </Switch>
+        </HashRouter>
+      </Preload>
     </>
   );
 };

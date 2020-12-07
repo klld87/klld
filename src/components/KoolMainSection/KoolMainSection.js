@@ -14,6 +14,7 @@ import {
   ButtonList,
   StyledButton,
   UniIcon,
+  NavButton,
 } from './styles';
 
 import koolman from '../../images/koolman.svg';
@@ -51,9 +52,11 @@ const KoolMainSection = ({ isUnlocked, onUnlock }) => {
               <UniIcon />
               <span>Buy $KOOL</span>
             </StyledButton>
-            <StyledButton borderColor="#BF36FF" hoverBackground="#BF36FF">
-              KOOL BAR NFTz
-            </StyledButton>
+            <NavButton to="/bar">
+              <StyledButton borderColor="#BF36FF" hoverBackground="#BF36FF">
+                KOOL BAR NFTz
+              </StyledButton>
+            </NavButton>
             <StyledButton
               tagName="a"
               href="https://kool.lol/farm/"
