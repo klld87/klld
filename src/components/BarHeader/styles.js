@@ -225,6 +225,11 @@ export const BalanceItem = styled.p`
   font-size: 25px;
   line-height: 35px;
   color: #ffffff;
+
+  @media (min-width: 1024px) {
+    font-size: 20px;
+    line-height: 25px;
+  }
 `;
 
 export const Balances = styled.div``;

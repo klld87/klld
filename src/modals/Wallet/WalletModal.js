@@ -43,8 +43,8 @@ const WalletModal = (props) => {
             <WalletItem>
               <WalletIcon type="walletConnect" logo={walletConnectLogo} />
               <WalletName>WalletConnect</WalletName>
-              <Button onClick={() => onUnlock('walletConnect')}>
-                <ButtonTitle>Connect</ButtonTitle>
+              <Button>
+                <ButtonTitle>soon</ButtonTitle>
               </Button>
             </WalletItem>
           </Box>

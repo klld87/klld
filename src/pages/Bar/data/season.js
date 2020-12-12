@@ -22,6 +22,7 @@ import season1 from '../../../images/seasons/1.png';
 
 const seasonCards = [
   {
+    tokenId: 3,
     title: 'Green Apple Pump',
     cover: appleCardCover,
     titleBlur: greenBlur,

@@ -23,6 +23,9 @@ import {
 import LinearButton from '../LinearButton';
 import Parity from '../Parity';
 
+// Api
+import { getNFTTotalSupply, getDrink } from '../../api';
+
 const SeasonCard = (props) => {
   const {
     title,
@@ -41,9 +44,29 @@ const SeasonCard = (props) => {
     openParityModal,
     price,
     howToUse,
-    onClickButton,
+    // onClickButton,
     isLast,
+    tokenId,
   } = props;
+
+  const [totalSupply, setTotalSupply] = React.useState(null);
+  const [balanceOf, setBalanceOf] = React.useState(null);
+
+  React.useEffect(() => {
+    if (tokenId) {
+      getTokenInfo();
+    }
+  }, [tokenId]);
+
+  const getTokenInfo = async () => {
+    const getTotalSupply = await getNFTTotalSupply(tokenId);
+
+    console.log('getTotalSupply', getTotalSupply);
+  };
+
+  const onClickButton = async () => {
+    getDrink(tokenId);
+  };
 
   return (
     <Wrapper position={position} isLast={isLast}>
@@ -92,8 +115,8 @@ const SeasonCard = (props) => {
             </Button>
             <LinearButton
               onClickButton={onClickButton}
-              title="GET ON OPENSEA"
-              type="openSea"
+              title="APPROVE AID"
+              type="approveAID"
             />
           </Actions>
         </Row>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ethers from 'ethers';
 
 // Components
 import BarHeader from '../../components/BarHeader';
@@ -30,6 +31,9 @@ import specialCards from './data/special.js';
 import seasonCards from './data/season.js';
 import mixingCards from './data/mixing';
 
+// Api
+import { getKoolPrice, getKoolBalance, getAidBalance } from '../../api';
+
 const Bar = () => {
   const [isHowItWorksModalOpen, setHowItWorksModalOpen] = React.useState(false);
   const [isNFTWalletModalOpen, setNFTWalletModalOpen] = React.useState(false);
@@ -42,6 +46,75 @@ const Bar = () => {
   const [isEnterAmountModalOpen, setEnterAmountModalOpen] = React.useState(
     false
   );
+  const [koolPrice, setKoolPrice] = React.useState(null);
+  const [web3Provider, setWeb3Provider] = React.useState(null);
+  const isFirstRender = React.useRef(true);
+  const [userAddress, setUserAddress] = React.useState(null);
+  const [isEthEnabled, setEthEnabled] = React.useState(false);
+  const [koolBalance, setKoolBalance] = React.useState(null);
+  const [aidBalance, setAidBalance] = React.useState(null);
+
+  const handleGetKoolPrice = async () => {
+    const price = await getKoolPrice();
+    const formattedPrice = (Math.round(price * 100) / 100).toString();
+    setKoolPrice(formattedPrice);
+  };
+
+  const setProvider = () => {
+    if (typeof window.ethereum !== 'undefined') {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      setWeb3Provider(provider);
+    }
+  };
+
+  const handleAccountChange = (accounts) => {
+    // first render check to load/not load account info that depends on singed out or not
+    const isInitialAccountRender = isFirstRender.current;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    }
+
+    if (
+      isInitialAccountRender &&
+      !Boolean(localStorage.getItem('IS_KOOL_METAMASK_CONNECTED'))
+    ) {
+      return;
+    }
+
+    if (accounts.length === 0) {
+      setUserAddress(null);
+      localStorage.removeItem('IS_KOOL_METAMASK_CONNECTED');
+    } else {
+      localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
+      setUserAddress(accounts[0]);
+    }
+  };
+
+  React.useEffect(() => {
+    setProvider();
+    handleGetKoolPrice();
+
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('accountsChanged', handleAccountChange);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const getBalances = async () => {
+      const kool = await getKoolBalance(web3Provider, userAddress);
+      const aid = await getAidBalance(web3Provider, userAddress);
+
+      setKoolBalance(kool);
+      setAidBalance(aid);
+    };
+
+    if (userAddress && web3Provider) {
+      if (!isEthEnabled) setEthEnabled(true);
+      getBalances();
+    } else {
+      setEthEnabled(false);
+    }
+  }, [userAddress, isEthEnabled, web3Provider]);
 
   const toggleHowItWorksModal = () => {
     setHowItWorksModalOpen(!isHowItWorksModalOpen);
@@ -71,9 +144,15 @@ const Bar = () => {
     setEnterAmountModalOpen(!isEnterAmountModalOpen);
   };
 
-  const onUnlockWallet = (walletType) => {
+  const onUnlockWallet = async (walletType) => {
     if (walletType === 'metaMask') {
-      // Do somethind fix me
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      const address = accounts[0];
+      setUserAddress(address);
+      setEthEnabled(true);
+      localStorage.setItem('IS_KOOL_METAMASK_CONNECTED', true);
     } else {
       setWalletModalOpen(false);
       setWalletConnectModalOpen(true);
@@ -88,13 +167,13 @@ const Bar = () => {
       <BarHeader
         onOpenNFTWalletModal={toggleNFTWalletModal}
         unlockWallet={toggleWalletModal}
-        isWalletUnlocked={false} // Fix me
-        koolBalance={560} // Fix me
-        aidBalance={0} // Fix me
+        isWalletUnlocked={userAddress !== null}
+        koolBalance={koolBalance}
+        aidBalance={aidBalance}
       />
       <Container>
         <NFTCocktailsCover onOpenHowItWorksModal={toggleHowItWorksModal} />
-        <TokenStats pageFrom="bar" />
+        <TokenStats koolPrice={koolPrice} pageFrom="bar" />
         {seasonCards.map((seaconCard, seaconCardIndex) => {
           const isLast = seaconCardIndex === seasonCards.length - 1;
 
@@ -149,15 +228,15 @@ const Bar = () => {
           toggleNFTWalletModal();
           toggleNFTBarModal();
         }}
-        koolBalance={560} // Fix me
-        aidBalance={0} // Fix me
-        aidHarvest={0} // Fix me
+        koolBalance={koolBalance}
+        aidBalance={aidBalance}
+        aidHarvest={0}
       />
       <NFTBarModal open={isNFTBarModalOpen} onCloseModal={toggleNFTBarModal} />
       <WalletModal
         open={isWalletModalOpen}
         onCloseModal={toggleWalletModal}
-        isWalletUnlocked={false} // Fix me
+        isWalletUnlocked={userAddress !== null}
         onUnlock={onUnlockWallet}
       />
       <WalletConnectModal
