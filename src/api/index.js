@@ -20,8 +20,7 @@ export const getBalance = async (provider, tokenAddress, userAddress) => {
   const tokenContract = getContract(provider, tokenAddress, ERC20_ABI);
   try {
     return await tokenContract.balanceOf(userAddress);
-  } catch (e) {
-    console.log(e);
+  } catch {
     return '0';
   }
 };
@@ -78,11 +77,12 @@ export const getSpecialDrink = (tokenId, amount) => {
       return 'success';
     })
     .catch((error) => {
-      console.log('error', error);
-      return 'error';
-      // const parseData = JSON.parse(JSON.stringify(error));
-      // const getMessage = parseData.error.message || null;
-      // return getMessage;
+      if (error?.code === 4001) {
+        return null;
+      }
+      const parseData = JSON.parse(JSON.stringify(error));
+      const getMessage = parseData.error.message || null;
+      return getMessage;
     });
 };
 
@@ -120,8 +120,7 @@ export const getKoolPrice = async () => {
     const koolPriceInEth = route.midPrice.invert().toSignificant(6);
 
     return Number(ethPrice) * Number(koolPriceInEth);
-  } catch (err) {
-    console.log(err);
+  } catch {
     return 0.38; // hardcode
   }
 };

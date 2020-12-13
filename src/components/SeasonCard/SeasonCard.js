@@ -17,6 +17,7 @@ import {
   ParityBlock,
   ParityRow,
   SeasonCardImage,
+  LoadingClaimed,
 } from './styles';
 
 // Components
@@ -53,12 +54,16 @@ const SeasonCard = (props) => {
     isLast,
     tokenId,
     refetchUserBalance,
+    isWalletUnlocked,
+    onUnlockWallet,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
   const [circulatingSupply, setCirculatingSupply] = React.useState(null);
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
+
+  const isLoadingBalance = totalSupply === null && circulatingSupply === null;
 
   React.useEffect(() => {
     if (tokenId && getTokenInfo) {
@@ -75,7 +80,14 @@ const SeasonCard = (props) => {
   };
 
   const onClickButton = async () => {
-    setModalOpen(true);
+    if (isLoadingBalance) {
+      return;
+    }
+    if (isWalletUnlocked) {
+      setModalOpen(true);
+    } else {
+      onUnlockWallet();
+    }
   };
 
   const onGetDrink = async (amount) => {
@@ -140,13 +152,18 @@ const SeasonCard = (props) => {
               </ContentTitle>
             </Content>
             <Actions position={position}>
-              <Button>
-                <ButtonTitle>{`${circulatingSupply}/${totalSupply} claimed`}</ButtonTitle>
+              <Button position={position}>
+                {isLoadingBalance ? (
+                  <LoadingClaimed />
+                ) : (
+                  <ButtonTitle>{`${circulatingSupply}/${totalSupply} claimed`}</ButtonTitle>
+                )}
               </Button>
               <LinearButton
                 onClickButton={onClickButton}
                 title={getButtonTitle()}
                 type={getButtonType()}
+                disabled={isLoadingBalance}
               />
             </Actions>
           </Row>

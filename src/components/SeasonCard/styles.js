@@ -1,4 +1,28 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+import loadingFruit from '../../images/fruits/loading.png';
+
+const bouncing = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -68,7 +92,7 @@ export const SeasonCardImage = styled.div`
   background-size: contain;
   position: absolute;
   border-radius: 35px;
-  right: 0;
+  right: ${({ position }) => (position === 'left' ? '0' : 'inherit')};
   top: -35px;
 
   @media (min-width: 1024px) {
@@ -160,9 +184,11 @@ export const Actions = styled.div`
 
   @media (min-width: 1024px) {
     margin: ${({ position }) =>
-      position === 'right' ? '0 0 -25px -100px' : '0 -60px -30px 0;'};
-    flex-direction: row;
+      position === 'right' ? '0 0 -25px -100px' : '0 -52px -30px 0'};
+    flex-direction: ${({ position }) =>
+      position === 'right' ? 'row' : 'row-reverse'};
     padding: 0;
+    justify-content: flex-start;
   }
 `;
 
@@ -179,7 +205,8 @@ export const Button = styled.div`
 
   @media (min-width: 1024px) {
     width: 215px;
-    margin: 0 28px 0 0;
+    margin: ${({ position }) =>
+      position === 'right' ? '0 28px 0 0' : '0 0 0 28px'};
   }
 `;
 
@@ -198,4 +225,16 @@ export const ParityBlock = styled.div`
 
 export const ParityRow = styled.div`
   margin: -22px 0 0 20px;
+`;
+
+export const LoadingClaimed = styled.span`
+  display: block;
+  margin: 0 auto;
+  width: 44px;
+  height: 37px;
+  background-image: url(${loadingFruit});
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-indent: -999999px;
+  animation: ${bouncing} 1.5s ease-in-out infinite;
 `;

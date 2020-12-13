@@ -59,6 +59,12 @@ const GlobalStyle = createGlobalStyle`
     max-width: 1150px;
     border-radius: 15px;
 
+    @media (max-width: 1024px) {
+      padding: 15px;
+      margin: 0;
+      box-shadow: none;
+    }
+
     &.parityModal {
       max-width: 374px;
       background-color: #FBF7E2;

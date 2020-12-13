@@ -50,6 +50,9 @@ const specialCards = [
     parity: 'super rare',
     initialPrice: '0.2 ETH',
     season: specialSeason,
+    mobileStyle: {
+      top: -160,
+    },
   },
   {
     tokenId: 14,
@@ -128,6 +131,9 @@ const specialCards = [
     parity: 'rare',
     price: '299 AID',
     season: specialSeason,
+    mobileStyle: {
+      top: -20,
+    },
   },
   {
     tokenId: 17,
@@ -153,6 +159,10 @@ const specialCards = [
     parity: 'common',
     price: '499 AID',
     season: specialSeason,
+    mobileStyle: {
+      top: 20,
+      right: -70,
+    },
   },
   {
     tokenId: 1,
@@ -203,6 +213,9 @@ const specialCards = [
     parity: 'super rare',
     price: '0.3 ETH',
     season: specialSeason,
+    mobileStyle: {
+      top: -50,
+    },
   },
 ];
 

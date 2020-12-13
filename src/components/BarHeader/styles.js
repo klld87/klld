@@ -90,7 +90,7 @@ export const NavLinkRouter = styled(RouterLink)`
   text-align: center;
   color: #ffffff;
   text-shadow: -2px 0 #000000, 0 2px #000000, 2px 0 #000000, 0 -2px #000000;
-  margin: 0 0 15px 0;
+  margin: 0;
 
   @media (min-width: 1024px) {
     margin: 0 25px;
@@ -232,4 +232,10 @@ export const BalanceItem = styled.p`
   }
 `;
 
-export const Balances = styled.div``;
+export const Balances = styled.div`
+  margin: 20px 0;
+
+  @media (min-width: 1024px) {
+    margin: 0;
+  }
+`;

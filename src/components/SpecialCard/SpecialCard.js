@@ -17,6 +17,7 @@ import {
   ParityBlock,
   ParityRow,
   SeasonCard,
+  LoadingClaimed,
 } from './styles';
 
 // Components
@@ -54,20 +55,25 @@ const SpecialCard = (props) => {
     price,
     refetchUserBalance,
     openSeaLink,
+    mobileStyle,
   } = props;
 
-  const [totalSupply, setTotalSupply] = React.useState(openSeaLink);
+  const [totalSupply, setTotalSupply] = React.useState(null);
   const [circulatingSupply, setCirculatingSupply] = React.useState(null);
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
 
+  const isFree = price === 'free';
+  const isLoadingBalance = totalSupply === null && circulatingSupply === null;
+
   React.useEffect(() => {
-    if (tokenId && getTokenInfo && !openSeaLink) {
-      getTokenInfo();
-    }
     if (openSeaLink) {
       setTotalSupply(5);
       setCirculatingSupply(5);
+    } else {
+      if (tokenId) {
+        getTokenInfo();
+      }
     }
   }, [tokenId, openSeaLink]);
 
@@ -80,6 +86,9 @@ const SpecialCard = (props) => {
   };
 
   const onClickButton = async () => {
+    if (isLoadingBalance) {
+      return;
+    }
     if (openSeaLink) {
       return null; // Fix me
     }
@@ -100,6 +109,8 @@ const SpecialCard = (props) => {
   const getButtonTitle = () => {
     if (openSeaLink) {
       return 'GET ON OPENSEA';
+    } else if (isFree) {
+      return 'CLAIM FOR FREE';
     }
     return 'APPROVE AID';
   };
@@ -107,6 +118,8 @@ const SpecialCard = (props) => {
   const getButtonType = () => {
     if (openSeaLink) {
       return 'openSea';
+    } else if (isFree) {
+      return 'free';
     }
     return 'approveAID';
   };
@@ -119,6 +132,7 @@ const SpecialCard = (props) => {
           desktopSizes={coverSizes.desktop}
           mobileSizes={coverSizes.mobile}
           position={position}
+          mobileStyle={mobileStyle}
         />
         <Body
           background={background}
@@ -154,13 +168,23 @@ const SpecialCard = (props) => {
               </ContentTitle>
             </Content>
             <Actions position={position}>
-              <Button>
-                <ButtonTitle>{`${circulatingSupply}/${totalSupply} claimed`}</ButtonTitle>
+              <Button position={position}>
+                {isLoadingBalance ? (
+                  <LoadingClaimed />
+                ) : (
+                  <ButtonTitle>
+                    {isFree
+                      ? `${circulatingSupply}/1500 claimed`
+                      : `${circulatingSupply}/${totalSupply} claimed`}
+                  </ButtonTitle>
+                )}
               </Button>
               <LinearButton
                 onClickButton={onClickButton}
                 title={getButtonTitle()}
                 type={getButtonType()}
+                link={openSeaLink}
+                disabled={isLoadingBalance}
               />
             </Actions>
           </Row>

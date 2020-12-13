@@ -53,7 +53,7 @@ const WalletPanel = (props) => {
 
   const unlockWallet = (type) => {
     if (type === 'metaMask') {
-      onUnlock();
+      onUnlock(type);
     } else {
       toggleWalletModal();
       toggleWalletConnectModal();

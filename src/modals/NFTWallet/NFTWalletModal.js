@@ -29,7 +29,7 @@ const NFTWalletModal = (props) => {
   } = props;
 
   return (
-    <Modal open={open} onClose={onCloseModal} center showCloseIcon={false}>
+    <Modal open={open} onClose={onCloseModal} showCloseIcon={false}>
       <Wrapper>
         <Title>My bar</Title>
         <CloseIcon onClick={onCloseModal} />

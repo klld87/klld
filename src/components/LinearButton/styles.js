@@ -15,6 +15,22 @@ export const Wrapper = styled.div`
   width: 100%;
 
   &:hover {
+    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  }
+
+  @media (min-width: 1024px) {
+    width: auto;
+  }
+`;
+
+export const LinkWrapper = styled.a`
+  background: ${({ type }) => `linear-gradient(${getBackground(type)})`};
+  border-radius: 24px;
+  height: 58px;
+  padding: 9px;
+  width: 100%;
+
+  &:hover {
     cursor: pointer;
   }
 

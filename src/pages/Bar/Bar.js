@@ -9,8 +9,8 @@ import TokenStats from '../../components/TokenStats';
 import SeasonCard from '../../components/SeasonCard';
 import SpecialEditionBanner from '../../components/SpecialEditionBanner';
 import SpecialCard from '../../components/SpecialCard';
-import KoolMixingBanner from '../../components/KoolMixingBanner';
-import MixingCard from '../../components/MixingCard';
+// import KoolMixingBanner from '../../components/KoolMixingBanner';
+// import MixingCard from '../../components/MixingCard';
 import Footer from '../../components/Footer';
 import ScrollToTopButton from '../../components/ScrollToTopButton';
 
@@ -28,7 +28,7 @@ import { Wrapper, WatermelonFruit, PearFruit, GrapesFruit } from './styles';
 // Data
 import specialCards from './data/special.js';
 import seasonCards from './data/season.js';
-import mixingCards from './data/mixing';
+// import mixingCards from './data/mixing';
 
 // Api
 import { getKoolPrice, getKoolBalance, getAidBalance } from '../../api';
@@ -178,6 +178,8 @@ const Bar = () => {
               key={seaconCard.title}
               openParityModal={toggleParityModal}
               refetchUserBalance={getBalances}
+              isWalletUnlocked={userAddress !== null}
+              onUnlockWallet={toggleWalletModal}
               isLast={isLast}
               {...seaconCard}
             />
@@ -192,12 +194,14 @@ const Bar = () => {
               key={specialCard.title}
               openParityModal={toggleParityModal}
               refetchUserBalance={getBalances}
+              isWalletUnlocked={userAddress !== null}
+              onUnlockWallet={toggleWalletModal}
               isLast={isLast}
               {...specialCard}
             />
           );
         })}
-        <KoolMixingBanner />
+        {/* <KoolMixingBanner />
         {mixingCards.map((mixingCard, mixingCardIndex) => {
           const isLast = mixingCardIndex === mixingCards.length - 1;
 
@@ -205,11 +209,13 @@ const Bar = () => {
             <MixingCard
               key={mixingCard.title}
               openParityModal={toggleParityModal}
+              isWalletUnlocked={userAddress !== null}
+              onUnlockWallet={toggleWalletModal}
               isLast={isLast}
               {...mixingCard}
             />
           );
-        })}
+        })} */}
         <Footer />
       </Container>
       <HowItWorksModal

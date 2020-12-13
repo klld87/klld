@@ -13,13 +13,13 @@ export const Wrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  background-color: #ffe100;
 
   @media (min-width: 1024px) {
     height: 148px;
     border: 3px solid #263f26;
     filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.5));
     flex-direction: column;
+    background-color: #ffe100;
   }
 `;
 
@@ -68,7 +68,7 @@ export const Text = styled.p`
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  color: #ffffff;
+  color: #ffe8c5;
   font-size: 40px;
   line-height: 70px;
   margin: -30px 0 0 0;
@@ -78,6 +78,7 @@ export const Text = styled.p`
     margin: 0 0 0 -100px;
     font-size: 50px;
     line-height: 70px;
+    color: #ffffff;
   }
 `;
 
@@ -98,8 +99,9 @@ export const KoolFamilyImage = styled.div`
   background-image: url(${koolFamily});
   background-size: cover;
   background-repeat: no-repeat;
-  width: 323px;
-  height: 295px;
+  width: 258px;
+  height: 266px;
+  margin: 0 0 -30px 0;
 
   @media (min-width: 1024px) {
     width: 344px;
@@ -107,5 +109,6 @@ export const KoolFamilyImage = styled.div`
     position: absolute;
     right: -20px;
     bottom: -60px;
+    margin: 0;
   }
 `;
