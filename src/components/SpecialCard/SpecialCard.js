@@ -86,11 +86,8 @@ const SpecialCard = (props) => {
   };
 
   const onClickButton = async () => {
-    if (isLoadingBalance) {
+    if (isLoadingBalance || openSeaLink) {
       return;
-    }
-    if (openSeaLink) {
-      return null; // Fix me
     }
     setModalOpen(true);
   };

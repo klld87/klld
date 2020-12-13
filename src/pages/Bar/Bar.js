@@ -50,6 +50,10 @@ const Bar = () => {
   const [koolBalance, setKoolBalance] = React.useState(null);
   const [aidBalance, setAidBalance] = React.useState(null);
 
+  // this.web3.eth.getBalance(account, (err, balance) => {
+  //   this.balance = this.web3.fromWei(balance, "ether") + " ETH"
+  // });
+
   const handleGetKoolPrice = async () => {
     const price = await getKoolPrice();
     const formattedPrice = (Math.round(price * 100) / 100).toString();

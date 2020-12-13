@@ -4,7 +4,6 @@ import se2CardCover from '../../images/barCards/se2.png';
 import se3CardCover from '../../images/barCards/se3.png';
 import se4CardCover from '../../images/barCards/se4.png';
 import se5CardCover from '../../images/barCards/se5.png';
-import chadCardCover from '../../images/barCards/chad.png';
 import manCardCover from '../../images/barCards/man.png';
 import bagCardCover from '../../images/barCards/bag.png';
 import keyCardCover from '../../images/barCards/key.png';
@@ -18,7 +17,6 @@ const cards = [
   { tokenId: 5, cover: se3CardCover },
   { tokenId: 6, cover: se4CardCover },
   { tokenId: 7, cover: se5CardCover },
-  { tokenId: 0, cover: chadCardCover },
   { tokenId: 15, cover: bagCardCover },
   { tokenId: 14, cover: manCardCover },
   { tokenId: 16, cover: keyCardCover },

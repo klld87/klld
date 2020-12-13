@@ -48,7 +48,7 @@ const specialCards = [
       'Sugar, Fructose, Lysergic acid, Synthetic Banana Flavor, Epinephrine Powder, Cortisol Powder, Yellow 5',
     howToUse: 'soon',
     parity: 'super rare',
-    initialPrice: '0.2 ETH',
+    price: '0.2 ETH',
     season: specialSeason,
     mobileStyle: {
       top: -160,
