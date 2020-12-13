@@ -60,7 +60,7 @@ const MixingCard = (props) => {
       <Cover background={cover} />
       {withCountDown ? (
         <CountDownRow bgColor={bgColor} background={background}>
-          <Countdown date={new Date('Dec 11 2020')} />
+          <Countdown date={new Date('Dec 20 2020')} />
         </CountDownRow>
       ) : (
         <Body bgColor={bgColor} background={background}>

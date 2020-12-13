@@ -8,13 +8,19 @@ const Preload = (props) => {
 
   const [isShowPreload, setShowPreload] = React.useState(true);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setShowPreload(false);
-    }, 1500);
-  }, []);
+  const pathname = window.location.pathname;
+  const allowerURLs = ['/', '/bar'];
+  const isAllowedPage = allowerURLs.indexOf(pathname) !== -1;
 
-  if (isShowPreload) {
+  React.useEffect(() => {
+    if (isAllowedPage) {
+      setTimeout(() => {
+        setShowPreload(false);
+      }, 1500);
+    }
+  }, [isAllowedPage]);
+
+  if (isShowPreload && isAllowedPage) {
     return (
       <Wrapper>
         <Image />

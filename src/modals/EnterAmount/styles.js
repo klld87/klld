@@ -10,8 +10,12 @@ export const Wrapper = styled.div`
   background-repeat: repeat;
   border: 2px solid #263f26;
   border-radius: 15px;
-  padding: 35px 70px 20px 70px;
+  padding: 40px 20px;
   position: relative;
+
+  @media (min-width: 1024px) {
+    padding: 35px 70px 20px 70px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -41,19 +45,33 @@ export const CloseIcon = styled.div`
 export const Form = styled.div`
   margin: 35px 0 0 0;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 export const FormItem = styled.div`
   background: linear-gradient(180deg, #ffd601 0%, #84e982 51.56%, #dc3b6c 100%);
   backdrop-filter: blur(10px);
-  width: 310px;
+  width: 100%;
   height: 70px;
   padding: 6px;
   border-radius: 15px;
 
+  &:hover {
+    cursor: ${({ isButton }) => (isButton ? 'pointer' : 'default')};
+  }
+
+  &:nth-child(1) {
+    margin: 0 0 30px 0;
+  }
+
   @media (min-width: 1024px) {
+    width: 310px;
+
     &:nth-child(1) {
       margin: 0 15px 0 0;
     }

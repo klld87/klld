@@ -87,6 +87,10 @@ const MainPage = () => {
 
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.on('accountsChanged', handleAccountChange);
+
+      if (Boolean(localStorage.getItem('IS_KOOL_METAMASK_CONNECTED'))) {
+        connect('metaMask');
+      }
     }
   }, []);
 

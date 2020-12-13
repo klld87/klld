@@ -21,7 +21,6 @@ import NFTBarModal from '../../modals/NFTBar';
 import WalletModal from '../../modals/Wallet';
 import WalletConnectModal from '../../modals/WalletConnect';
 import ParityModal from '../../modals/Parity';
-import EnterAmountModal from '../../modals/EnterAmount';
 
 // Styles
 import { Wrapper, WatermelonFruit, PearFruit, GrapesFruit } from './styles';
@@ -43,9 +42,6 @@ const Bar = () => {
     false
   );
   const [isParityModalOpen, setParityModalOpen] = React.useState(false);
-  const [isEnterAmountModalOpen, setEnterAmountModalOpen] = React.useState(
-    false
-  );
   const [koolPrice, setKoolPrice] = React.useState(null);
   const [web3Provider, setWeb3Provider] = React.useState(null);
   const isFirstRender = React.useRef(true);
@@ -96,18 +92,22 @@ const Bar = () => {
 
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.on('accountsChanged', handleAccountChange);
+
+      if (Boolean(localStorage.getItem('IS_KOOL_METAMASK_CONNECTED'))) {
+        onUnlockWallet('metaMask');
+      }
     }
   }, []);
 
+  const getBalances = async () => {
+    const kool = await getKoolBalance(web3Provider, userAddress);
+    const aid = await getAidBalance(web3Provider, userAddress);
+
+    setKoolBalance(kool);
+    setAidBalance(aid);
+  };
+
   React.useEffect(() => {
-    const getBalances = async () => {
-      const kool = await getKoolBalance(web3Provider, userAddress);
-      const aid = await getAidBalance(web3Provider, userAddress);
-
-      setKoolBalance(kool);
-      setAidBalance(aid);
-    };
-
     if (userAddress && web3Provider) {
       if (!isEthEnabled) setEthEnabled(true);
       getBalances();
@@ -138,10 +138,6 @@ const Bar = () => {
 
   const toggleParityModal = () => {
     setParityModalOpen(!isParityModalOpen);
-  };
-
-  const toggleEnterAmountModal = () => {
-    setEnterAmountModalOpen(!isEnterAmountModalOpen);
   };
 
   const onUnlockWallet = async (walletType) => {
@@ -181,7 +177,7 @@ const Bar = () => {
             <SeasonCard
               key={seaconCard.title}
               openParityModal={toggleParityModal}
-              onClickButton={toggleEnterAmountModal}
+              refetchUserBalance={getBalances}
               isLast={isLast}
               {...seaconCard}
             />
@@ -195,7 +191,7 @@ const Bar = () => {
             <SpecialCard
               key={specialCard.title}
               openParityModal={toggleParityModal}
-              onClickButton={toggleEnterAmountModal}
+              refetchUserBalance={getBalances}
               isLast={isLast}
               {...specialCard}
             />
@@ -209,7 +205,6 @@ const Bar = () => {
             <MixingCard
               key={mixingCard.title}
               openParityModal={toggleParityModal}
-              onClickButton={toggleEnterAmountModal}
               isLast={isLast}
               {...mixingCard}
             />
@@ -244,10 +239,6 @@ const Bar = () => {
         onCloseModal={toggleWalletConnectModal}
       />
       <ParityModal open={isParityModalOpen} onCloseModal={toggleParityModal} />
-      <EnterAmountModal
-        open={isEnterAmountModalOpen}
-        onCloseModal={toggleEnterAmountModal}
-      />
       <ScrollToTopButton />
     </Wrapper>
   );

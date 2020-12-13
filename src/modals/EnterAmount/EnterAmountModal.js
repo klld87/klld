@@ -16,9 +16,21 @@ import {
 } from './styles';
 
 const EnterAmountModal = (props) => {
-  const { open, onCloseModal } = props;
+  const { open, onCloseModal, onSend } = props;
 
   const [amount, setAmount] = React.useState(1);
+
+  const increment = () => {
+    if (amount < 10) {
+      setAmount(amount + 1);
+    }
+  };
+
+  const decrement = () => {
+    if (amount > 1) {
+      setAmount(amount - 1);
+    }
+  };
 
   return (
     <Modal
@@ -36,16 +48,12 @@ const EnterAmountModal = (props) => {
         <Form>
           <FormItem>
             <FormItemRow>
-              <FormItemText onClick={() => setAmount(amount - 1)}>
-                -
-              </FormItemText>
+              <FormItemText onClick={decrement}>-</FormItemText>
               <FormItemText>{amount}</FormItemText>
-              <FormItemText onClick={() => setAmount(amount + 1)}>
-                +
-              </FormItemText>
+              <FormItemText onClick={increment}>+</FormItemText>
             </FormItemRow>
           </FormItem>
-          <FormItem>
+          <FormItem isButton onClick={() => onSend(amount)}>
             <FormItemRow>
               <FormItemText>Get it!</FormItemText>
             </FormItemRow>

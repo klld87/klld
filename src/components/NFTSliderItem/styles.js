@@ -9,6 +9,16 @@ export const Cover = styled.div`
   height: 324px;
   border: 1px solid #000000;
   border-radius: 15px;
+  background-image: ${({ background }) => `url(${background})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+`;
+
+export const CoverLoading = styled.div`
+  width: 263px;
+  height: 324px;
+  border: 1px solid #000000;
+  border-radius: 15px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -55,4 +65,35 @@ export const LoadingText = styled.h3`
   text-align: center;
   color: #000000;
   text-transform: uppercase;
+`;
+
+export const CoverRow = styled.div`
+  position: relative;
+  width: 263px;
+`;
+
+export const BalanceBlock = styled.div`
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  background: linear-gradient(
+    180deg,
+    #263f26 99.99%,
+    rgba(196, 196, 196, 0) 100%
+  );
+  border: 1px solid #000000;
+  border-radius: 10px;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BalanceValue = styled.p`
+  margin: 0;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
 `;

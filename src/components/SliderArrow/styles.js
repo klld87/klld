@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   background-color: blue;
   position: absolute;
   top: 137px;
-  left: ${({ direction }) => (direction === 'left' ? '-78px' : '0')};
-  right: ${({ direction }) => (direction === 'left' ? '0' : '-51px')};
+  left: ${({ direction }) => (direction === 'left' ? '-78px' : 'inherit')};
+  right: ${({ direction }) => (direction === 'left' ? 'inherit' : '-51px')};
   z-index: 2;
 `;

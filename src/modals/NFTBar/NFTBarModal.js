@@ -7,6 +7,9 @@ import Slider from 'react-slick';
 import NFTSliderItem from '../../components/NFTSliderItem';
 import SliderArrow from '../../components/SliderArrow';
 
+// Data
+import cards from './cards';
+
 // Styles
 import {
   Wrapper,
@@ -20,16 +23,23 @@ import {
 const NFTBarModal = (props) => {
   const { open, onCloseModal } = props;
 
-  const isLoading = true; // Fix me;
+  const NextArrow = ({ onClick }) => (
+    <SliderArrow direction="right" onClick={onClick} />
+  );
+
+  const PrevArrow = ({ onClick }) => (
+    <SliderArrow direction="left" onClick={onClick} />
+  );
 
   const settings = {
     dots: false,
     infinite: true,
+    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    swipe: !isLoading,
-    nextArrow: isLoading ? null : <SliderArrow direction="right" />,
-    prevArrow: isLoading ? null : <SliderArrow direction="left" />,
+    initialSlide: 0,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -40,6 +50,13 @@ const NFTBarModal = (props) => {
       },
       {
         breakpoint: 720,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -54,13 +71,15 @@ const NFTBarModal = (props) => {
         <Title>My NFT bar</Title>
         <CloseIcon onClick={onCloseModal} />
         <Carousel>
-          {isLoading ? (
-            <Slider {...settings}>
-              <NFTSliderItem isLoading />
-              <NFTSliderItem isLoading />
-              <NFTSliderItem isLoading />
-            </Slider>
-          ) : null}
+          <Slider {...settings}>
+            {cards.map((card) => {
+              const { tokenId, cover } = card;
+
+              return (
+                <NFTSliderItem key={tokenId} tokenId={tokenId} cover={cover} />
+              );
+            })}
+          </Slider>
         </Carousel>
         <CancelButton onClick={onCloseModal}>
           <CancelButtonTitle>Cancel</CancelButtonTitle>

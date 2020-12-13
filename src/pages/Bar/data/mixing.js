@@ -4,21 +4,22 @@ import ohCover from '../../../images/mixingCard/oh.png';
 
 // Blurs
 import navyBlueBlur from '../../../images/cardBlurs/navyBlue.png';
-import blueBlur from '../../../images/cardBlurs/blue.png';
-import butterBlur from '../../../images/cardBlurs/butter.png';
-import dogeBlur from '../../../images/cardBlurs/doge.png';
-import dragonfruitBlur from '../../../images/cardBlurs/dragonfruit.png';
+// import blueBlur from '../../../images/cardBlurs/blue.png';
+// import butterBlur from '../../../images/cardBlurs/butter.png';
+// import dogeBlur from '../../../images/cardBlurs/doge.png';
+// import dragonfruitBlur from '../../../images/cardBlurs/dragonfruit.png';
 
 // Ingridients covers
 import mixingCover from '../../../images/mixingCovers/1.png';
 
 // Backgrounds
 import paperBG1 from '../../../images/bgPaper/1.png';
-import paperBG2 from '../../../images/bgPaper/2.png';
-import paperBG3 from '../../../images/bgPaper/3.png';
+// import paperBG2 from '../../../images/bgPaper/2.png';
+// import paperBG3 from '../../../images/bgPaper/3.png';
 
 const mixingCards = [
   {
+    tokenId: 9,
     title: 'Moonshine punch',
     cover: punchCover,
     titleBlur: navyBlueBlur,
@@ -57,11 +58,29 @@ const mixingCards = [
     ],
   },
   {
+    tokenId: 8,
+    title: 'Rugberry',
     cover: ohCover,
     withCountDown: true,
     bgColor: '#3BDCFF',
     background: paperBG1,
   },
+  // {
+  //   tokenId: 10,
+  //   title: 'Vitalik Butter',
+  // },
+  // {
+  //   tokenId: 11,
+  //   title: 'Doge Food',
+  // },
+  // {
+  //   tokenId: 12,
+  //   title: 'Rekt Dragonfrui',
+  // },
+  // {
+  //   tokenId: 13,
+  //   title: 'Chad Lemonade',
+  // }
 ];
 
 export default mixingCards;

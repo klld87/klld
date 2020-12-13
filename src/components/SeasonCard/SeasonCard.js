@@ -23,8 +23,16 @@ import {
 import LinearButton from '../LinearButton';
 import Parity from '../Parity';
 
+// Modals
+import EnterAmountModal from '../../modals/EnterAmount';
+import ErrorModal from '../../modals/Error';
+
 // Api
-import { getNFTTotalSupply, getDrink } from '../../api';
+import {
+  getNFTTotalSupply,
+  getDrink,
+  getNFTCirculatingSupply,
+} from '../../api';
 
 const SeasonCard = (props) => {
   const {
@@ -38,90 +46,123 @@ const SeasonCard = (props) => {
     background,
     bgColor,
     parity,
-    claimed,
-    totalClaimed,
     season,
     openParityModal,
     price,
     howToUse,
-    // onClickButton,
     isLast,
     tokenId,
+    refetchUserBalance,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
-  const [balanceOf, setBalanceOf] = React.useState(null);
+  const [circulatingSupply, setCirculatingSupply] = React.useState(null);
+  const [isModalOpen, setModalOpen] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState(null);
 
   React.useEffect(() => {
-    if (tokenId) {
+    if (tokenId && getTokenInfo) {
       getTokenInfo();
     }
   }, [tokenId]);
 
   const getTokenInfo = async () => {
-    const getTotalSupply = await getNFTTotalSupply(tokenId);
+    const NFTTotalSupply = await getNFTTotalSupply(tokenId);
+    const NFTCirculatingSupply = await getNFTCirculatingSupply(tokenId);
 
-    console.log('getTotalSupply', getTotalSupply);
+    setTotalSupply(NFTTotalSupply);
+    setCirculatingSupply(NFTCirculatingSupply);
   };
 
   const onClickButton = async () => {
-    getDrink(tokenId);
+    setModalOpen(true);
+  };
+
+  const onGetDrink = async (amount) => {
+    setModalOpen(false);
+    const tryGetDrink = await getDrink(tokenId, amount);
+    if (tryGetDrink === 'success') {
+      getTokenInfo();
+      refetchUserBalance();
+    } else if (tryGetDrink) {
+      setErrorMessage(tryGetDrink);
+    }
+  };
+
+  const getButtonTitle = () => {
+    return 'APPROVE AID';
+  };
+
+  const getButtonType = () => {
+    return 'approveAID';
   };
 
   return (
-    <Wrapper position={position} isLast={isLast}>
-      <Cover
-        background={cover}
-        desktopSizes={coverSizes.desktop}
-        mobileSizes={coverSizes.mobile}
-        position={position}
-      />
-      <Body
-        background={background}
-        bgColor={bgColor}
-        position={position}
-        desktopSizes={coverSizes.desktop}
-      >
-        <SeasonCardImage image={season} position={position} />
-        <TitleBlur background={titleBlur} position={position}>
-          <Title>{title}</Title>
-        </TitleBlur>
-        <Row>
-          <Content>
-            <ContentTitle>
-              Description: <ContentText>{description}</ContentText>
-            </ContentTitle>
-            <ContentTitle>
-              Contents: <ContentText>{contents}</ContentText>
-            </ContentTitle>
-            <ContentTitle>
-              How to use: <ContentText>{howToUse}</ContentText>
-            </ContentTitle>
-            <ParityBlock>
+    <>
+      <Wrapper position={position} isLast={isLast}>
+        <Cover
+          background={cover}
+          desktopSizes={coverSizes.desktop}
+          mobileSizes={coverSizes.mobile}
+          position={position}
+        />
+        <Body
+          background={background}
+          bgColor={bgColor}
+          position={position}
+          desktopSizes={coverSizes.desktop}
+        >
+          <SeasonCardImage image={season} position={position} />
+          <TitleBlur background={titleBlur} position={position}>
+            <Title>{title}</Title>
+          </TitleBlur>
+          <Row>
+            <Content>
               <ContentTitle>
-                RARITY: <ContentText>{parity}</ContentText>
+                Description: <ContentText>{description}</ContentText>
               </ContentTitle>
-              <ParityRow>
-                <Parity type={parity} openModal={openParityModal} />
-              </ParityRow>
-            </ParityBlock>
-            <ContentTitle>
-              Price: <ContentText>{price} AID</ContentText>
-            </ContentTitle>
-          </Content>
-          <Actions position={position}>
-            <Button>
-              <ButtonTitle>{`${totalClaimed}/${claimed} claimed`}</ButtonTitle>
-            </Button>
-            <LinearButton
-              onClickButton={onClickButton}
-              title="APPROVE AID"
-              type="approveAID"
-            />
-          </Actions>
-        </Row>
-      </Body>
-    </Wrapper>
+              <ContentTitle>
+                Contents: <ContentText>{contents}</ContentText>
+              </ContentTitle>
+              <ContentTitle>
+                How to use: <ContentText>{howToUse}</ContentText>
+              </ContentTitle>
+              <ParityBlock>
+                <ContentTitle>
+                  RARITY: <ContentText>{parity}</ContentText>
+                </ContentTitle>
+                <ParityRow>
+                  <Parity type={parity} openModal={openParityModal} />
+                </ParityRow>
+              </ParityBlock>
+              <ContentTitle>
+                Price: <ContentText>{price}</ContentText>
+              </ContentTitle>
+            </Content>
+            <Actions position={position}>
+              <Button>
+                <ButtonTitle>{`${circulatingSupply}/${totalSupply} claimed`}</ButtonTitle>
+              </Button>
+              <LinearButton
+                onClickButton={onClickButton}
+                title={getButtonTitle()}
+                type={getButtonType()}
+              />
+            </Actions>
+          </Row>
+        </Body>
+      </Wrapper>
+      <EnterAmountModal
+        open={isModalOpen}
+        onCloseModal={() => setModalOpen(false)}
+        onSend={onGetDrink}
+      />
+      <ErrorModal
+        open={errorMessage !== null}
+        onCloseModal={() => setErrorMessage(null)}
+        errorMessage={errorMessage}
+      />
+    </>
   );
 };
 
