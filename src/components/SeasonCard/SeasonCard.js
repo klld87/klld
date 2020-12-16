@@ -18,6 +18,10 @@ import {
   ParityRow,
   SeasonCardImage,
   LoadingClaimed,
+  HappyKool,
+  ClimberKool,
+  HappyKoolDrink,
+  Arthur,
 } from './styles';
 
 // Components
@@ -56,6 +60,8 @@ const SeasonCard = (props) => {
     refetchUserBalance,
     isWalletUnlocked,
     onUnlockWallet,
+    aidBalance,
+    priceAmount,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
@@ -63,7 +69,10 @@ const SeasonCard = (props) => {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
 
-  const isLoadingBalance = totalSupply === null && circulatingSupply === null;
+  const isLoadingBalance = totalSupply === null || circulatingSupply === null;
+  const isTokensLoading = isWalletUnlocked && aidBalance === null;
+  const isAllClaimed =
+    totalSupply && circulatingSupply && totalSupply === circulatingSupply;
 
   React.useEffect(() => {
     if (tokenId && getTokenInfo) {
@@ -102,16 +111,45 @@ const SeasonCard = (props) => {
   };
 
   const getButtonTitle = () => {
-    return 'APPROVE AID';
+    if (isWalletUnlocked) {
+      if (isTokensLoading) {
+        return 'loading...';
+      }
+      if (priceAmount > aidBalance) {
+        return `NEED ${Number(priceAmount) - Number(aidBalance)} AID`;
+      }
+      return isAllClaimed ? 'GET ON OPENSEA' : 'GET NFT';
+    }
+    return 'UNLOCK WALLET';
   };
 
   const getButtonType = () => {
-    return 'approveAID';
+    if (isWalletUnlocked) {
+      if (isTokensLoading) {
+        return 'loading';
+      }
+      if (priceAmount > aidBalance) {
+        return 'insufficientFunds';
+      }
+      return isAllClaimed ? 'getOnOpenSea' : 'getNFT';
+    }
+    return 'unlockWallet';
+  };
+
+  const checkButtonDisabled = () => {
+    if (isWalletUnlocked) {
+      if (!isTokensLoading) {
+        if (aidBalance > priceAmount) {
+          return false;
+        }
+      }
+    }
+    return true;
   };
 
   return (
     <>
-      <Wrapper position={position} isLast={isLast}>
+      <Wrapper position={position} isLast={isLast} id={`card${tokenId}`}>
         <Cover
           background={cover}
           desktopSizes={coverSizes.desktop}
@@ -124,6 +162,10 @@ const SeasonCard = (props) => {
           position={position}
           desktopSizes={coverSizes.desktop}
         >
+          {tokenId === 3 ? <HappyKool /> : null}
+          {tokenId === 4 ? <ClimberKool /> : null}
+          {tokenId === 5 ? <HappyKoolDrink /> : null}
+          {tokenId === 4 ? <Arthur /> : null}
           <SeasonCardImage image={season} position={position} />
           <TitleBlur background={titleBlur} position={position}>
             <Title>{title}</Title>
@@ -163,7 +205,9 @@ const SeasonCard = (props) => {
                 onClickButton={onClickButton}
                 title={getButtonTitle()}
                 type={getButtonType()}
-                disabled={isLoadingBalance}
+                disabled={checkButtonDisabled()}
+                isLoading={isTokensLoading}
+                link={isAllClaimed ? 'https://opensea.io/' : null}
               />
             </Actions>
           </Row>

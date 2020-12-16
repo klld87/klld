@@ -5,7 +5,7 @@ import koolBagCardCover from '../../../images/specialCardCovers/bag.png';
 import keychainCardCover from '../../../images/specialCardCovers/keychain.png';
 import gemkitCardCover from '../../../images/specialCardCovers/gemkit.png';
 import zeroCardCover from '../../../images/specialCardCovers/zero.png';
-import sergeyCardCover from '../../../images/specialCardCovers/sergey.png';
+import sergeyCardCover from '../../../images/specialCardCovers/sergey.gif';
 
 // Blurs
 import chadCradBlur from '../../../images/cardBlurs/chad.png';
@@ -77,6 +77,7 @@ const specialCards = [
     howToUse: 'soon',
     parity: 'super rare',
     symbol: 'ETH',
+    priceAmount: 0.99,
     price: '0.99 ETH',
     season: specialSeason,
   },
@@ -104,6 +105,7 @@ const specialCards = [
     howToUse: 'soon',
     parity: 'rare',
     symbol: 'KOOL',
+    priceAmount: 399,
     price: '399 KOOL',
     season: specialSeason,
   },
@@ -129,6 +131,8 @@ const specialCards = [
     contents: 'Empty',
     howToUse: 'soon',
     parity: 'rare',
+    symbol: 'AID',
+    priceAmount: 299,
     price: '299 AID',
     season: specialSeason,
     mobileStyle: {
@@ -157,6 +161,8 @@ const specialCards = [
     contents: 'Empty',
     howToUse: 'soon',
     parity: 'common',
+    symbol: 'AID',
+    priceAmount: 499,
     price: '499 AID',
     season: specialSeason,
     mobileStyle: {
@@ -212,6 +218,8 @@ const specialCards = [
     howToUse: 'soon',
     parity: 'super rare',
     price: '0.3 ETH',
+    symbol: 'ETH',
+    priceAmount: 0.3,
     season: specialSeason,
     mobileStyle: {
       top: -50,

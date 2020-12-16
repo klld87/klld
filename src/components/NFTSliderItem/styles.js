@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 import loadingFruit from '../../images/fruits/loading.png';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const Cover = styled.div`
   width: 263px;
@@ -37,6 +41,14 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  p {
+    color: ${({ disabled }) => (disabled ? '#A9A9A9' : '#000000')};
+  }
+
+  &:hover {
+    cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  }
 `;
 
 export const ButtonTitle = styled.p`
@@ -44,7 +56,6 @@ export const ButtonTitle = styled.p`
   font-size: 30px;
   line-height: 42px;
   text-align: center;
-  color: #a9a9a9;
 `;
 
 export const LoadingImage = styled.div`
@@ -97,3 +108,5 @@ export const BalanceValue = styled.p`
   text-align: center;
   color: #ffffff;
 `;
+
+export const Link = styled.a``;

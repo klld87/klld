@@ -2,13 +2,19 @@ import styled from 'styled-components';
 
 const getBackground = (type) => {
   if (type === 'openSea') {
-    return '176.22deg, #00C2FF 3.1%, rgba(0, 194, 255, 0) 83.97%';
+    return 'linear-gradient(176.22deg, #00C2FF 3.1%, rgba(0, 194, 255, 0) 83.97%)';
+  } else if (type === 'unlockWallet' || type === 'insufficientFunds') {
+    return '#EC010E';
+  } else if (type === 'getNFT') {
+    return '#FDD90F';
+  } else if (type === 'getOnOpenSea') {
+    return 'linear-gradient(180deg, #01C2FF 0%, #65C796 48.44%, #FDD90F 100%)';
   }
-  return '132.64deg, #ffe601 9.46%, #56ee46 41.71%, #019aca 73.97%';
+  return 'linear-gradient(132.64deg, #ffe601 9.46%, #56ee46 41.71%, #019aca 73.97%)';
 };
 
 export const Wrapper = styled.div`
-  background: ${({ type }) => `linear-gradient(${getBackground(type)})`};
+  background: ${({ type }) => `${getBackground(type)}`};
   border-radius: 24px;
   height: 58px;
   padding: 9px;
@@ -24,7 +30,7 @@ export const Wrapper = styled.div`
 `;
 
 export const LinkWrapper = styled.a`
-  background: ${({ type }) => `linear-gradient(${getBackground(type)})`};
+  background: ${({ type }) => `${getBackground(type)}`};
   border-radius: 24px;
   height: 58px;
   padding: 9px;

@@ -20,9 +20,9 @@ const cards = [
   { tokenId: 15, cover: bagCardCover },
   { tokenId: 14, cover: manCardCover },
   { tokenId: 16, cover: keyCardCover },
-  { tokenId: 12343, cover: stampCardCover },
-  { tokenId: 135, cover: zeroCardCover },
-  { tokenId: 145, cover: sergeyCardCover },
+  { tokenId: 17, cover: stampCardCover },
+  { tokenId: 1, cover: zeroCardCover },
+  { tokenId: 2, cover: sergeyCardCover },
 ];
 
 export default cards;

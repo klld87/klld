@@ -10,6 +10,7 @@ import {
   BAR_ABI,
   NFT_ADDRESS,
   BAR_ADDRESS,
+  KOOL_ABI,
 } from './constants';
 
 export const getContract = (provider, tokenAddress, contract) => {
@@ -46,6 +47,31 @@ export const getNFTCirculatingSupply = async (tokenId) => {
   return circulatingSupply / 1;
 };
 
+export const approveKOOL = (amount) => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(KOOL_TOKEN_ADDR, KOOL_ABI, provider);
+  const signTransactions = contract.connect(signer);
+  signTransactions
+    .approve(BAR_ADDRESS, amount)
+    .then(() => {
+      return 'success';
+    })
+    .catch(() => {
+      return null;
+    });
+};
+
+export const getETHBalance = async (address) => {
+  try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const ETHbalance = await provider.getBalance(address);
+    return ethers.utils.formatEther(ETHbalance);
+  } catch {
+    return 0;
+  }
+};
+
 export const getDrink = (tokenId, amount) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
@@ -53,27 +79,8 @@ export const getDrink = (tokenId, amount) => {
   const signTransactions = contract.connect(signer);
   return signTransactions
     .getDrink(tokenId, amount)
-    .then(() => {
-      return 'success';
-    })
-    .catch((error) => {
-      if (error?.code === 4001) {
-        return null;
-      }
-      const parseData = JSON.parse(JSON.stringify(error));
-      const getMessage = parseData.error.message || null;
-      return getMessage;
-    });
-};
-
-export const getSpecialDrink = (tokenId, amount) => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-  const contract = new ethers.Contract(BAR_ADDRESS, BAR_ABI, provider);
-  const signTransactions = contract.connect(signer);
-  return signTransactions
-    .getDrink(tokenId, amount)
-    .then(() => {
+    .then((data) => {
+      console.log('data', data);
       return 'success';
     })
     .catch((error) => {

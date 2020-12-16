@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 // Styles
 import {
@@ -13,17 +14,17 @@ import {
   CoverRow,
   BalanceBlock,
   BalanceValue,
+  Link,
 } from './styles';
 
 // Api
 import { getBalanceOf } from '../../api';
 
 const NFTSliderItem = (props) => {
-  const { tokenId, cover } = props;
+  const { tokenId, cover, closeModal } = props;
 
   const [balance, setBalance] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [isError, setIsError] = React.useState(false);
 
   React.useEffect(() => {
     if (tokenId) {
@@ -41,7 +42,7 @@ const NFTSliderItem = (props) => {
     if (!isNaN(tryGetBalance)) {
       setBalance(tryGetBalance);
     } else {
-      setIsError(true);
+      setBalance(0);
     }
   };
 
@@ -57,10 +58,10 @@ const NFTSliderItem = (props) => {
           <LoadingText>Loading...</LoadingText>
         </CoverLoading>
         <Actions>
-          <Button>
+          <Button disabled>
             <ButtonTitle>Buy more</ButtonTitle>
           </Button>
-          <Button>
+          <Button disabled>
             <ButtonTitle>Sell</ButtonTitle>
           </Button>
         </Actions>
@@ -77,12 +78,20 @@ const NFTSliderItem = (props) => {
         </BalanceBlock>
       </CoverRow>
       <Actions>
-        <Button>
-          <ButtonTitle>Buy more</ButtonTitle>
-        </Button>
-        <Button>
-          <ButtonTitle>Sell</ButtonTitle>
-        </Button>
+        <HashLink to={`/bar#card${tokenId}`} onClick={closeModal}>
+          <Button>
+            <ButtonTitle>Buy more</ButtonTitle>
+          </Button>
+        </HashLink>
+        <Link
+          href="https://opensea.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>
+            <ButtonTitle>Sell</ButtonTitle>
+          </Button>
+        </Link>
       </Actions>
     </Wrapper>
   );

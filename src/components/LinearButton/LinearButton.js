@@ -6,7 +6,7 @@ import { Wrapper, Button, ButtonTitle, LinkWrapper } from './styles';
 const LinearButton = (props) => {
   const { title, type, onClickButton, link, disabled } = props;
 
-  if (type === 'openSea' && link) {
+  if ((type === 'openSea' || type === 'getOnOpenSea') && link) {
     return (
       <LinkWrapper
         type={type}

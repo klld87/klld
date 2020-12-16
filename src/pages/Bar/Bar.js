@@ -31,7 +31,12 @@ import seasonCards from './data/season.js';
 // import mixingCards from './data/mixing';
 
 // Api
-import { getKoolPrice, getKoolBalance, getAidBalance } from '../../api';
+import {
+  getKoolPrice,
+  getKoolBalance,
+  getAidBalance,
+  getETHBalance,
+} from '../../api';
 
 const Bar = () => {
   const [isHowItWorksModalOpen, setHowItWorksModalOpen] = React.useState(false);
@@ -49,10 +54,7 @@ const Bar = () => {
   const [isEthEnabled, setEthEnabled] = React.useState(false);
   const [koolBalance, setKoolBalance] = React.useState(null);
   const [aidBalance, setAidBalance] = React.useState(null);
-
-  // this.web3.eth.getBalance(account, (err, balance) => {
-  //   this.balance = this.web3.fromWei(balance, "ether") + " ETH"
-  // });
+  const [ethBalance, setEthBalance] = React.useState(null);
 
   const handleGetKoolPrice = async () => {
     const price = await getKoolPrice();
@@ -106,9 +108,11 @@ const Bar = () => {
   const getBalances = async () => {
     const kool = await getKoolBalance(web3Provider, userAddress);
     const aid = await getAidBalance(web3Provider, userAddress);
+    const eth = await getETHBalance(userAddress);
 
     setKoolBalance(kool);
     setAidBalance(aid);
+    setEthBalance(eth);
   };
 
   React.useEffect(() => {
@@ -116,6 +120,9 @@ const Bar = () => {
       if (!isEthEnabled) setEthEnabled(true);
       getBalances();
     } else {
+      setEthBalance(null);
+      setKoolBalance(null);
+      setAidBalance(null);
       setEthEnabled(false);
     }
   }, [userAddress, isEthEnabled, web3Provider]);
@@ -159,6 +166,12 @@ const Bar = () => {
     }
   };
 
+  const signOut = () => {
+    localStorage.removeItem('IS_KOOL_METAMASK_CONNECTED');
+    setUserAddress(null);
+    setNFTWalletModalOpen(false);
+  };
+
   return (
     <Wrapper>
       <WatermelonFruit />
@@ -184,6 +197,7 @@ const Bar = () => {
               refetchUserBalance={getBalances}
               isWalletUnlocked={userAddress !== null}
               onUnlockWallet={toggleWalletModal}
+              aidBalance={aidBalance}
               isLast={isLast}
               {...seaconCard}
             />
@@ -200,6 +214,9 @@ const Bar = () => {
               refetchUserBalance={getBalances}
               isWalletUnlocked={userAddress !== null}
               onUnlockWallet={toggleWalletModal}
+              koolBalance={koolBalance}
+              aidBalance={aidBalance}
+              ethBalance={ethBalance}
               isLast={isLast}
               {...specialCard}
             />
@@ -236,6 +253,8 @@ const Bar = () => {
         koolBalance={koolBalance}
         aidBalance={aidBalance}
         aidHarvest={0}
+        onSignOut={signOut}
+        userAddress={userAddress}
       />
       <NFTBarModal open={isNFTBarModalOpen} onCloseModal={toggleNFTBarModal} />
       <WalletModal

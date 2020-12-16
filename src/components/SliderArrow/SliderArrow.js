@@ -4,9 +4,9 @@ import * as React from 'react';
 import { Wrapper } from './styles';
 
 const SliderArrow = (props) => {
-  const { direction } = props;
+  const { direction, onClick } = props;
 
-  return <Wrapper direction={direction} />;
+  return <Wrapper direction={direction} onClick={onClick} />;
 };
 
 export default SliderArrow;

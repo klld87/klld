@@ -23,23 +23,26 @@ import {
 const NFTBarModal = (props) => {
   const { open, onCloseModal } = props;
 
-  const NextArrow = ({ onClick }) => (
-    <SliderArrow direction="right" onClick={onClick} />
-  );
+  const sliderRef = React.useRef(null);
 
-  const PrevArrow = ({ onClick }) => (
-    <SliderArrow direction="left" onClick={onClick} />
-  );
+  const prev = () => {
+    sliderRef.current?.slickPrev();
+  };
+
+  const next = () => {
+    sliderRef.current?.slickNext();
+  };
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
+    draggable: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <SliderArrow direction="right" onClick={next} />,
+    prevArrow: <SliderArrow direction="left" onClick={prev} />,
     responsive: [
       {
         breakpoint: 1024,
@@ -49,14 +52,14 @@ const NFTBarModal = (props) => {
         },
       },
       {
-        breakpoint: 720,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -71,12 +74,17 @@ const NFTBarModal = (props) => {
         <Title>My NFT bar</Title>
         <CloseIcon onClick={onCloseModal} />
         <Carousel>
-          <Slider {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {cards.map((card) => {
               const { tokenId, cover } = card;
 
               return (
-                <NFTSliderItem key={tokenId} tokenId={tokenId} cover={cover} />
+                <NFTSliderItem
+                  key={tokenId}
+                  tokenId={tokenId}
+                  cover={cover}
+                  closeModal={onCloseModal}
+                />
               );
             })}
           </Slider>

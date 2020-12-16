@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
   position: relative;
 
   @media (min-width: 1024px) {
-    padding: 45px 100px 60px 100px;
     padding: 27px 15px;
   }
 `;
@@ -65,9 +64,9 @@ export const BalanceValue = styled.h3`
   margin: 0;
 
   @media (min-width: 1024px) {
-    font-size: 100px;
-    line-height: 115px;
-    margin: 0 0 -30px 0;
+    font-size: 80px;
+    line-height: 80px;
+    margin: 0 0 -15px 0;
   }
 `;
 
@@ -80,8 +79,8 @@ export const BalanceType = styled.p`
   color: #263f26;
 
   @media (min-width: 1024px) {
-    font-size: 50px;
-    line-height: 57px;
+    font-size: 40px;
+    line-height: 40px;
   }
 `;
 
@@ -117,7 +116,7 @@ export const Button = styled.div`
   }
 
   @media (min-width: 1024px) {
-    height: 86px;
+    height: 60px;
     width: ${({ isCancel }) => (isCancel ? '444px' : '100%;')};
   }
 `;
@@ -130,8 +129,8 @@ export const ButtonTitle = styled.p`
   color: ${({ isCancel }) => (isCancel ? '#000000' : '#fbf7e2')};
 
   @media (min-width: 1024px) {
-    font-size: 40px;
-    line-height: 56px;
+    font-size: 30px;
+    line-height: 30px;
   }
 `;
 
@@ -139,6 +138,8 @@ export const Footer = styled.div`
   margin: 30px 0 0 0;
 
   @media (min-width: 1024px) {
-    margin: 60px 0 0 0;
+    margin: 40px 0 0 0;
   }
 `;
+
+export const Link = styled.a``;

@@ -16,6 +16,7 @@ import {
   Button,
   ButtonTitle,
   Footer,
+  Link,
 } from './styles';
 
 const NFTWalletModal = (props) => {
@@ -26,6 +27,8 @@ const NFTWalletModal = (props) => {
     koolBalance,
     aidBalance,
     aidHarvest,
+    onSignOut,
+    userAddress,
   } = props;
 
   return (
@@ -57,21 +60,40 @@ const NFTWalletModal = (props) => {
               <Button>
                 <ButtonTitle>Harvest AID</ButtonTitle>
               </Button>
-              <Button>
-                <ButtonTitle>Visit OPENSEA</ButtonTitle>
-              </Button>
-              <Button>
-                <ButtonTitle>Visit AID farm</ButtonTitle>
-              </Button>
+              <Link
+                href="https://opensea.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>
+                  <ButtonTitle>Visit OPENSEA</ButtonTitle>
+                </Button>
+              </Link>
+
+              <Link
+                href="https://kool.lol/farm/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>
+                  <ButtonTitle>Visit AID farm</ButtonTitle>
+                </Button>
+              </Link>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} pl={[0, 0, '35px', '35px']}>
-              <Button>
-                <ButtonTitle>View on Etherscan</ButtonTitle>
-              </Button>
+              <Link
+                href={`https://etherscan.io/address/${userAddress}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>
+                  <ButtonTitle>View on Etherscan</ButtonTitle>
+                </Button>
+              </Link>
               <Button onClick={openNFTBar}>
                 <ButtonTitle>View my NFTz</ButtonTitle>
               </Button>
-              <Button>
+              <Button onClick={onSignOut}>
                 <ButtonTitle>Sign out</ButtonTitle>
               </Button>
             </Box>

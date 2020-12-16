@@ -1,6 +1,10 @@
 import styled, { keyframes } from 'styled-components';
 
 import loadingFruit from '../../images/fruits/loading.png';
+import happyKool from '../../images/happyKool.png';
+import climberKool from '../../images/climberKool.png';
+import happyKoolDrink from '../../images/happyKoolDrink.png';
+import arthur from '../../images/arthur.png';
 
 const bouncing = keyframes`
   0% {
@@ -63,6 +67,13 @@ export const Cover = styled.div`
     right: 0;
     transform: translate(0, -50%);
     margin: initial;
+    z-index: 2;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+      top: -40px;
+    }
   }
 `;
 
@@ -205,6 +216,7 @@ export const Button = styled.div`
 
   @media (min-width: 1024px) {
     width: 215px;
+    z-index: 2;
     margin: ${({ position }) =>
       position === 'right' ? '0 28px 0 0' : '0 0 0 28px'};
   }
@@ -237,4 +249,92 @@ export const LoadingClaimed = styled.span`
   background-size: contain;
   text-indent: -999999px;
   animation: ${bouncing} 1.5s ease-in-out infinite;
+`;
+
+export const HappyKool = styled.div`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    width: 158px;
+    height: 170px;
+    background-image: url(${happyKool});
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: -25px;
+    bottom: 20px;
+  }
+`;
+
+export const ClimberKool = styled.div`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    width: 222px;
+    height: 303px;
+    background-image: url(${climberKool});
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: -94px;
+    bottom: -110px;
+    z-index: 3;
+  }
+`;
+
+export const HappyKoolDrink = styled.div`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    width: 145px;
+    height: 118px;
+    background-image: url(${happyKoolDrink});
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+`;
+
+const ArthurAnimate = keyframes`
+  0% {
+    top: -27px;
+  }
+
+  25% {
+    top: -137px;
+  }
+
+  50% {
+    top: -27px;
+  }
+
+  75% {
+    top: -137px;
+  }
+
+  100% {
+    top: -27px;
+  }
+`;
+
+export const Arthur = styled.div`
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    background-image: url(${arthur});
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 167px;
+    height: 129px;
+    animation: ${ArthurAnimate} 5s ease-in-out infinite;
+    right: 112px;
+    z-index: 1;
+  }
 `;
