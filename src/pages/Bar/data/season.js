@@ -47,6 +47,7 @@ const seasonCards = [
     priceAmount: 80,
     price: '80 AID',
     season: season1,
+    limit: 15,
   },
   {
     tokenId: 4,
@@ -74,6 +75,7 @@ const seasonCards = [
     priceAmount: 80,
     price: '80 AID',
     season: season1,
+    limit: 15,
   },
   {
     tokenId: 5,
@@ -101,6 +103,7 @@ const seasonCards = [
     priceAmount: 50,
     price: '50 AID',
     season: season1,
+    limit: 15,
   },
   {
     tokenId: 6,
@@ -128,6 +131,7 @@ const seasonCards = [
     priceAmount: 80,
     price: '80 AID',
     season: season1,
+    limit: 15,
   },
   {
     tokenId: 7,

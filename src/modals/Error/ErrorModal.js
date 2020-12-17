@@ -11,8 +11,15 @@ const ErrorModal = (props) => {
   const getMessage = () => {
     if (errorMessage === 'execution reverted: 10 NFT per wallet') {
       return 'You have reached the limit of 10 NFTz for this flavor';
+    } else if (errorMessage === 'execution reverted: 15 NFT per wallet') {
+      return 'You have reached the limit of 15 NFTz for this flavor';
     } else if (errorMessage === 'execution reverted: 1 NFT per wallet') {
       return 'You have reached the limit of 1 NFT for this flavor';
+    } else if (
+      errorMessage ===
+      'execution reverted: ERC1155: burn amount exceeds balance'
+    ) {
+      return 'Burn amount exceeds balance';
     }
     return 'Failed transaction. Please, retry';
   };

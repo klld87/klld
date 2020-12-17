@@ -43,7 +43,7 @@ const NFTCocktailsCover = (props) => {
           <Title>MINT NFT flavors for KOOL COCKTAILS!</Title>
           <Actions>
             <Link
-              href="https://medium.com/@hello_41403/kool-tokenomics-and-nfts-9719900a33ff"
+              href="https://koolbar.medium.com/kool-bar-and-season-1-nfts-9719900a33ff"
               target="_blank"
               rel="noopener noreferrer"
             >

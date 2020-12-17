@@ -9,17 +9,55 @@ import {
   Amount,
   SuccessIcon,
   ErrorIcon,
+  LoadingBlock,
+  Loading,
 } from './styles';
 
+// Api
+import { getBalanceOf } from '../../api';
+
 const Ingridient = (props) => {
-  const { amount, cover, isAvailable } = props;
+  const {
+    amount,
+    cover,
+    tokenId,
+    lastUpdate,
+    isWalletUnlocked,
+    userAddress,
+  } = props;
+
+  const [isAvailable, setIsAvailable] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (tokenId && lastUpdate && isWalletUnlocked) {
+      checkIsAvailable();
+    }
+  }, [tokenId, lastUpdate, isWalletUnlocked]);
+
+  const checkIsAvailable = async () => {
+    setIsLoading(true);
+    const tryGetBalance = await getBalanceOf(userAddress, tokenId);
+    setIsLoading(false);
+    if (!isNaN(tryGetBalance)) {
+      setIsAvailable(tryGetBalance >= amount);
+    } else {
+      setIsAvailable(false);
+    }
+  };
 
   return (
     <Wrapper>
       <Cover background={cover} />
-      <IsAvailableBlock>
-        {isAvailable ? <SuccessIcon /> : <ErrorIcon />}
-      </IsAvailableBlock>
+      {isLoading ? (
+        <LoadingBlock>
+          <Loading />
+        </LoadingBlock>
+      ) : (
+        <IsAvailableBlock>
+          {isAvailable ? <SuccessIcon /> : <ErrorIcon />}
+        </IsAvailableBlock>
+      )}
       <AmountBlock>
         <Amount>{amount}</Amount>
       </AmountBlock>

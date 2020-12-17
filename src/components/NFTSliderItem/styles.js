@@ -14,7 +14,7 @@ export const Cover = styled.div`
   border: 1px solid #000000;
   border-radius: 15px;
   background-image: ${({ background }) => `url(${background})`};
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 `;
 

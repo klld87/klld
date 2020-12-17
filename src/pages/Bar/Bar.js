@@ -9,8 +9,8 @@ import TokenStats from '../../components/TokenStats';
 import SeasonCard from '../../components/SeasonCard';
 import SpecialEditionBanner from '../../components/SpecialEditionBanner';
 import SpecialCard from '../../components/SpecialCard';
-// import KoolMixingBanner from '../../components/KoolMixingBanner';
-// import MixingCard from '../../components/MixingCard';
+import KoolMixingBanner from '../../components/KoolMixingBanner';
+import MixingCard from '../../components/MixingCard';
 import Footer from '../../components/Footer';
 import ScrollToTopButton from '../../components/ScrollToTopButton';
 
@@ -28,7 +28,7 @@ import { Wrapper, WatermelonFruit, PearFruit, GrapesFruit } from './styles';
 // Data
 import specialCards from './data/special.js';
 import seasonCards from './data/season.js';
-// import mixingCards from './data/mixing';
+import mixingCards from './data/mixing';
 
 // Api
 import {
@@ -55,6 +55,9 @@ const Bar = () => {
   const [koolBalance, setKoolBalance] = React.useState(null);
   const [aidBalance, setAidBalance] = React.useState(null);
   const [ethBalance, setEthBalance] = React.useState(null);
+  const [lastMixUpdate, setLastMixUpdate] = React.useState(
+    new Date().getTime()
+  );
 
   const handleGetKoolPrice = async () => {
     const price = await getKoolPrice();
@@ -172,6 +175,10 @@ const Bar = () => {
     setNFTWalletModalOpen(false);
   };
 
+  const onBuyNewFlavor = () => {
+    setLastMixUpdate(new Date().getTime());
+  };
+
   return (
     <Wrapper>
       <WatermelonFruit />
@@ -198,6 +205,7 @@ const Bar = () => {
               isWalletUnlocked={userAddress !== null}
               onUnlockWallet={toggleWalletModal}
               aidBalance={aidBalance}
+              onBuyNewFlavor={onBuyNewFlavor}
               isLast={isLast}
               {...seaconCard}
             />
@@ -222,7 +230,7 @@ const Bar = () => {
             />
           );
         })}
-        {/* <KoolMixingBanner />
+        <KoolMixingBanner />
         {mixingCards.map((mixingCard, mixingCardIndex) => {
           const isLast = mixingCardIndex === mixingCards.length - 1;
 
@@ -232,11 +240,14 @@ const Bar = () => {
               openParityModal={toggleParityModal}
               isWalletUnlocked={userAddress !== null}
               onUnlockWallet={toggleWalletModal}
+              refetchUserBalance={getBalances}
+              lastMixUpdate={lastMixUpdate}
+              userAddress={userAddress}
               isLast={isLast}
               {...mixingCard}
             />
           );
-        })} */}
+        })}
         <Footer />
       </Container>
       <HowItWorksModal

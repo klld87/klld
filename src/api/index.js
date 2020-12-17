@@ -26,6 +26,19 @@ export const getBalance = async (provider, tokenAddress, userAddress) => {
   }
 };
 
+export const checkIngridients = async (ingridients, address) => {
+  let failCount = 0;
+
+  for (const ingridient of ingridients) {
+    const getBalance = await getBalanceOf(address, ingridient.tokenId);
+    if (ingridient.amount > getBalance) {
+      failCount += 1;
+    }
+  }
+
+  return failCount === 0;
+};
+
 export const getNFTTotalSupply = async (tokenId) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const contract = new ethers.Contract(NFT_ADDRESS, NFT_ABI, provider);
@@ -52,10 +65,10 @@ export const approveKOOL = (amount) => {
   const signer = provider.getSigner();
   const contract = new ethers.Contract(KOOL_TOKEN_ADDR, KOOL_ABI, provider);
   const signTransactions = contract.connect(signer);
-  signTransactions
+  return signTransactions
     .approve(BAR_ADDRESS, amount)
-    .then(() => {
-      return 'success';
+    .then((data) => {
+      return data;
     })
     .catch(() => {
       return null;
@@ -80,8 +93,7 @@ export const getDrink = (tokenId, amount) => {
   return signTransactions
     .getDrink(tokenId, amount)
     .then((data) => {
-      console.log('data', data);
-      return 'success';
+      return data;
     })
     .catch((error) => {
       if (error?.code === 4001) {

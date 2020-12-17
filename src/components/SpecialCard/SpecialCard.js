@@ -36,6 +36,9 @@ import {
   approveKOOL,
 } from '../../api';
 
+// Helpers
+import { getType, getTitle, isDisabled } from './helpers';
+
 const SpecialCard = (props) => {
   const {
     title,
@@ -63,6 +66,7 @@ const SpecialCard = (props) => {
     isWalletUnlocked,
     priceAmount,
     symbol,
+    onUnlockWallet,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
@@ -70,6 +74,11 @@ const SpecialCard = (props) => {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [isApproved, setApproved] = React.useState(false);
+  const [transactionHash, setTransactionHash] = React.useState(null);
+  const [approveRransactionHash, setApproveTransactionHash] = React.useState(
+    null
+  );
+  const [approveAmount, setApproveAmount] = React.useState(0);
 
   const isFree = price === 'free';
   const isLoadingBalance = totalSupply === null && circulatingSupply === null;
@@ -90,6 +99,58 @@ const SpecialCard = (props) => {
     }
   }, [tokenId, openSeaLink]);
 
+  React.useEffect(() => {
+    if (transactionHash) {
+      checkTransactionInfo();
+      setTotalSupply(null);
+      setCirculatingSupply(null);
+    }
+  }, [transactionHash]);
+
+  React.useEffect(() => {
+    if (approveRransactionHash) {
+      checkApproveTransactionInfo();
+      setTotalSupply(null);
+      setCirculatingSupply(null);
+    }
+  }, [approveRransactionHash]);
+
+  const checkApproveTransactionInfo = () => {
+    window.web3.eth.getTransactionReceipt(
+      approveRransactionHash,
+      (err, transaction) => {
+        if (transaction !== null) {
+          getTokenInfo();
+          refetchUserBalance();
+          setApproved(true);
+          setApproveTransactionHash(null);
+        } else {
+          setTimeout(() => {
+            checkTransactionInfo();
+          }, 1500);
+        }
+      }
+    );
+  };
+
+  const checkTransactionInfo = () => {
+    window.web3.eth.getTransactionReceipt(
+      transactionHash,
+      (err, transaction) => {
+        if (transaction !== null) {
+          getTokenInfo();
+          refetchUserBalance();
+          setTransactionHash(null);
+          setApproveAmount(0);
+        } else {
+          setTimeout(() => {
+            checkTransactionInfo();
+          }, 1500);
+        }
+      }
+    );
+  };
+
   const getTokenInfo = async () => {
     const NFTTotalSupply = await getNFTTotalSupply(tokenId);
     const NFTCirculatingSupply = await getNFTCirculatingSupply(tokenId);
@@ -99,79 +160,85 @@ const SpecialCard = (props) => {
   };
 
   const onClickButton = async () => {
-    if (isLoadingBalance || openSeaLink) {
-      return;
-    }
-    if (tokenId === 1) {
-      onGetDrink(1);
+    if (isWalletUnlocked) {
+      const isButtonDisabled = checkButtonDisabled();
+      if (!isButtonDisabled) {
+        if (tokenId === 1) {
+          onGetDrink(1);
+        } else {
+          if (isApproved && approveAmount) {
+            onGetDrink(approveAmount);
+          } else {
+            setModalOpen(true);
+          }
+        }
+      }
     } else {
-      setModalOpen(true);
+      onUnlockWallet();
+    }
+  };
+
+  const onApprove = async (amount) => {
+    const tryApproveKool = await approveKOOL(
+      window.web3.toWei(priceAmount * amount)
+    );
+    if (tryApproveKool?.hash) {
+      setApproveTransactionHash(tryApproveKool.hash);
+    } else {
+      setErrorMessage('error');
     }
   };
 
   const onGetDrink = async (amount) => {
     setModalOpen(false);
+    if (!isApproved && symbol === 'KOOL') {
+      setApproveAmount(amount);
+      return onApprove(amount);
+    }
     const tryGetDrink = await getDrink(tokenId, amount);
-    if (tryGetDrink === 'success') {
-      getTokenInfo();
-      refetchUserBalance();
+    if (tryGetDrink?.hash) {
+      setTransactionHash(tryGetDrink.hash);
     } else {
-      if (tryGetDrink.indexOf('low-level call failed') !== -1) {
-        approveKOOL(window.web3.toWei(priceAmount * amount));
-      } else {
+      if (tryGetDrink) {
         setErrorMessage(tryGetDrink);
       }
     }
   };
 
   const getButtonTitle = () => {
-    if (openSeaLink) {
-      return 'GET ON OPENSEA';
-    } else {
-      if (isWalletUnlocked) {
-        if (isTokensLoading) {
-          return 'loading...';
-        } else {
-          if (symbol === 'ETH') {
-            if (priceAmount > ethBalance) {
-              return `NEED ${Number(priceAmount - ethBalance).toFixed(3)} ETH`;
-            }
-          } else if (symbol === 'AID') {
-            if (priceAmount > aidBalance) {
-              return `NEED ${Number(priceAmount - aidBalance).toFixed(2)} AID`;
-            }
-          } else if (symbol === 'KOOL') {
-            if (priceAmount > koolBalance) {
-              return `NEED ${Number(priceAmount - koolBalance).toFixed(
-                2
-              )} KOOL`;
-            }
-          }
-          if (isAllClaimed) {
-            return 'GET ON OPENSEA';
-          }
-          return symbol === 'KOOL' ? 'APPROVE KOOL' : 'GET NFT';
-        }
-      }
-      return 'UNLOCK WALLET';
-    }
+    const title = getTitle(
+      openSeaLink,
+      isWalletUnlocked,
+      isTokensLoading,
+      symbol,
+      priceAmount,
+      ethBalance,
+      aidBalance,
+      koolBalance,
+      isAllClaimed,
+      isFree,
+      isLoadingBalance,
+      isApproved
+    );
+    return title;
   };
 
   const getButtonType = () => {
-    if (openSeaLink) {
-      return 'openSea';
-    } else {
-      if (isWalletUnlocked) {
-        if (isTokensLoading) {
-          return 'loading';
-        }
-        if (priceAmount > aidBalance) {
-          return 'insufficientFunds';
-        }
-        return isAllClaimed ? 'getOnOpenSea' : 'getNFT';
-      }
-      return 'unlockWallet';
-    }
+    const type = getType(
+      openSeaLink,
+      isWalletUnlocked,
+      isTokensLoading,
+      symbol,
+      priceAmount,
+      ethBalance,
+      aidBalance,
+      koolBalance,
+      isAllClaimed,
+      isFree,
+      isLoadingBalance,
+      isApproved
+    );
+    return type;
   };
 
   const getLink = () => {
@@ -185,18 +252,21 @@ const SpecialCard = (props) => {
   };
 
   const checkButtonDisabled = () => {
-    if (!priceAmount && isFree) {
-      return false;
-    } else {
-      if (isWalletUnlocked) {
-        if (!isTokensLoading) {
-          if (aidBalance > priceAmount) {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
+    const isButtonDisabled = isDisabled(
+      openSeaLink,
+      isWalletUnlocked,
+      isTokensLoading,
+      symbol,
+      priceAmount,
+      ethBalance,
+      aidBalance,
+      koolBalance,
+      isAllClaimed,
+      isFree,
+      isLoadingBalance,
+      isApproved
+    );
+    return isButtonDisabled;
   };
 
   return (
@@ -208,6 +278,7 @@ const SpecialCard = (props) => {
           mobileSizes={coverSizes.mobile}
           position={position}
           mobileStyle={mobileStyle}
+          tokenId={tokenId}
         />
         <Body
           background={background}

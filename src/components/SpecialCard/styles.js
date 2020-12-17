@@ -61,11 +61,19 @@ export const Cover = styled.div`
   @media (min-width: 1024px) {
     width: ${({ desktopSizes }) => `${desktopSizes.width}px`};
     height: ${({ desktopSizes }) => `${desktopSizes.height}px`};
-    left: ${({ position }) => (position === 'left' ? '100px' : 'inherit')};
+    left: ${({ position, tokenId }) =>
+      position === 'left' ? `${tokenId === 14 ? 150 : 100}px` : 'inherit'};
     top: 50%;
     right: 0;
     transform: translate(0, -50%);
     margin: initial;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+      top: -40px;
+    }
   }
 `;
 

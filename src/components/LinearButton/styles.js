@@ -9,6 +9,14 @@ const getBackground = (type) => {
     return '#FDD90F';
   } else if (type === 'getOnOpenSea') {
     return 'linear-gradient(180deg, #01C2FF 0%, #65C796 48.44%, #FDD90F 100%)';
+  } else if (type === 'NFTzMissing') {
+    return '#EC010E';
+  } else if (type === 'free') {
+    return 'linear-gradient(180deg, #CCCBC6 0%, rgba(204, 203, 198, 0) 100%)';
+  } else if (type === 'approve') {
+    return 'linear-gradient(180deg, #1EFF93 0%, rgba(30, 255, 147, 0) 100%)';
+  } else if (type === 'getNFT2') {
+    return 'linear-gradient(180deg, #FDD90F 0%, rgba(253, 217, 15, 0) 100%)';
   }
   return 'linear-gradient(132.64deg, #ffe601 9.46%, #56ee46 41.71%, #019aca 73.97%)';
 };
@@ -54,7 +62,10 @@ export const Button = styled.div`
   height: 40px;
 
   @media (min-width: 1024px) {
-    width: ${({ type }) => (type === 'mix' ? '100%' : '215px')};
+    width: ${({ type, desktopFull }) =>
+      ['mix', 'NFTzMissing'].indexOf(type) !== -1 || desktopFull
+        ? '100%'
+        : '215px'};
   }
 `;
 

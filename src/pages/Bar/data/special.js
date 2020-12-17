@@ -141,7 +141,7 @@ const specialCards = [
   },
   {
     tokenId: 17,
-    title: 'KOOL GEM kit',
+    title: 'Kool Collecting Kit',
     cover: gemkitCardCover,
     titleBlur: gemkitCradBlur,
     background: paperBG1,
@@ -172,7 +172,7 @@ const specialCards = [
   },
   {
     tokenId: 1,
-    title: 'KOOL ZERO ',
+    title: 'KOOL ZERO',
     cover: zeroCardCover,
     titleBlur: zeroCradBlur,
     background: paperBG3,
@@ -216,10 +216,10 @@ const specialCards = [
     description: 'Empty',
     contents: 'Empty',
     howToUse: 'soon',
-    parity: 'super rare',
-    price: '0.3 ETH',
+    parity: 'rare',
+    price: '0.99 ETH',
     symbol: 'ETH',
-    priceAmount: 0.3,
+    priceAmount: 0.99,
     season: specialSeason,
     mobileStyle: {
       top: -50,

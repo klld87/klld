@@ -62,12 +62,15 @@ const SeasonCard = (props) => {
     onUnlockWallet,
     aidBalance,
     priceAmount,
+    limit,
+    onBuyNewFlavor,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
   const [circulatingSupply, setCirculatingSupply] = React.useState(null);
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
+  const [transactionHash, setTransactionHash] = React.useState(null);
 
   const isLoadingBalance = totalSupply === null || circulatingSupply === null;
   const isTokensLoading = isWalletUnlocked && aidBalance === null;
@@ -79,6 +82,32 @@ const SeasonCard = (props) => {
       getTokenInfo();
     }
   }, [tokenId]);
+
+  React.useEffect(() => {
+    if (transactionHash) {
+      checkTransactionInfo();
+      setTotalSupply(null);
+      setCirculatingSupply(null);
+    }
+  }, [transactionHash]);
+
+  const checkTransactionInfo = () => {
+    window.web3.eth.getTransactionReceipt(
+      transactionHash,
+      (err, transaction) => {
+        if (transaction !== null) {
+          getTokenInfo();
+          refetchUserBalance();
+          onBuyNewFlavor();
+          setTransactionHash(null);
+        } else {
+          setTimeout(() => {
+            checkTransactionInfo();
+          }, 1500);
+        }
+      }
+    );
+  };
 
   const getTokenInfo = async () => {
     const NFTTotalSupply = await getNFTTotalSupply(tokenId);
@@ -102,9 +131,8 @@ const SeasonCard = (props) => {
   const onGetDrink = async (amount) => {
     setModalOpen(false);
     const tryGetDrink = await getDrink(tokenId, amount);
-    if (tryGetDrink === 'success') {
-      getTokenInfo();
-      refetchUserBalance();
+    if (tryGetDrink?.hash) {
+      setTransactionHash(tryGetDrink.hash);
     } else if (tryGetDrink) {
       setErrorMessage(tryGetDrink);
     }
@@ -137,6 +165,9 @@ const SeasonCard = (props) => {
   };
 
   const checkButtonDisabled = () => {
+    if (!isLoadingBalance) {
+      return false;
+    }
     if (isWalletUnlocked) {
       if (!isTokensLoading) {
         if (aidBalance > priceAmount) {
@@ -217,6 +248,7 @@ const SeasonCard = (props) => {
         open={isModalOpen}
         onCloseModal={() => setModalOpen(false)}
         onSend={onGetDrink}
+        limit={limit}
       />
       <ErrorModal
         open={errorMessage !== null}

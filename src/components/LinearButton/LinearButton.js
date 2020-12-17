@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Wrapper, Button, ButtonTitle, LinkWrapper } from './styles';
 
 const LinearButton = (props) => {
-  const { title, type, onClickButton, link, disabled } = props;
+  const { title, type, onClickButton, link, disabled, desktopFull } = props;
 
   if ((type === 'openSea' || type === 'getOnOpenSea') && link) {
     return (
@@ -23,7 +23,7 @@ const LinearButton = (props) => {
 
   return (
     <Wrapper type={type} onClick={onClickButton} disabled={disabled}>
-      <Button type={type}>
+      <Button type={type} desktopFull={desktopFull}>
         <ButtonTitle>{title}</ButtonTitle>
       </Button>
     </Wrapper>

@@ -1,6 +1,29 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import magicJug from '../../images/magicJug.png';
+import loadingFruit from '../../images/fruits/loading.png';
+
+const bouncing = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -37,6 +60,12 @@ export const Cover = styled.div`
     left: 60px;
     transform: translate(0, -50%);
     margin: initial;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+      top: -40px;
+    }
   }
 `;
 
@@ -277,4 +306,16 @@ export const CountDownRow = styled(Body)`
       line-height: 20px;
     }
   }
+`;
+
+export const LoadingMixed = styled.span`
+  display: block;
+  margin: 0 auto;
+  width: 44px;
+  height: 37px;
+  background-image: url(${loadingFruit});
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-indent: -999999px;
+  animation: ${bouncing} 1.5s ease-in-out infinite;
 `;

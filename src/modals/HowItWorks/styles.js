@@ -61,9 +61,13 @@ export const Item = styled.div`
   }
 `;
 
-export const ItemEmoji = styled.p`
-  margin: 0;
-  font-size: 58px;
+export const ItemEmoji = styled.div`
+  background-image: ${({ image }) => `url(${image})`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  min-height: 80px;
 `;
 
 export const DescriptionRow = styled.div`
@@ -107,7 +111,7 @@ export const Button = styled.div`
   height: 34px;
 
   @media (min-width: 1024px) {
-    height: 58px;
+    height: 46px;
   }
 `;
 
@@ -144,4 +148,9 @@ export const FooterText = styled.p`
 
 export const FooterLink = styled.a`
   text-decoration: underline;
+`;
+
+export const Link = styled.a`
+  width: 100%;
+  height: 46px;
 `;

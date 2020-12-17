@@ -10,6 +10,7 @@ import keyCardCover from '../../images/barCards/key.png';
 import stampCardCover from '../../images/barCards/stamp.png';
 import zeroCardCover from '../../images/barCards/zero.png';
 import sergeyCardCover from '../../images/barCards/sergey.png';
+import rugberryCardCover from '../../images/mixingCard/rugberry.png';
 
 const cards = [
   { tokenId: 3, cover: se1CardCover },
@@ -23,6 +24,7 @@ const cards = [
   { tokenId: 17, cover: stampCardCover },
   { tokenId: 1, cover: zeroCardCover },
   { tokenId: 2, cover: sergeyCardCover },
+  { tokenId: 8, cover: rugberryCardCover },
 ];
 
 export default cards;

@@ -26,12 +26,19 @@ import {
   ParityBlock,
   ParityRow,
   CountDownRow,
+  LoadingMixed,
 } from './styles';
 
 // Components
 import Ingridient from '../Ingridient';
 import LinearButton from '../LinearButton';
 import Parity from '../Parity';
+
+// Modals
+import ErrorModal from '../../modals/Error';
+
+// Api
+import { getNFTCirculatingSupply, getDrink, checkIngridients } from '../../api';
 
 const MixingCard = (props) => {
   const {
@@ -42,7 +49,6 @@ const MixingCard = (props) => {
     contents,
     parity,
     recipe,
-    mixedCount,
     sugar,
     acidity,
     toxicity,
@@ -50,76 +56,208 @@ const MixingCard = (props) => {
     openParityModal,
     bgColor,
     background,
-    onClickButton,
     isLast,
     withCountDown,
+    countDown,
+    tokenId,
+    refetchUserBalance,
+    isWalletUnlocked,
+    onUnlockWallet,
+    lastMixUpdate,
+    userAddress,
   } = props;
 
+  const [circulatingSupply, setCirculatingSupply] = React.useState(null);
+  const [transactionHash, setTransactionHash] = React.useState(null);
+  const [errorMessage, setErrorMessage] = React.useState(null);
+  const [lastUpdate, setLastUpdate] = React.useState(new Date().getTime());
+  const [isMixedAvailable, setMixedAvailable] = React.useState(false);
+  const [isLoadingAvailable, setLoadingAvailable] = React.useState(false);
+
+  React.useEffect(() => {
+    if (tokenId && lastMixUpdate) {
+      getTokenInfo();
+      setLastUpdate(lastMixUpdate);
+      checkIsAvailable();
+    }
+  }, [tokenId, lastMixUpdate]);
+
+  React.useEffect(() => {
+    if (transactionHash) {
+      checkTransactionInfo();
+      setCirculatingSupply(null);
+    }
+  }, [transactionHash]);
+
+  const checkIsAvailable = async () => {
+    setLoadingAvailable(true);
+
+    const isAllAvailabled = await checkIngridients(ingridients, userAddress);
+    setLoadingAvailable(false);
+    setMixedAvailable(isAllAvailabled);
+  };
+
+  const checkTransactionInfo = () => {
+    window.web3.eth.getTransactionReceipt(
+      transactionHash,
+      (err, transaction) => {
+        if (transaction !== null) {
+          getTokenInfo();
+          refetchUserBalance();
+          setLastUpdate(new Date().getTime());
+          setTransactionHash(null);
+        } else {
+          setTimeout(() => {
+            checkTransactionInfo();
+          }, 1500);
+        }
+      }
+    );
+  };
+
+  const getTokenInfo = async () => {
+    const NFTCirculatingSupply = await getNFTCirculatingSupply(tokenId);
+
+    setCirculatingSupply(NFTCirculatingSupply);
+  };
+
+  const onClickButton = async () => {
+    if (isWalletUnlocked) {
+      if (!checkButtonDisabled()) {
+        const tryGetDrink = await getDrink(tokenId, 1);
+        if (tryGetDrink?.hash) {
+          setTransactionHash(tryGetDrink.hash);
+        } else if (tryGetDrink) {
+          setErrorMessage(tryGetDrink);
+        }
+      }
+    } else {
+      onUnlockWallet();
+    }
+  };
+
+  const checkButtonDisabled = () => {
+    if (
+      circulatingSupply === null ||
+      !isWalletUnlocked ||
+      isLoadingAvailable ||
+      !isMixedAvailable
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const getButtonTitle = () => {
+    if (isWalletUnlocked) {
+      if (circulatingSupply === null || isLoadingAvailable) {
+        return 'loading...';
+      }
+      if (!isMixedAvailable) {
+        return 'NFTz missing';
+      }
+      return 'MIX';
+    }
+    return 'UNLOCK WALLET';
+  };
+
+  const getButtonType = () => {
+    if (isWalletUnlocked) {
+      if (circulatingSupply === null || isLoadingAvailable) {
+        return 'loading';
+      }
+      if (!isMixedAvailable) {
+        return 'NFTzMissing';
+      }
+      return 'mix';
+    }
+    return 'unlockWallet';
+  };
+
   return (
-    <Wrapper isLast={isLast}>
-      <Cover background={cover} />
-      {withCountDown ? (
-        <CountDownRow bgColor={bgColor} background={background}>
-          <Countdown date={new Date('Dec 20 2020')} />
-        </CountDownRow>
-      ) : (
-        <Body bgColor={bgColor} background={background}>
-          <TitleBlur background={titleBlur}>
-            <Title>{title}</Title>
-          </TitleBlur>
-          <Jug />
-          <Row>
-            <Content>
-              <ContentTitle>
-                Description: <ContentText>{description}</ContentText>
-              </ContentTitle>
-              <ContentTitle>
-                CONTENTS: <ContentText>{contents}</ContentText>
-              </ContentTitle>
-              <ParityBlock>
+    <>
+      <Wrapper isLast={isLast} id={`card${tokenId}`}>
+        <Cover background={cover} />
+        {withCountDown && countDown ? (
+          <CountDownRow bgColor={bgColor} background={background}>
+            <Countdown date={countDown} />
+          </CountDownRow>
+        ) : (
+          <Body bgColor={bgColor} background={background}>
+            <TitleBlur background={titleBlur}>
+              <Title>{title}</Title>
+            </TitleBlur>
+            <Jug />
+            <Row>
+              <Content>
                 <ContentTitle>
-                  RARITY: <ContentText>{parity}</ContentText>
+                  Description: <ContentText>{description}</ContentText>
                 </ContentTitle>
-                <ParityRow>
-                  <Parity type={parity} openModal={openParityModal} />
-                </ParityRow>
-              </ParityBlock>
-              <ContentTitle>
-                RECIPE: <ContentText>{recipe}</ContentText>
-              </ContentTitle>
-              <Actions>
-                <LinearButton
-                  onClickButton={onClickButton}
-                  title="MIX"
-                  type="mix"
-                />
-                <Button>
-                  <ButtonTitle>{mixedCount} mixed</ButtonTitle>
-                </Button>
-              </Actions>
-            </Content>
-            <Right>
-              {ingridients?.length ? (
-                <IngridientsBlock background={background}>
-                  <IngridientsLabel>Ingridients:</IngridientsLabel>
-                  <IngridientsList>
-                    <IngridientsPlus>+</IngridientsPlus>
-                    {ingridients.map((item, index) => (
-                      <Ingridient {...item} key={index} />
-                    ))}
-                  </IngridientsList>
-                </IngridientsBlock>
-              ) : null}
-              <StatsList>
-                <StatsItem>sugar: {sugar}</StatsItem>
-                <StatsItem>acidity: {acidity}</StatsItem>
-                <StatsItem>toxicity: {toxicity}</StatsItem>
-              </StatsList>
-            </Right>
-          </Row>
-        </Body>
-      )}
-    </Wrapper>
+                <ContentTitle>
+                  CONTENTS: <ContentText>{contents}</ContentText>
+                </ContentTitle>
+                <ParityBlock>
+                  <ContentTitle>
+                    RARITY: <ContentText>{parity}</ContentText>
+                  </ContentTitle>
+                  <ParityRow>
+                    <Parity type={parity} openModal={openParityModal} />
+                  </ParityRow>
+                </ParityBlock>
+                <ContentTitle>
+                  RECIPE: <ContentText>{recipe}</ContentText>
+                </ContentTitle>
+                <Actions>
+                  <LinearButton
+                    onClickButton={onClickButton}
+                    disabled={checkButtonDisabled()}
+                    title={getButtonTitle()}
+                    type={getButtonType()}
+                    desktopFull
+                  />
+                  <Button>
+                    {circulatingSupply === null ? (
+                      <LoadingMixed />
+                    ) : (
+                      <ButtonTitle>{`${circulatingSupply} mixed`}</ButtonTitle>
+                    )}
+                  </Button>
+                </Actions>
+              </Content>
+              <Right>
+                {ingridients?.length ? (
+                  <IngridientsBlock background={background}>
+                    <IngridientsLabel>Ingridients:</IngridientsLabel>
+                    <IngridientsList>
+                      <IngridientsPlus>+</IngridientsPlus>
+                      {ingridients.map((item, index) => (
+                        <Ingridient
+                          key={index}
+                          lastUpdate={lastUpdate}
+                          isWalletUnlocked={isWalletUnlocked}
+                          userAddress={userAddress}
+                          {...item}
+                        />
+                      ))}
+                    </IngridientsList>
+                  </IngridientsBlock>
+                ) : null}
+                <StatsList>
+                  <StatsItem>sugar: {sugar}</StatsItem>
+                  <StatsItem>acidity: {acidity}</StatsItem>
+                  <StatsItem>toxicity: {toxicity}</StatsItem>
+                </StatsList>
+              </Right>
+            </Row>
+          </Body>
+        )}
+      </Wrapper>
+      <ErrorModal
+        open={errorMessage !== null}
+        onCloseModal={() => setErrorMessage(null)}
+        errorMessage={errorMessage}
+      />
+    </>
   );
 };
 

@@ -16,12 +16,13 @@ import {
 } from './styles';
 
 const EnterAmountModal = (props) => {
-  const { open, onCloseModal, onSend } = props;
+  const { open, onCloseModal, onSend, limit } = props;
 
   const [amount, setAmount] = React.useState(1);
+  const maxAmount = limit || 10;
 
   const increment = () => {
-    if (amount < 10) {
+    if (amount < maxAmount) {
       setAmount(amount + 1);
     }
   };
@@ -60,7 +61,9 @@ const EnterAmountModal = (props) => {
           </FormItem>
         </Form>
         <Footer>
-          <FooterText>The maximum amount one wallet can claim is 10</FooterText>
+          <FooterText>
+            The maximum amount one wallet can claim is {maxAmount}
+          </FooterText>
         </Footer>
       </Wrapper>
     </Modal>

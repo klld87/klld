@@ -1,69 +1,55 @@
 // Covers
-import punchCover from '../../../images/mixingCard/punch.png';
+import rugberryCover from '../../../images/mixingCard/rugberry.png';
 import ohCover from '../../../images/mixingCard/oh.png';
 
 // Blurs
-import navyBlueBlur from '../../../images/cardBlurs/navyBlue.png';
-// import blueBlur from '../../../images/cardBlurs/blue.png';
-// import butterBlur from '../../../images/cardBlurs/butter.png';
-// import dogeBlur from '../../../images/cardBlurs/doge.png';
-// import dragonfruitBlur from '../../../images/cardBlurs/dragonfruit.png';
+import blueBlur from '../../../images/cardBlurs/blue.png';
 
 // Ingridients covers
-import mixingCover from '../../../images/mixingCovers/1.png';
+import redCherryDumpIngr from '../../../images/mixingCovers/redCherryDump.png';
+import grapesofETHIngr from '../../../images/mixingCovers/grapesofETH.png';
 
 // Backgrounds
 import paperBG1 from '../../../images/bgPaper/1.png';
-// import paperBG2 from '../../../images/bgPaper/2.png';
-// import paperBG3 from '../../../images/bgPaper/3.png';
+import paperBG2 from '../../../images/bgPaper/2.png';
 
 const mixingCards = [
   {
-    tokenId: 9,
-    title: 'Moonshine punch',
-    cover: punchCover,
-    titleBlur: navyBlueBlur,
-    bgColor: '#E5BB9D',
+    tokenId: 8,
+    title: 'Rugberry',
+    cover: rugberryCover,
+    titleBlur: blueBlur,
+    bgColor: '#3BDCFF',
     background: paperBG1,
-    description: 'How many punches before the moon?',
+    description: 'The most popular DeFi flavor!',
     contents:
-      'fructose, lysergic acid, synthetic blueberry flavor, moondust, blue 1, yellow 5',
+      'Sugar, Fructose, Lysergic acid, Synthetic Blueberry Flavor, Persion Rug Dust, Blue 1',
     parity: 'uncommon',
-    recipe: 'banana fomo x1 + green apple pump x1 + bitcoin orange x2',
-    mixedCount: 45,
-    sugar: 17,
-    acidity: 17,
-    toxicity: 17,
+    recipe: 'Red Cherry Dump x1 + Grapes of ETH x3',
+    sugar: 24,
+    acidity: 4,
+    toxicity: 7,
     ingridients: [
       {
-        cover: mixingCover,
+        cover: redCherryDumpIngr,
         amount: 1,
-        isAvailable: true,
+        tokenId: 4,
       },
       {
-        cover: mixingCover,
-        amount: 2,
-        isAvailable: false,
-      },
-      {
-        cover: mixingCover,
-        amount: 1,
-        isAvailable: true,
-      },
-      {
-        cover: mixingCover,
-        amount: 1,
-        isAvailable: false,
+        cover: grapesofETHIngr,
+        amount: 3,
+        tokenId: 6,
       },
     ],
   },
   {
-    tokenId: 8,
-    title: 'Rugberry',
+    // tokenId: 9,
+    title: 'Moonshine punch',
     cover: ohCover,
     withCountDown: true,
-    bgColor: '#3BDCFF',
-    background: paperBG1,
+    countDown: new Date('Dec 20 2020 18:00:00 GMT+0000'),
+    bgColor: '#E5BB9D',
+    background: paperBG2,
   },
   // {
   //   tokenId: 10,
