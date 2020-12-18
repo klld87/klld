@@ -6,6 +6,10 @@ import routes from './routes';
 import Preload from './components/Preload';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    cursor: url('https://cur.cursors-4u.net/food/foo-2/foo146.cur'), auto !important;
+  }
+
   html {
     scroll-behavior: smooth;
     @font-face {
@@ -174,6 +178,18 @@ const App = () => {
             })}
           </Switch>
         </BrowserRouter>
+        <a
+          href="https://www.cursors-4u.com/cursor/2006/05/03/foo146.html"
+          target="_blank"
+          title="Kool-Aid Man"
+        >
+          <img
+            src="https://cur.cursors-4u.net/cursor.png"
+            border="0"
+            alt="Kool-Aid Man"
+            style={{ position: 'absolute', top: 0, right: 0 }}
+          />
+        </a>
       </Preload>
     </>
   );

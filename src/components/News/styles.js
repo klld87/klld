@@ -135,6 +135,12 @@ export const WelcomeToBar = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px 0 0 0;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+  }
 `;
 
 export const BarCover = styled.div`
@@ -145,6 +151,12 @@ export const BarCover = styled.div`
   background-size: contain;
   margin: 50px 0;
   position: relative;
+
+  @media (min-width: 1024px) {
+    margin: 0;
+    width: 370px;
+    height: 536px;
+  }
 `;
 
 export const BarButton = styled.div`
@@ -155,8 +167,15 @@ export const BarButton = styled.div`
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   position: absolute;
-  bottom: 120px;
-  right: -20px;
+  bottom: 130px;
+  right: 0px;
+
+  @media (min-width: 1024px) {
+    bottom: 165px;
+    width: 239px;
+    height: 61px;
+    right: -20px;
+  }
 `;
 
 export const BarButtonTitle = styled.p`
@@ -165,24 +184,47 @@ export const BarButtonTitle = styled.p`
   color: #ffffff;
   margin: 0 30px;
   text-align: center;
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+    line-height: 25px;
+    margin: 0 50px;
+  }
 `;
 
 export const WatermelonFruit = styled.div`
-  width: 183px;
-  height: 108px;
+  width: 222px;
+  height: 203px;
   background-image: url(${watermelon});
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: ${spin} 1.8s linear infinite;
 
   @media (min-width: 1024px) {
-    animation: ${spin} 1.8s linear infinite;
+    position: absolute;
+    right: -110px;
+    width: 333px;
+    background-size: cover;
+    height: 304px;
+    bottom: -80px;
   }
 `;
 
 export const PearFruit = styled.div`
-  width: 50px;
-  height: 86px;
+  width: 81px;
+  height: 106px;
   background-image: url(${pear});
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: ${appear} 1.8s ease-in-out infinite;
 
   @media (min-width: 1024px) {
-    animation: ${appear} 1.8s ease-in-out infinite;
+    position: absolute;
+    width: 243px;
+    height: 318px;
+    background-size: cover;
+    transform: rotate(-14.92deg);
+    left: 0;
+    top: 0;
   }
 `;
