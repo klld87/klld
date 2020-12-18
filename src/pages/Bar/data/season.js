@@ -23,7 +23,8 @@ import season1 from '../../../images/seasons/1.png';
 const seasonCards = [
   {
     tokenId: 3,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/3',
     title: 'Green Apple Pump',
     cover: appleCardCover,
     titleBlur: greenBlur,
@@ -52,7 +53,8 @@ const seasonCards = [
   },
   {
     tokenId: 4,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/4',
     title: 'Red Cherry Dump',
     cover: cheeryCardCover,
     titleBlur: redBlur,
@@ -81,7 +83,7 @@ const seasonCards = [
   },
   {
     tokenId: 5,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
     title: 'Bitcoin Orange',
     cover: orangeCardCover,
     titleBlur: orangeBlur,
@@ -110,7 +112,8 @@ const seasonCards = [
   },
   {
     tokenId: 6,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/6',
     title: 'Grapes of ETH',
     cover: grapesCardCover,
     titleBlur: grapesBlur,
@@ -139,7 +142,8 @@ const seasonCards = [
   },
   {
     tokenId: 7,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/7',
     title: 'Banana Fomo',
     cover: bananaCardCover,
     titleBlur: bananaBlur,

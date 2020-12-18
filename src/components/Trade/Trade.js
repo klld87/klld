@@ -23,7 +23,7 @@ const Trade = () => {
           </Text>
           <Link
             tagName="a"
-            href="https://opensea.io"
+            href="https://opensea.io/collection/kool-bar"
             target="_blank"
             rel="noopener noreferrer"
             hoverBackground="#05A6B0"

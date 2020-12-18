@@ -56,7 +56,7 @@ const specialCards = [
   },
   {
     tokenId: 14,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
     title: 'KOOL MAN',
     cover: koolManCardCover,
     titleBlur: manCradBlur,
@@ -84,7 +84,7 @@ const specialCards = [
   },
   {
     tokenId: 15,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
     title: 'KOOL BAG',
     cover: koolBagCardCover,
     titleBlur: bagCradBlur,
@@ -113,7 +113,7 @@ const specialCards = [
   },
   {
     tokenId: 16,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
     title: 'KOOL KEY CHAIN',
     cover: keychainCardCover,
     titleBlur: keychainCradBlur,
@@ -144,7 +144,7 @@ const specialCards = [
   },
   {
     tokenId: 17,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
     title: 'Kool Collecting Kit',
     cover: gemkitCardCover,
     titleBlur: gemkitCradBlur,
@@ -176,7 +176,8 @@ const specialCards = [
   },
   {
     tokenId: 1,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/1',
     title: 'KOOL ZERO',
     cover: zeroCardCover,
     titleBlur: zeroCradBlur,
@@ -202,7 +203,7 @@ const specialCards = [
   },
   {
     tokenId: 2,
-    tokenOpenSeaLink: 'https://opensea.io',
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
     title: 'Non-drinker Sergey',
     cover: sergeyCardCover,
     titleBlur: gemkitCradBlur,

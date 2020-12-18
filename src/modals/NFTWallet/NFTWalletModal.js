@@ -61,7 +61,7 @@ const NFTWalletModal = (props) => {
                 <ButtonTitle>Harvest AID</ButtonTitle>
               </Button>
               <Link
-                href="https://opensea.io"
+                href="https://opensea.io/collection/kool-bar"
                 target="_blank"
                 rel="noopener noreferrer"
               >
