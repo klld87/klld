@@ -13,18 +13,18 @@ import sergeyCardCover from '../../images/barCards/sergey.png';
 import rugberryCardCover from '../../images/mixingCard/rugberry.png';
 
 const cards = [
-  { tokenId: 3, cover: se1CardCover },
-  { tokenId: 4, cover: se2CardCover },
-  { tokenId: 5, cover: se3CardCover },
-  { tokenId: 6, cover: se4CardCover },
-  { tokenId: 7, cover: se5CardCover },
-  { tokenId: 15, cover: bagCardCover },
-  { tokenId: 14, cover: manCardCover },
-  { tokenId: 16, cover: keyCardCover },
-  { tokenId: 17, cover: stampCardCover },
-  { tokenId: 1, cover: zeroCardCover },
-  { tokenId: 2, cover: sergeyCardCover },
-  { tokenId: 8, cover: rugberryCardCover },
+  { tokenId: 3, cover: se1CardCover, link: 'https://opensea.io' },
+  { tokenId: 4, cover: se2CardCover, link: 'https://opensea.io' },
+  { tokenId: 5, cover: se3CardCover, link: 'https://opensea.io' },
+  { tokenId: 6, cover: se4CardCover, link: 'https://opensea.io' },
+  { tokenId: 7, cover: se5CardCover, link: 'https://opensea.io' },
+  { tokenId: 15, cover: bagCardCover, link: 'https://opensea.io' },
+  { tokenId: 14, cover: manCardCover, link: 'https://opensea.io' },
+  { tokenId: 16, cover: keyCardCover, link: 'https://opensea.io' },
+  { tokenId: 17, cover: stampCardCover, link: 'https://opensea.io' },
+  { tokenId: 1, cover: zeroCardCover, link: 'https://opensea.io' },
+  { tokenId: 2, cover: sergeyCardCover, link: 'https://opensea.io' },
+  { tokenId: 8, cover: rugberryCardCover, link: 'https://opensea.io' },
 ];
 
 export default cards;

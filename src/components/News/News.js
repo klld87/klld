@@ -13,6 +13,7 @@ import {
   BarButton,
   BarButtonTitle,
   WatermelonFruit,
+  ScotchTape,
 } from './styles';
 
 const news = [
@@ -50,11 +51,13 @@ const News = () => {
         <WelcomeToBar>
           <WatermelonFruit />
           <BarCover>
+            <ScotchTape position="top" />
             <NavLink to="/bar">
               <BarButton>
                 <BarButtonTitle>CLICK HERE TO ENTER</BarButtonTitle>
               </BarButton>
             </NavLink>
+            <ScotchTape position="bottom" />
           </BarCover>
           <PearFruit />
         </WelcomeToBar>

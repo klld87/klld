@@ -76,7 +76,7 @@ const SpecialCard = (props) => {
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [isApproved, setApproved] = React.useState(false);
   const [transactionHash, setTransactionHash] = React.useState(null);
-  const [approveRransactionHash, setApproveTransactionHash] = React.useState(
+  const [approveTransactionHash, setApproveTransactionHash] = React.useState(
     null
   );
   const [approveAmount, setApproveAmount] = React.useState(0);
@@ -109,20 +109,19 @@ const SpecialCard = (props) => {
   }, [transactionHash]);
 
   React.useEffect(() => {
-    if (approveRransactionHash) {
+    if (approveTransactionHash) {
       checkApproveTransactionInfo();
       setTotalSupply(null);
       setCirculatingSupply(null);
     }
-  }, [approveRransactionHash]);
+  }, [approveTransactionHash]);
 
-  const checkApproveTransactionInfo = () => {
+  const checkApproveTransactionInfo = async () => {
     window.web3.eth.getTransactionReceipt(
-      approveRransactionHash,
+      approveTransactionHash,
       (err, transaction) => {
         if (transaction !== null) {
           getTokenInfo();
-          refetchUserBalance();
           setApproved(true);
           setApproveTransactionHash(null);
         } else {
@@ -194,14 +193,15 @@ const SpecialCard = (props) => {
     setModalOpen(false);
     if (!isApproved && symbol === 'KOOL') {
       setApproveAmount(amount);
-      return onApprove(amount);
-    }
-    const tryGetDrink = await getDrink(tokenId, amount);
-    if (tryGetDrink?.hash) {
-      setTransactionHash(tryGetDrink.hash);
+      onApprove(amount);
     } else {
-      if (tryGetDrink) {
-        setErrorMessage(tryGetDrink);
+      const tryGetDrink = await getDrink(tokenId, amount);
+      if (tryGetDrink?.hash) {
+        setTransactionHash(tryGetDrink.hash);
+      } else {
+        if (tryGetDrink) {
+          setErrorMessage(tryGetDrink);
+        }
       }
     }
   };
@@ -243,11 +243,11 @@ const SpecialCard = (props) => {
   };
 
   const getLink = () => {
+    if (openSeaLink) {
+      return openSeaLink;
+    }
     if (isAllClaimed) {
       return tokenOpenSeaLink;
-    }
-    if (isFree) {
-      return openSeaLink;
     }
     return null;
   };

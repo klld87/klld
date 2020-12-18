@@ -76,7 +76,7 @@ const NFTBarModal = (props) => {
         <Carousel>
           <Slider ref={sliderRef} {...settings}>
             {cards.map((card) => {
-              const { tokenId, cover } = card;
+              const { tokenId, cover, link } = card;
 
               return (
                 <NFTSliderItem
@@ -84,6 +84,7 @@ const NFTBarModal = (props) => {
                   tokenId={tokenId}
                   cover={cover}
                   closeModal={onCloseModal}
+                  link={link}
                 />
               );
             })}

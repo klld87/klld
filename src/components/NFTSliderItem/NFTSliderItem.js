@@ -21,7 +21,7 @@ import {
 import { getBalanceOf } from '../../api';
 
 const NFTSliderItem = (props) => {
-  const { tokenId, cover, closeModal } = props;
+  const { tokenId, cover, closeModal, link } = props;
 
   const [balance, setBalance] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -83,11 +83,7 @@ const NFTSliderItem = (props) => {
             <ButtonTitle>Buy more</ButtonTitle>
           </Button>
         </HashLink>
-        <Link
-          href="https://opensea.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href={link} target="_blank" rel="noopener noreferrer">
           <Button>
             <ButtonTitle>Sell</ButtonTitle>
           </Button>

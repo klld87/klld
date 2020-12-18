@@ -1,20 +1,20 @@
-export const isTestnet = true; // Fix me
+export const isTestnet = false;
 
 // TOKENS
 export const KOOL_MGR_ADDR = '0x4Da961A854Bc356013B90fF5133D2Cf0269603Cd';
 export const KOOL_TOKEN_ADDR = isTestnet
   ? '0x38aaf8ef840ce9c7e40c8d603ec618810a2d2fe0'
-  : '0x9d695E811beb55c98b1B3668295e390d33dE5930';
+  : '0x9d695e811beb55c98b1b3668295e390d33de5930';
 export const AID_TOKEN_ADDR = isTestnet
   ? '0x1bdb00f8a903072f89ac644f5df049afa18f7df3'
-  : '0x11D6cCaBC5130f8b473Cef14B462325b3A8b1785';
+  : '0x11d6ccabc5130f8b473cef14b462325b3a8b1785';
 export const KOOLETH_POOL_ADDR = '0xda15087ec9a8460e2e52504d0757a154a158b913';
 export const NFT_ADDRESS = isTestnet
   ? '0x977993220c0ef93ae8ab857d1a6e1f90663c305b'
-  : '';
+  : '0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce';
 export const BAR_ADDRESS = isTestnet
   ? '0x6d246a3053a7cff02a520231206ee5b4e306abf6'
-  : '';
+  : '0xbff5dab98e27aeb5d534414a4307bb60c203a768';
 
 export const MGR_ABI = [
   {
@@ -953,6 +953,13 @@ export const BAR_ABI = [
     type: 'function',
   },
   {
+    inputs: [{ internalType: 'address', name: '_NFT', type: 'address' }],
+    name: 'updateNFT',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
     inputs: [
       { internalType: 'address', name: 'tokenAddress', type: 'address' },
       { internalType: 'uint256', name: 'tokenAmount', type: 'uint256' },
@@ -1355,59 +1362,10 @@ export const NFT_ABI = [
 
 export const KOOL_ABI = [
   {
-    inputs: [{ internalType: 'uint256', name: 'total', type: 'uint256' }],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'constructor',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'tokenOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'spender',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'tokens',
-        type: 'uint256',
-      },
-    ],
-    name: 'Approval',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: 'address', name: 'from', type: 'address' },
-      { indexed: true, internalType: 'address', name: 'to', type: 'address' },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'tokens',
-        type: 'uint256',
-      },
-    ],
-    name: 'Transfer',
-    type: 'event',
-  },
-  {
     constant: true,
-    inputs: [
-      { internalType: 'address', name: 'owner', type: 'address' },
-      { internalType: 'address', name: 'delegate', type: 'address' },
-    ],
-    name: 'allowance',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    inputs: [],
+    name: 'name',
+    outputs: [{ name: '', type: 'string' }],
     payable: false,
     stateMutability: 'view',
     type: 'function',
@@ -1415,38 +1373,51 @@ export const KOOL_ABI = [
   {
     constant: false,
     inputs: [
-      { internalType: 'address', name: 'delegate', type: 'address' },
-      { internalType: 'uint256', name: 'numTokens', type: 'uint256' },
+      { name: 'delegate', type: 'address' },
+      { name: 'numTokens', type: 'uint256' },
     ],
     name: 'approve',
-    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    outputs: [{ name: '', type: 'bool' }],
     payable: false,
     stateMutability: 'nonpayable',
     type: 'function',
   },
   {
     constant: true,
-    inputs: [{ internalType: 'address', name: 'tokenOwner', type: 'address' }],
-    name: 'balanceOf',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [{ name: '', type: 'uint256' }],
     payable: false,
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'buyer', type: 'address' },
+      { name: 'numTokens', type: 'uint256' },
+    ],
+    name: 'transferFrom',
+    outputs: [{ name: '', type: 'bool' }],
+    payable: false,
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
     constant: true,
     inputs: [],
     name: 'decimals',
-    outputs: [{ internalType: 'uint8', name: '', type: 'uint8' }],
+    outputs: [{ name: '', type: 'uint8' }],
     payable: false,
     stateMutability: 'view',
     type: 'function',
   },
   {
     constant: true,
-    inputs: [],
-    name: 'name',
-    outputs: [{ internalType: 'string', name: '', type: 'string' }],
+    inputs: [{ name: 'tokenOwner', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ name: '', type: 'uint256' }],
     payable: false,
     stateMutability: 'view',
     type: 'function',
@@ -1455,44 +1426,60 @@ export const KOOL_ABI = [
     constant: true,
     inputs: [],
     name: 'symbol',
-    outputs: [{ internalType: 'string', name: '', type: 'string' }],
+    outputs: [{ name: '', type: 'string' }],
     payable: false,
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    constant: false,
+    inputs: [
+      { name: 'receiver', type: 'address' },
+      { name: 'numTokens', type: 'uint256' },
+    ],
+    name: 'transfer',
+    outputs: [{ name: '', type: 'bool' }],
+    payable: false,
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
     constant: true,
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'delegate', type: 'address' },
+    ],
+    name: 'allowance',
+    outputs: [{ name: '', type: 'uint256' }],
     payable: false,
     stateMutability: 'view',
     type: 'function',
   },
   {
-    constant: false,
-    inputs: [
-      { internalType: 'address', name: 'receiver', type: 'address' },
-      { internalType: 'uint256', name: 'numTokens', type: 'uint256' },
-    ],
-    name: 'transfer',
-    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    inputs: [{ name: 'total', type: 'uint256' }],
     payable: false,
     stateMutability: 'nonpayable',
-    type: 'function',
+    type: 'constructor',
   },
   {
-    constant: false,
+    anonymous: false,
     inputs: [
-      { internalType: 'address', name: 'owner', type: 'address' },
-      { internalType: 'address', name: 'buyer', type: 'address' },
-      { internalType: 'uint256', name: 'numTokens', type: 'uint256' },
+      { indexed: true, name: 'tokenOwner', type: 'address' },
+      { indexed: true, name: 'spender', type: 'address' },
+      { indexed: false, name: 'tokens', type: 'uint256' },
     ],
-    name: 'transferFrom',
-    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function',
+    name: 'Approval',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, name: 'from', type: 'address' },
+      { indexed: true, name: 'to', type: 'address' },
+      { indexed: false, name: 'tokens', type: 'uint256' },
+    ],
+    name: 'Transfer',
+    type: 'event',
   },
 ];
 

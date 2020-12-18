@@ -7,6 +7,7 @@ import pear from './pear.png';
 import watermelon from './watermelon.png';
 import fruits from '../../images/fruits-bg.jpg';
 import barPageCover from '../../images/barPageCover.png';
+import scotchTape from '../../images/scotchTape.png';
 
 const spin = keyframes`
   0% {
@@ -226,5 +227,27 @@ export const PearFruit = styled.div`
     transform: rotate(-14.92deg);
     left: 0;
     top: 0;
+  }
+`;
+
+export const ScotchTape = styled.div`
+  width: 86px;
+  height: 97px;
+  position: absolute;
+  background-image: url(${scotchTape});
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: ${({ position }) => (position === 'top' ? '-35px' : 'inherit')};
+  left: ${({ position }) => (position === 'top' ? '-30px' : 'inherit')};
+  bottom: ${({ position }) => (position === 'top' ? 'inherit' : '-40px')};
+  right: ${({ position }) => (position === 'top' ? 'inherit' : '-35px')};
+
+  @media (min-width: 1024px) {
+    width: 111px;
+    height: 98px;
+    top: ${({ position }) => (position === 'top' ? '-40px' : 'inherit')};
+    left: ${({ position }) => (position === 'top' ? '-40px' : 'inherit')};
+    bottom: ${({ position }) => (position === 'top' ? 'inherit' : '-30px')};
+    right: ${({ position }) => (position === 'top' ? 'inherit' : '-45px')};
   }
 `;

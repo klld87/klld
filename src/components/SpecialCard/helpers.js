@@ -13,7 +13,7 @@ export const getType = (
   isApproved
 ) => {
   if (openSeaLink) {
-    return 'openSea';
+    return 'getOnOpenSea';
   }
   if (isApproved) {
     return 'approve';
