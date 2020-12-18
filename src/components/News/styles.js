@@ -1,12 +1,12 @@
 import styled, { keyframes } from 'styled-components';
 
 import { SectionHeading } from '../../styles/typography';
-import { TextStroke } from '../../styles/typography';
 
 import cherry from './cherry.png';
 import pear from './pear.png';
 import watermelon from './watermelon.png';
 import fruits from '../../images/fruits-bg.jpg';
+import barPageCover from '../../images/barPageCover.png';
 
 const spin = keyframes`
   0% {
@@ -130,71 +130,59 @@ export const ItemLink = styled.a`
   }
 `;
 
-export const Flavors = styled.p`
+export const WelcomeToBar = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+`;
+
+export const BarCover = styled.div`
+  width: 289px;
+  height: 419px;
+  background-image: url(${barPageCover});
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 50px 0;
   position: relative;
-  margin: 0;
-  font-family: 'Kool Beans';
-  font-size: 50px;
-  line-height: 1.1;
-  ${TextStroke}
-  overflow: hidden;
+`;
 
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: 0;
-  }
+export const BarButton = styled.div`
+  width: 154px;
+  height: 47px;
+  background: #fe1600;
+  border: 5px solid #ff7562;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  position: absolute;
+  bottom: 120px;
+  right: -20px;
+`;
 
-  &:before {
-    top: 20px;
-    left: 0;
-    width: 250px;
-    height: 250px;
-    background-image: url(${pear});
+export const BarButtonTitle = styled.p`
+  font-size: 12px;
+  line-height: 17px;
+  color: #ffffff;
+  margin: 0 30px;
+  text-align: center;
+`;
 
-    @media (min-width: 1024px) {
-      animation: ${appear} 1.8s ease-in-out infinite;
-    }
-  }
-
-  &:after {
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 200px;
-    background-image: url(${watermelon});
-
-    @media (min-width: 1024px) {
-      animation: ${spin} 1.8s linear infinite;
-    }
-  }
+export const WatermelonFruit = styled.div`
+  width: 183px;
+  height: 108px;
+  background-image: url(${watermelon});
 
   @media (min-width: 1024px) {
-    font-size: 75px;
-
-    &:before {
-      top: 0;
-      width: 350px;
-      height: 350px;
-    }
-
-    &:after {
-      top: auto;
-      bottom: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-    }
+    animation: ${spin} 1.8s linear infinite;
   }
 `;
 
-export const FlavorText = styled.span`
-  position: relative;
-  display: block;
-  text-align: center;
-  color: ${({ color }) => color || '#fff'};
-  z-index: 1;
+export const PearFruit = styled.div`
+  width: 50px;
+  height: 86px;
+  background-image: url(${pear});
+
+  @media (min-width: 1024px) {
+    animation: ${appear} 1.8s ease-in-out infinite;
+  }
 `;

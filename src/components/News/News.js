@@ -1,7 +1,19 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Container from '../Container';
-import { Heading, List, Item, ItemLink, Flavors, FlavorText } from './styles';
+import {
+  Heading,
+  List,
+  Item,
+  ItemLink,
+  WelcomeToBar,
+  PearFruit,
+  BarCover,
+  BarButton,
+  BarButtonTitle,
+  WatermelonFruit,
+} from './styles';
 
 const news = [
   {
@@ -35,18 +47,17 @@ const News = () => {
             );
           })}
         </List>
-        <Flavors>
-          <FlavorText color="#FFF849">
-            Mix flavors
-            <br />
-            ->
-          </FlavorText>
-          <FlavorText color="#FF3434">
-            Mint rare NFT
-            <br />
-            cocktails
-          </FlavorText>
-        </Flavors>
+        <WelcomeToBar>
+          <WatermelonFruit />
+          <BarCover>
+            <NavLink to="/bar">
+              <BarButton>
+                <BarButtonTitle>CLICK HERE TO ENTER</BarButtonTitle>
+              </BarButton>
+            </NavLink>
+          </BarCover>
+          <PearFruit />
+        </WelcomeToBar>
       </Container>
     </section>
   );

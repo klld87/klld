@@ -23,6 +23,7 @@ import season1 from '../../../images/seasons/1.png';
 const seasonCards = [
   {
     tokenId: 3,
+    tokenOpenSeaLink: 'https://opensea.io',
     title: 'Green Apple Pump',
     cover: appleCardCover,
     titleBlur: greenBlur,
@@ -51,6 +52,7 @@ const seasonCards = [
   },
   {
     tokenId: 4,
+    tokenOpenSeaLink: 'https://opensea.io',
     title: 'Red Cherry Dump',
     cover: cheeryCardCover,
     titleBlur: redBlur,
@@ -79,6 +81,7 @@ const seasonCards = [
   },
   {
     tokenId: 5,
+    tokenOpenSeaLink: 'https://opensea.io',
     title: 'Bitcoin Orange',
     cover: orangeCardCover,
     titleBlur: orangeBlur,
@@ -107,6 +110,7 @@ const seasonCards = [
   },
   {
     tokenId: 6,
+    tokenOpenSeaLink: 'https://opensea.io',
     title: 'Grapes of ETH',
     cover: grapesCardCover,
     titleBlur: grapesBlur,
@@ -135,6 +139,7 @@ const seasonCards = [
   },
   {
     tokenId: 7,
+    tokenOpenSeaLink: 'https://opensea.io',
     title: 'Banana Fomo',
     cover: bananaCardCover,
     titleBlur: bananaBlur,

@@ -64,6 +64,7 @@ const SeasonCard = (props) => {
     priceAmount,
     limit,
     onBuyNewFlavor,
+    tokenOpenSeaLink,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
@@ -118,7 +119,10 @@ const SeasonCard = (props) => {
   };
 
   const onClickButton = async () => {
-    if (isLoadingBalance) {
+    if (isLoadingBalance || isTokensLoading) {
+      return;
+    }
+    if (priceAmount > aidBalance) {
       return;
     }
     if (isWalletUnlocked) {
@@ -166,16 +170,23 @@ const SeasonCard = (props) => {
 
   const checkButtonDisabled = () => {
     if (!isLoadingBalance) {
-      return false;
+      return true;
     }
     if (isWalletUnlocked) {
       if (!isTokensLoading) {
         if (aidBalance > priceAmount) {
-          return false;
+          return true;
         }
       }
     }
-    return true;
+    return false;
+  };
+
+  const getLink = () => {
+    if (isAllClaimed) {
+      return tokenOpenSeaLink;
+    }
+    return null;
   };
 
   return (
@@ -238,7 +249,7 @@ const SeasonCard = (props) => {
                 type={getButtonType()}
                 disabled={checkButtonDisabled()}
                 isLoading={isTokensLoading}
-                link={isAllClaimed ? 'https://opensea.io/' : null}
+                link={getLink()}
               />
             </Actions>
           </Row>

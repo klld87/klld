@@ -67,6 +67,7 @@ const SpecialCard = (props) => {
     priceAmount,
     symbol,
     onUnlockWallet,
+    tokenOpenSeaLink,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
@@ -243,7 +244,7 @@ const SpecialCard = (props) => {
 
   const getLink = () => {
     if (isAllClaimed) {
-      return 'https://opensea.io/';
+      return tokenOpenSeaLink;
     }
     if (isFree) {
       return openSeaLink;
