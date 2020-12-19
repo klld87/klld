@@ -38,7 +38,7 @@ import Parity from '../Parity';
 import ErrorModal from '../../modals/Error';
 
 // Api
-import { getNFTCirculatingSupply, getDrink, checkIngridients } from '../../api';
+import { getNFTCirculatingSupply, getDrink } from '../../api';
 
 const MixingCard = (props) => {
   const {
@@ -72,13 +72,13 @@ const MixingCard = (props) => {
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [lastUpdate, setLastUpdate] = React.useState(new Date().getTime());
   const [isMixedAvailable, setMixedAvailable] = React.useState(false);
-  const [isLoadingAvailable, setLoadingAvailable] = React.useState(false);
+  const [isLoadingAvailable, setLoadingAvailable] = React.useState(true);
+  const [availabledData, setAvailabledData] = React.useState([]);
 
   React.useEffect(() => {
     if (tokenId && lastMixUpdate) {
       getTokenInfo();
       setLastUpdate(lastMixUpdate);
-      checkIsAvailable();
     }
   }, [tokenId, lastMixUpdate]);
 
@@ -89,12 +89,26 @@ const MixingCard = (props) => {
     }
   }, [transactionHash]);
 
-  const checkIsAvailable = async () => {
-    setLoadingAvailable(true);
+  React.useEffect(() => {
+    if (
+      ingridients &&
+      availabledData &&
+      availabledData.length === ingridients.length
+    ) {
+      const filter = availabledData.filter((i) => i !== 0);
+      setLoadingAvailable(false);
+      setMixedAvailable(filter.length === ingridients.length);
+      setAvailabledData(null);
+    }
+  }, [availabledData, ingridients]);
 
-    const isAllAvailabled = await checkIngridients(ingridients, userAddress);
-    setLoadingAvailable(false);
-    setMixedAvailable(isAllAvailabled);
+  const sendAvailable = (data, index) => {
+    console.log({ data, index });
+    if (index === 0) {
+      setMixedAvailable(false);
+      setLoadingAvailable(true);
+    }
+    setAvailabledData((prevData) => [...prevData, data]);
   };
 
   const checkTransactionInfo = () => {
@@ -236,6 +250,7 @@ const MixingCard = (props) => {
                           lastUpdate={lastUpdate}
                           isWalletUnlocked={isWalletUnlocked}
                           userAddress={userAddress}
+                          sendAvailable={(data) => sendAvailable(data, index)}
                           {...item}
                         />
                       ))}

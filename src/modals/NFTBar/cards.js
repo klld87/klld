@@ -28,7 +28,8 @@ const cards = [
   {
     tokenId: 5,
     cover: se3CardCover,
-    link: 'https://opensea.io/collection/kool-bar',
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/5',
   },
   {
     tokenId: 6,
@@ -55,12 +56,14 @@ const cards = [
   {
     tokenId: 16,
     cover: keyCardCover,
-    link: 'https://opensea.io/collection/kool-bar',
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/16',
   },
   {
     tokenId: 17,
     cover: stampCardCover,
-    link: 'https://opensea.io/collection/kool-bar',
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/17',
   },
   {
     tokenId: 1,

@@ -82,38 +82,39 @@ const specialCards = [
     price: '0.99 ETH',
     season: specialSeason,
   },
-  {
-    tokenId: 15,
-    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
-    title: 'KOOL BAG',
-    cover: koolBagCardCover,
-    titleBlur: bagCradBlur,
-    background: paperBG3,
-    bgColor: '#E87D9D',
-    position: 'right',
-    coverSizes: {
-      desktop: {
-        width: 234,
-        height: 349,
-      },
-      mobile: {
-        width: 169,
-        height: 252,
-      },
-    },
-    description:
-      'Eco-friendly. You can keep your whole Kool-Aid collection there',
-    contents: 'Empty',
-    howToUse: 'soon',
-    parity: 'rare',
-    symbol: 'KOOL',
-    priceAmount: 399,
-    price: '399 KOOL',
-    season: specialSeason,
-  },
+  // {
+  //   tokenId: 15,
+  //   tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
+  //   title: 'KOOL BAG',
+  //   cover: koolBagCardCover,
+  //   titleBlur: bagCradBlur,
+  //   background: paperBG3,
+  //   bgColor: '#E87D9D',
+  //   position: 'right',
+  //   coverSizes: {
+  //     desktop: {
+  //       width: 234,
+  //       height: 349,
+  //     },
+  //     mobile: {
+  //       width: 169,
+  //       height: 252,
+  //     },
+  //   },
+  //   description:
+  //     'Eco-friendly. You can keep your whole Kool-Aid collection there',
+  //   contents: 'Empty',
+  //   howToUse: 'soon',
+  //   parity: 'rare',
+  //   symbol: 'KOOL',
+  //   priceAmount: 399,
+  //   price: '399 KOOL',
+  //   season: specialSeason,
+  // },
   {
     tokenId: 16,
-    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/16',
     title: 'KOOL KEY CHAIN',
     cover: keychainCardCover,
     titleBlur: keychainCradBlur,
@@ -144,7 +145,8 @@ const specialCards = [
   },
   {
     tokenId: 17,
-    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/17',
     title: 'Kool Collecting Kit',
     cover: gemkitCardCover,
     titleBlur: gemkitCradBlur,
@@ -224,9 +226,9 @@ const specialCards = [
     contents: 'Empty',
     howToUse: 'soon',
     parity: 'rare',
-    price: '0.99 ETH',
+    price: '0.3 ETH',
     symbol: 'ETH',
-    priceAmount: 0.99,
+    priceAmount: 0.3,
     season: specialSeason,
     mobileStyle: {
       top: -50,

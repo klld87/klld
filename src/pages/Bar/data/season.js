@@ -83,7 +83,8 @@ const seasonCards = [
   },
   {
     tokenId: 5,
-    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
+    tokenOpenSeaLink:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/5',
     title: 'Bitcoin Orange',
     cover: orangeCardCover,
     titleBlur: orangeBlur,

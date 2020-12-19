@@ -24,6 +24,7 @@ const Ingridient = (props) => {
     lastUpdate,
     isWalletUnlocked,
     userAddress,
+    sendAvailable,
   } = props;
 
   const [isAvailable, setIsAvailable] = React.useState(false);
@@ -41,8 +42,10 @@ const Ingridient = (props) => {
     setIsLoading(false);
     if (!isNaN(tryGetBalance)) {
       setIsAvailable(tryGetBalance >= amount);
+      sendAvailable(tryGetBalance >= amount ? 1 : 0);
     } else {
       setIsAvailable(false);
+      sendAvailable(0);
     }
   };
 
