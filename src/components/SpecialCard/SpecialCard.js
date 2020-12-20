@@ -126,7 +126,7 @@ const SpecialCard = (props) => {
           setApproveTransactionHash(null);
         } else {
           setTimeout(() => {
-            checkTransactionInfo();
+            checkApproveTransactionInfo();
           }, 1500);
         }
       }

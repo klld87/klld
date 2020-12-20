@@ -191,9 +191,10 @@ export const Actions = styled.div`
     position === 'left' ? 'flex-end' : 'flex-start'};
   flex-direction: column;
   margin: 0;
-  padding: 0 55px 30px 55px;
+  padding: 30px 15px;
 
   @media (min-width: 1024px) {
+    padding: 0 55px 30px 55px;
     margin: ${({ position }) =>
       position === 'right' ? '0 0 -25px -52px' : '0 -52px -30px 0'};
     flex-direction: ${({ position }) =>

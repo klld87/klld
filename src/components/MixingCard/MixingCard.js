@@ -103,12 +103,11 @@ const MixingCard = (props) => {
   }, [availabledData, ingridients]);
 
   const sendAvailable = (data, index) => {
-    console.log({ data, index });
     if (index === 0) {
       setMixedAvailable(false);
       setLoadingAvailable(true);
     }
-    setAvailabledData((prevData) => [...prevData, data]);
+    setAvailabledData((prevData) => [...(prevData || []), data]);
   };
 
   const checkTransactionInfo = () => {

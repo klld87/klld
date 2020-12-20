@@ -39,7 +39,7 @@ export const Cover = styled.div`
   height: 79px;
   background-image: ${({ background }) => `url(${background})`};
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   border: 2px solid #000000;
   border-radius: 15px;
   margin: 11px 0 0 0;

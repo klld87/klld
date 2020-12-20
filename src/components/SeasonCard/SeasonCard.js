@@ -37,6 +37,7 @@ import {
   getNFTTotalSupply,
   getDrink,
   getNFTCirculatingSupply,
+  getMixingSupply,
 } from '../../api';
 
 const SeasonCard = (props) => {
@@ -65,6 +66,7 @@ const SeasonCard = (props) => {
     limit,
     onBuyNewFlavor,
     tokenOpenSeaLink,
+    includeMixing,
   } = props;
 
   const [totalSupply, setTotalSupply] = React.useState(null);
@@ -114,8 +116,14 @@ const SeasonCard = (props) => {
     const NFTTotalSupply = await getNFTTotalSupply(tokenId);
     const NFTCirculatingSupply = await getNFTCirculatingSupply(tokenId);
 
+    if (includeMixing) {
+      const withMixingSupply = await getMixingSupply(includeMixing);
+      setCirculatingSupply(withMixingSupply + NFTCirculatingSupply);
+    } else {
+      setCirculatingSupply(NFTCirculatingSupply);
+    }
+
     setTotalSupply(NFTTotalSupply);
-    setCirculatingSupply(NFTCirculatingSupply);
   };
 
   const onClickButton = async () => {

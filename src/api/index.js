@@ -26,6 +26,21 @@ export const getBalance = async (provider, tokenAddress, userAddress) => {
   }
 };
 
+export const getMixingSupply = async (data) => {
+  try {
+    let totalAmount = 0;
+    for (const item of data) {
+      const { tokenId, amount } = item;
+      const getSuppluy = await getNFTCirculatingSupply(tokenId);
+      const calculate = getSuppluy * amount;
+      totalAmount += calculate;
+    }
+    return totalAmount;
+  } catch {
+    return 0;
+  }
+};
+
 export const checkIngridients = async (ingridients, address) => {
   let failCount = 0;
 

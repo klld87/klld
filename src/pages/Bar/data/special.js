@@ -82,35 +82,35 @@ const specialCards = [
     price: '0.99 ETH',
     season: specialSeason,
   },
-  // {
-  //   tokenId: 15,
-  //   tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
-  //   title: 'KOOL BAG',
-  //   cover: koolBagCardCover,
-  //   titleBlur: bagCradBlur,
-  //   background: paperBG3,
-  //   bgColor: '#E87D9D',
-  //   position: 'right',
-  //   coverSizes: {
-  //     desktop: {
-  //       width: 234,
-  //       height: 349,
-  //     },
-  //     mobile: {
-  //       width: 169,
-  //       height: 252,
-  //     },
-  //   },
-  //   description:
-  //     'Eco-friendly. You can keep your whole Kool-Aid collection there',
-  //   contents: 'Empty',
-  //   howToUse: 'soon',
-  //   parity: 'rare',
-  //   symbol: 'KOOL',
-  //   priceAmount: 399,
-  //   price: '399 KOOL',
-  //   season: specialSeason,
-  // },
+  {
+    tokenId: 15,
+    tokenOpenSeaLink: 'https://opensea.io/collection/kool-bar',
+    title: 'KOOL BAG',
+    cover: koolBagCardCover,
+    titleBlur: bagCradBlur,
+    background: paperBG3,
+    bgColor: '#E87D9D',
+    position: 'right',
+    coverSizes: {
+      desktop: {
+        width: 234,
+        height: 349,
+      },
+      mobile: {
+        width: 169,
+        height: 252,
+      },
+    },
+    description:
+      'Eco-friendly. You can keep your whole Kool-Aid collection there',
+    contents: 'Empty',
+    howToUse: 'soon',
+    parity: 'rare',
+    symbol: 'KOOL',
+    priceAmount: 399,
+    price: '399 KOOL',
+    season: specialSeason,
+  },
   {
     tokenId: 16,
     tokenOpenSeaLink:

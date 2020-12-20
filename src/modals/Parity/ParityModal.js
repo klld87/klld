@@ -24,7 +24,7 @@ const ParityModal = (props) => {
       }}
     >
       <Wrapper>
-        <Title>Parity</Title>
+        <Title>Rarity</Title>
         <CloseIcon onClick={onCloseModal} />
         <List>
           {list.map((item) => (
