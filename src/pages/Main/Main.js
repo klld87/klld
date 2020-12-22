@@ -14,6 +14,8 @@ import HowItWorks from '../../components/HowItWorks';
 import Trade from '../../components/Trade';
 import News from '../../components/News';
 import Footer from '../../components/Footer';
+import ListedOn from '../../components/ListedOn';
+import KoolBarBanner from '../../components/KoolBarBanner';
 
 const MainPage = () => {
   const isFirstRender = useRef(true);
@@ -127,6 +129,8 @@ const MainPage = () => {
       <HowItWorks />
       <Trade />
       <News />
+      <ListedOn />
+      <KoolBarBanner />
       <Footer />
     </Wrapper>
   );

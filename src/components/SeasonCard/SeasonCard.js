@@ -78,7 +78,9 @@ const SeasonCard = (props) => {
   const isLoadingBalance = totalSupply === null || circulatingSupply === null;
   const isTokensLoading = isWalletUnlocked && aidBalance === null;
   const isAllClaimed =
-    totalSupply && circulatingSupply && totalSupply === circulatingSupply;
+    totalSupply !== null &&
+    circulatingSupply !== null &&
+    totalSupply === circulatingSupply;
 
   React.useEffect(() => {
     if (tokenId && getTokenInfo) {
@@ -118,12 +120,12 @@ const SeasonCard = (props) => {
 
     if (includeMixing) {
       const withMixingSupply = await getMixingSupply(includeMixing);
-      setCirculatingSupply(withMixingSupply + NFTCirculatingSupply);
+      setCirculatingSupply(NFTCirculatingSupply - withMixingSupply);
+      setTotalSupply(NFTTotalSupply - withMixingSupply);
     } else {
       setCirculatingSupply(NFTCirculatingSupply);
+      setTotalSupply(NFTTotalSupply);
     }
-
-    setTotalSupply(NFTTotalSupply);
   };
 
   const onClickButton = async () => {

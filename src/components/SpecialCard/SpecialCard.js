@@ -87,7 +87,9 @@ const SpecialCard = (props) => {
     isWalletUnlocked &&
     (aidBalance === null || (koolBalance === null) | (ethBalance === null));
   const isAllClaimed =
-    totalSupply && circulatingSupply && totalSupply === circulatingSupply;
+    totalSupply !== null &&
+    circulatingSupply !== null &&
+    totalSupply === circulatingSupply;
 
   React.useEffect(() => {
     if (openSeaLink) {
