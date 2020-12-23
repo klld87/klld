@@ -94,7 +94,7 @@ const mixingCards = [
     contents:
       'Sugar, Fructose, Lysergic acid, Butter Flavor, Vitalik Extract, Blue 1, Yellow 5',
     parity: 'uncommon',
-    recipe: 'Banana FOMO x1 + Green Apple Pump x1 + Bitcoin Orange x2',
+    recipe: 'Green Apple Pump x2 + Red Cherry Dump x2',
     sugar: 16,
     acidity: 6,
     toxicity: 6,
