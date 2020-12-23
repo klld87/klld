@@ -2,10 +2,12 @@
 import rugberryCover from '../../../images/mixingCard/rugberry.png';
 import punchCover from '../../../images/mixingCard/punch.png';
 import ohCover from '../../../images/mixingCard/oh.png';
+import butterCover from '../../../images/mixingCard/butter.png';
 
 // Blurs
 import blueBlur from '../../../images/cardBlurs/blue.png';
 import navyBlueBlur from '../../../images/cardBlurs/navyBlue.png';
+import butterBlur from '../../../images/cardBlurs/butter.png';
 
 // Ingridients covers
 import redCherryDumpIngr from '../../../images/mixingCovers/redCherryDump.png';
@@ -82,18 +84,42 @@ const mixingCards = [
     ],
   },
   {
-    // tokenId: 10,
-    // title: 'Vitalik Butter',
+    tokenId: 10,
+    title: 'Vitalik Butter',
+    cover: butterCover,
+    titleBlur: butterBlur,
+    bgColor: '#E5BB9D',
+    background: paperBG3,
+    description: "Don't ask where the milk for this butter came from",
+    contents:
+      'Sugar, Fructose, Lysergic acid, Butter Flavor, Vitalik Extract, Blue 1, Yellow 5',
+    parity: 'uncommon',
+    recipe: 'Banana FOMO x1 + Green Apple Pump x1 + Bitcoin Orange x2',
+    sugar: 16,
+    acidity: 6,
+    toxicity: 6,
+    ingridients: [
+      {
+        cover: greenAppleIngr,
+        amount: 2,
+        tokenId: 3,
+      },
+      {
+        cover: redCherryDumpIngr,
+        amount: 2,
+        tokenId: 4,
+      },
+    ],
+  },
+  {
+    // tokenId: 11,
+    // title: 'Doge Food',
     cover: ohCover,
     withCountDown: true,
-    countDown: new Date('Dec 23 2020 18:00:00 GMT+0000'),
+    countDown: new Date('Dec 27 2020 16:00:00 GMT+0000'),
     bgColor: '#3BDCFF',
     background: paperBG3,
   },
-  // {
-  //   tokenId: 11,
-  //   title: 'Doge Food',
-  // },
   // {
   //   tokenId: 12,
   //   title: 'Rekt Dragonfrui',

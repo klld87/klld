@@ -50,7 +50,10 @@ const seasonCards = [
     price: '80 AID',
     season: season1,
     limit: 15,
-    includeMixing: [{ tokenId: 9, amount: 1 }],
+    includeMixing: [
+      { tokenId: 9, amount: 1 },
+      { tokenId: 10, amount: 2 },
+    ],
   },
   {
     tokenId: 4,
@@ -81,7 +84,10 @@ const seasonCards = [
     price: '80 AID',
     season: season1,
     limit: 15,
-    includeMixing: [{ tokenId: 8, amount: 1 }],
+    includeMixing: [
+      { tokenId: 8, amount: 1 },
+      { tokenId: 10, amount: 2 },
+    ],
   },
   {
     tokenId: 5,
