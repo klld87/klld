@@ -38,7 +38,7 @@ import Parity from '../Parity';
 import ErrorModal from '../../modals/Error';
 
 // Api
-import { getNFTCirculatingSupply, getDrink } from '../../api';
+import { getNFTCirculatingSupply, getDrink, getMixingSupply } from '../../api';
 
 const MixingCard = (props) => {
   const {
@@ -65,6 +65,7 @@ const MixingCard = (props) => {
     onUnlockWallet,
     lastMixUpdate,
     userAddress,
+    includeMixing,
   } = props;
 
   const [circulatingSupply, setCirculatingSupply] = React.useState(null);
@@ -131,7 +132,12 @@ const MixingCard = (props) => {
   const getTokenInfo = async () => {
     const NFTCirculatingSupply = await getNFTCirculatingSupply(tokenId);
 
-    setCirculatingSupply(NFTCirculatingSupply);
+    if (includeMixing) {
+      const withMixingSupply = await getMixingSupply(includeMixing);
+      setCirculatingSupply(NFTCirculatingSupply - withMixingSupply);
+    } else {
+      setCirculatingSupply(NFTCirculatingSupply);
+    }
   };
 
   const onClickButton = async () => {

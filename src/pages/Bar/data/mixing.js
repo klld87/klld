@@ -3,11 +3,15 @@ import rugberryCover from '../../../images/mixingCard/rugberry.png';
 import punchCover from '../../../images/mixingCard/punch.png';
 import ohCover from '../../../images/mixingCard/oh.png';
 import butterCover from '../../../images/mixingCard/butter.png';
+import dogeCover from '../../../images/mixingCard/doge.gif';
+import dragonfruitCover from '../../../images/mixingCard/dragonfruit.gif';
 
 // Blurs
 import blueBlur from '../../../images/cardBlurs/blue.png';
 import navyBlueBlur from '../../../images/cardBlurs/navyBlue.png';
 import butterBlur from '../../../images/cardBlurs/butter.png';
+import dogeBlur from '../../../images/cardBlurs/doge.png';
+import dragonfruitBlur from '../../../images/cardBlurs/dragonfruit.png';
 
 // Ingridients covers
 import redCherryDumpIngr from '../../../images/mixingCovers/redCherryDump.png';
@@ -49,6 +53,7 @@ const mixingCards = [
         tokenId: 6,
       },
     ],
+    includeMixing: [{ tokenId: 12, amount: 1 }],
   },
   {
     tokenId: 9,
@@ -82,6 +87,7 @@ const mixingCards = [
         tokenId: 5,
       },
     ],
+    includeMixing: [{ tokenId: 11, amount: 1 }],
   },
   {
     tokenId: 10,
@@ -110,24 +116,89 @@ const mixingCards = [
         tokenId: 4,
       },
     ],
+    includeMixing: [{ tokenId: 12, amount: 1 }],
   },
   {
-    // tokenId: 11,
-    // title: 'Doge Food',
+    tokenId: 11,
+    title: 'Doge Food',
+    cover: dogeCover,
+    titleBlur: dogeBlur,
+    bgColor: '#E5BB9D',
+    background: paperBG2,
+    description: 'Very taste. Much kool. So doge food. Wow',
+    contents:
+      'Many Sugar, Much Fructose, Very Lysergic acid, Little Synthetic Beef Flavor, Such Dry Doge Food',
+    parity: 'rare',
+    recipe:
+      'Moonshine x1, Banana FOMO x1, Bitcoin Orange x1, Green Apple Pump x1',
+    sugar: 33,
+    acidity: 5,
+    toxicity: 6,
+    ingridients: [
+      {
+        cover: punchCover,
+        amount: 1,
+        tokenId: 9,
+      },
+      {
+        cover: bananaFomoIngr,
+        amount: 1,
+        tokenId: 3,
+      },
+      {
+        cover: bitcoinOrangeIngr,
+        amount: 1,
+        tokenId: 4,
+      },
+      {
+        cover: greenAppleIngr,
+        amount: 1,
+        tokenId: 3,
+      },
+    ],
+  },
+  {
+    tokenId: 12,
+    title: 'Rekt Dragonfruit',
+    cover: dragonfruitCover,
+    titleBlur: dragonfruitBlur,
+    bgColor: '#E5BB9D',
+    background: paperBG1,
+    description: 'One sip and you are rekt',
+    contents:
+      'Sugar, Fructose, Lysergic acid, Synthetic Pitaya Flavor, Rekt Cinder, Red 3',
+    parity: 'rare',
+    recipe: 'Grapes of ETH x1, Vitalik Butter x1, Rugberry x1',
+    sugar: 47,
+    acidity: 4,
+    toxicity: 6,
+    ingridients: [
+      {
+        cover: grapesofETHIngr,
+        amount: 1,
+        tokenId: 6,
+      },
+      {
+        cover: butterCover,
+        amount: 1,
+        tokenId: 10,
+      },
+      {
+        cover: rugberryCover,
+        amount: 1,
+        tokenId: 8,
+      },
+    ],
+  },
+  {
     cover: ohCover,
     withCountDown: true,
-    countDown: new Date('Dec 27 2020 16:00:00 GMT+0000'),
+    countDown: new Date('Jan 8 2021 20:00:00 GMT+0000'),
     bgColor: '#3BDCFF',
-    background: paperBG3,
+    background: paperBG1,
+    // tokenId: 13,
+    // title: 'Chad Lemonade',
   },
-  // {
-  //   tokenId: 12,
-  //   title: 'Rekt Dragonfrui',
-  // },
-  // {
-  //   tokenId: 13,
-  //   title: 'Chad Lemonade',
-  // }
 ];
 
 export default mixingCards;

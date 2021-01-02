@@ -149,7 +149,10 @@ const seasonCards = [
     price: '80 AID',
     season: season1,
     limit: 15,
-    includeMixing: [{ tokenId: 8, amount: 3 }],
+    includeMixing: [
+      { tokenId: 8, amount: 3 },
+      { tokenId: 12, amount: 1 },
+    ],
   },
   {
     tokenId: 7,
