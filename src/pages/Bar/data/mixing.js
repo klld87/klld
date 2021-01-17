@@ -193,7 +193,7 @@ const mixingCards = [
   {
     cover: ohCover,
     withCountDown: true,
-    countDown: new Date('Jan 8 2021 20:00:00 GMT+0000'),
+    countDown: new Date('Jan 25 2021 20:00:00 GMT+0000'),
     bgColor: '#3BDCFF',
     background: paperBG1,
     // tokenId: 13,

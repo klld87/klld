@@ -11,6 +11,10 @@ import stampCardCover from '../../images/barCards/stamp.png';
 import zeroCardCover from '../../images/barCards/zero.png';
 import sergeyCardCover from '../../images/barCards/sergey.png';
 import rugberryCardCover from '../../images/mixingCard/rugberry.png';
+import punchCover from '../../images/mixingCard/punch.png';
+import butterCover from '../../images/mixingCard/butter.png';
+import dogeCover from '../../images/mixingCard/doge.gif';
+import dragonfruitCover from '../../images/mixingCard/dragonfruit.gif';
 
 const cards = [
   {
@@ -81,6 +85,30 @@ const cards = [
     cover: rugberryCardCover,
     link:
       'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/8',
+  },
+  {
+    tokenId: 9,
+    cover: punchCover,
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/8',
+  },
+  {
+    tokenId: 10,
+    cover: butterCover,
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/10',
+  },
+  {
+    tokenId: 11,
+    cover: dogeCover,
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/11',
+  },
+  {
+    tokenId: 12,
+    cover: dragonfruitCover,
+    link:
+      'https://opensea.io/assets/0x6656b20a5d6ccdc95aea98764285cf9d3e6ff3ce/12',
   },
 ];
 
